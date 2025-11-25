@@ -26,7 +26,7 @@ function  Navbar2(){
   
   return(
     <div className="overflow">
-      <Navbar expand="lg" className="navbar">
+      <Navbar expand="lg" className="navbar  navbar-sticky">
         <Navbar.Brand href="#Amber" className="ms-5 mb-5 align">
           <Image src={amber} alt="Amber Logo" className="ms-4 mt-2 no-highlight" />
         </Navbar.Brand>
@@ -44,7 +44,6 @@ function  Navbar2(){
                   border: "none",
                   height: "38px",
                   color: "white",
-                  // marginTop: "1px",
                 }}
               >
                 <div className="d-flex">
@@ -53,7 +52,7 @@ function  Navbar2(){
               <Dropdown.Menu align="end" className="custom-dropdown-menu mt-3">
                 <div className="dropdown-flex">
                   <div className="support-items">
-                    <Dropdown.Header style={{ fontSize: "12px" }} className="text-dark">
+                    <Dropdown.Header style={{ fontSize: "12px"}} className="text-dark">
                       Support Now
                     </Dropdown.Header>
                     <Dropdown.Item href="#quick-chat" className="item ms-2 pt-2">

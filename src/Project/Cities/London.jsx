@@ -11,5 +11,4 @@ function London() {
     </div>
   );
 }
-
 export default London;

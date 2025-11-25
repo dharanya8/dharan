@@ -69,7 +69,7 @@ function Popularcities() {
   const navigate = useNavigate();
   const data = {
     uk: [
-      { name: "London", img: London, link: "/uk/london" },
+      { name: "London", img: London, link: "/cities/London" },
       { name: "Leicester", img: Leicester, link: "/uk/leicester" },
       { name: "Liverpool", img: Liverpool, link: "/uk/liverpool" },
       { name: "Sheffield", img: Sheffield, link: "/uk/sheffield" },
@@ -153,7 +153,7 @@ function Popularcities() {
    useEffect(() => {
     const container = carouselRef.current;
     container.addEventListener("scroll", handleScroll);
-    handleScroll(); // check on load
+    handleScroll();
     return () => container.removeEventListener("scroll", handleScroll);
   }, [selectedCountry]);
 
@@ -161,7 +161,7 @@ function Popularcities() {
 
   return (
     <div className="contain">
-      <h2 className="carousel-title ms-3">Popular Cities Across the Globe</h2>
+      <h4 className="carousel-title ms-3 fw-bold">Popular Cities Across the Globe</h4>
       <p className="carousel-subtitle ms-3">
         Book student accommodations near top cities and universities around the world.
       </p>
@@ -258,13 +258,11 @@ function Popularcities() {
       </div>
       {/* 🎠 Carousel */}
       <div className="carousel-wrapper">
-  {/* 👇 Left Arrow — show only if more than 4 items */}
   {cities.length > 4 && showLeftArrow && (
-    <button className="arrow left" onClick={scrollLeft}>
+    <button className="arrow left position-absolute" onClick={scrollLeft}>
       <IoIosArrowBack className="text-dark fs-5"style={{marginBottom:"32px"}} />
     </button>
   )}
-
   <div className="carousel" ref={carouselRef}>
   {cities.map((city, index) => (
     <div

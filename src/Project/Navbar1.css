@@ -20,12 +20,15 @@
     background: none !important;
     background-color: transparent !important;
     box-shadow: none !important;
+    z-index: 1050;
+    position: sticky;
 }
 @media  screen and (max-width:720px) {
     .navbar{
         height: 70px !important;
     }
 }
+
  /* @media screen and (max-width:720px) {
     .Nav{
          background-image: none; 
@@ -35,12 +38,20 @@
  button{ 
     margin-left: 1px;
 }  
+@media(max-width:480px){
+    .header h2{
+        font-size: 35px !important;
+    }
+    .Student h2{
+        font-size: 14px !important;
+        text-align: center !important;   
+    }
+}
 .navbar-toggler:focus{
     box-shadow: none;
 }
 .navbar-toggler{
     margin-bottom: 32px;
-
 }
 .dropdown-toggle::after {
     display: none;

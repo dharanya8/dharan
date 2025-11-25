@@ -1,0 +1,64 @@
+.offer-card {
+  position: relative;
+  min-width: 470px;
+  height: 200px;
+  margin-right: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  /* flex-shrink: 0; */
+}
+.Referrel{
+    background-color: #f9faf9;
+    width: 100%;
+    height: 500px;
+    font-family: inherit;
+}
+.offer-full-img {
+  width: 100%;
+  height: 100%;
+}
+.offer-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 20px;
+  color: #0e0808;
+}
+
+.offer-btn {
+  background: #e53863;
+  color: #000;
+  border: none;
+  padding: 6px 15px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+.scroll-wrapper1 {
+  width: 100%;
+  position: relative;
+}
+.scroll-card1 {
+  display: flex;
+  overflow-x: auto;   
+  scroll-behavior: smooth;
+}
+.scroll-card1::-webkit-scrollbar {
+  display: none;
+}
+.arrow-btn1 {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  transform: translateY(-50%);
+  background: white;
+  border: none;
+  padding: 8px;
+  border-radius: 50%;
+  box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
+}
+.arrow-left1 {
+  left: 0;
+}
+.arrow-right1 {
+  right: 0;
+}

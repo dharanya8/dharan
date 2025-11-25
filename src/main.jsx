@@ -12,16 +12,22 @@ import Navbar2 from './Project/Navbar2'
 import Router1 from './Project/Router1'
 import Popularcities from './Project/Popularcities'
 import Thousands from './Project/Thousands'
+import Trust from './Project/Trust'
+import Accommodation from './Project/Accommodation'
+import AmberReferrel from './Project/AmberReferrel'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-       <BrowserRouter>  
-               {/* <Router1/>  */}
-            <Thousands/>   
-     </BrowserRouter> 
-            {/* <Firstsection1/>    */}
+        <BrowserRouter>  
+                 <Router1/> 
+                {/* <Thousands/>    */}
+            {/* <Popularcities/> */}
+       </BrowserRouter>   
+       {/* <AmberReferrel/> */}
+     {/* <Trust/> */}
+     {/* <Accommodation/> */}
+       {/* <Firstsection1/>   */}
             {/* <Secondsection/> */}
          
-            {/* <Popularcities/> */}
              {/* <Searchbar/>  */}
             {/* <Search/> */}
         

@@ -6,7 +6,7 @@
 }
 
 .carousel-title {
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 600;
   color: #333;
 }
@@ -111,7 +111,6 @@
   overflow: hidden;
   background-color: #f9fafb;
 }
-/* Scroll Arrows */
 .arrow {
   position: absolute;
   top: 42%;
@@ -129,14 +128,12 @@
 }
 .arrow.left {
   left: 10px;
-  margin-top: 23px;
+  margin-top: 230px;
 }
 .arrow.right {
   right: 10px;
-margin-top: 30px;
+margin-top: 230px;
 }
-
-/* Shadow fade edges */
 .carousel-wrapper::before,
 .carousel-wrapper::after {
   content: "";

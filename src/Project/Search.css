@@ -158,8 +158,6 @@
     width:383px;
   }
 }
-
-/* 🔹 Scrollbar look clean */
 .dropdown-panel::-webkit-scrollbar {
   width: 6px;
 }

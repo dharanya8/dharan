@@ -30,15 +30,15 @@ function Firstsection1() {
 
   return (
     <div className="Nav">
-     <Navbar2/>
+     <Navbar2 />
       <div className="header">
-        <h2 className="fw-bold" style={{ fontSize: "56px", color: "white" }}>
+        <h2 className=" " style={{ fontSize: "56px", color: "white",fontWeight:"bold" }}>
           Home away from home
         </h2>
-        <div>
-          <h1 className="text-light fs-5">
+        <div className="Student">
+          <h2 className="text-light"style={{fontSize:"20px"}}>
             Book student accommodations near top universities and cities across the globe
-          </h1>
+          </h2>
         </div>
       </div>
       <div className="d-flex flex-wrap verified gap-3 mt-3 text-light">
