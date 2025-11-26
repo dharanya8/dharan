@@ -273,7 +273,7 @@ function Popularcities() {
     >
       <div className="image-overlay">
         <img src={city.img} alt={city.name} className="carousel-image" />
-        <span className="city-name ms-5">{city.name}</span>
+        <span className="city-name1 ms-5">{city.name}</span>
       </div>
     </div>
   ))}

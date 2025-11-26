@@ -65,7 +65,7 @@
   transform: none;
   transition: none;
 }
-.city-name {
+.city-name1 {
   position: absolute;
   left: 22px;
   font-weight: 600;
@@ -73,6 +73,9 @@
   color: white;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
   margin-top:158px;
+  bottom: 10px;
+  z-index: 5;
+
 }
 .carousel::-webkit-scrollbar {
   display: none; /* Chrome, Safari */
@@ -100,6 +103,12 @@
   position: relative;
   overflow: hidden;
   border-radius: 10px;
+}
+.carousel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 .carousel img:hover {
   transform: scale(1.05);
@@ -144,7 +153,6 @@ margin-top: 230px;
   z-index: 5;
   pointer-events: none;
 }
-
 .carousel-wrapper::before {
   left: 0;
   background: linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,0));

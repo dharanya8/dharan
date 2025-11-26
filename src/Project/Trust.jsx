@@ -73,22 +73,20 @@ const toggle = (i) => { setOpen((prev) => ({ ...prev, [i]: !prev[i] })); };
       <div className="millions position-relative">
         <Container>
           <h4 className="pt-5 fw-bold">Trust of 1 Million+ students</h4>
-            <div className="fade-left"></div>
           {/* Left Arrow */}
           {showLeftArrow && (
-            <button className="arrow-btn arrow-left d-flex " onClick={scrollLeft}>
+            <button className="arrow-btn arrow-left d-flex d-none d-md-block" onClick={scrollLeft}>
               <IoIosArrowBack size={20} />
             </button>
           )}
-          <div className="fade-right"></div>
-          {/* Right Arrow */}
+                   {/* Right Arrow */}
           {showRightArrow && (
-            <button className="arrow-btn arrow-right" onClick={scrollRight}>
+            <button className="arrow-btn arrow-right d-none d-md-block" onClick={scrollRight}>
               <IoIosArrowForward size={20} />
             </button>
           )}
           <div className="scroll-wrapper position-relative overflow-hidden">
-            <div className="scroll-card overflow-x-auto d-flex" ref={scrollRef}>
+            <div className="scroll-card overflow-x-auto d-flex " ref={scrollRef}>
               {data.map((item, index) => (
                 <div key={index} className="trust-card position-relative">
                   <p style={{fontSize:"14px"}}> {readMoreIndexes.includes(index)

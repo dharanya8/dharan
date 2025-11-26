@@ -36,7 +36,7 @@ function Accommodation() {
               </div>
             </div>
             {/* Box 3 */}
-            <div className="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-4 d-flex ">
+            <div className="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-4 d-flex justify-content-center">
               <div className='d-flex flex-column align-items-center '>
                  <div className='d-flex flex-column'>
                 <Image src={insight3} style={{ width: "50px", height: "60px" }} />
@@ -47,7 +47,7 @@ function Accommodation() {
               </div>
             </div>
             {/* Box 4 */}
-            <div className="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-4 d-flex ">
+            <div className="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-4 d-flex justify-content-center">
               <div className='d-flex flex-column align-items-center'>
                 <div className='d-flex flex-column'>
                 <Image src={insight4} style={{ width: "50px", height: "60px" }} />

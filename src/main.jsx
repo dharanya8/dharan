@@ -15,13 +15,15 @@ import Thousands from './Project/Thousands'
 import Trust from './Project/Trust'
 import Accommodation from './Project/Accommodation'
 import AmberReferrel from './Project/AmberReferrel'
+import BookYourPlan from './Project/BookYourPlan';
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-        <BrowserRouter>  
+        {/* <BrowserRouter>  
                  <Router1/> 
                 {/* <Thousands/>    */}
             {/* <Popularcities/> */}
-       </BrowserRouter>   
+       {/* </BrowserRouter>    */} 
+       <BookYourPlan/>
        {/* <AmberReferrel/> */}
      {/* <Trust/> */}
      {/* <Accommodation/> */}
