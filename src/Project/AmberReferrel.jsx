@@ -64,7 +64,7 @@ const navigate = useNavigate();
               </div>
             </div>
             {/* CARD 2 */}
-            <div className="offer-card" onClick={() => navigate("/ApplyNow")}>
+            <div className="offer-card overflow-hidden" onClick={() => navigate("/ApplyNow")}>
               <img src={Offercard2}  className="offer-full-img" />
               <div className="offer-overlay">
                 <h5 className="fw-bold"style={{fontSize:"18px"}}>Amberscholar 2025 Edition is Here!</h5>
@@ -74,7 +74,7 @@ const navigate = useNavigate();
               </div>
             </div>
             {/* CARD 3 */}
-            <div className="offer-card" onClick={() => navigate("/ClaimNow")}>
+            <div className="offer-card overflow-hidden" onClick={() => navigate("/ClaimNow")}>
               <img src={Offercard3}className="offer-full-img" />
               <div className="offer-overlay">
                 <h5 className="fw-bold"style={{fontSize:"18px"}}>Save up to £300 with amber+</h5>
@@ -85,7 +85,7 @@ const navigate = useNavigate();
               </div>
             </div>
             {/* CARD 4 */}
-            <div className="offer-card "onClick={() => navigate("/AvailNow")}>
+            <div className="offer-card overflow-hidden"onClick={() => navigate("/AvailNow")}>
               <img src={Offercard4} className="offer-full-img" />
               <div className="offer-overlay">
                 <h5 className="fw-bold"style={{fontSize:"18px"}}>Get additional £20 cashback on your

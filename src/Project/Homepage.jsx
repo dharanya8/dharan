@@ -6,6 +6,7 @@ import Thousands from "./Thousands";
 import Trust from "./Trust";
 import Accommodation from "./Accommodation";
 import AmberReferrel from "./AmberReferrel";
+import BookYourPlan from "./BookYourPlan";
    function Homepage(){
     return(
         <div>
@@ -18,6 +19,7 @@ import AmberReferrel from "./AmberReferrel";
             <Trust/>
             <Accommodation/>
             <AmberReferrel/>
+            <BookYourPlan/>
        </div>
     )
    }

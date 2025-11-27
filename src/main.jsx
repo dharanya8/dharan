@@ -18,12 +18,12 @@ import AmberReferrel from './Project/AmberReferrel'
 import BookYourPlan from './Project/BookYourPlan';
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-        {/* <BrowserRouter>  
+         <BrowserRouter>   
                  <Router1/> 
                 {/* <Thousands/>    */}
             {/* <Popularcities/> */}
-       {/* </BrowserRouter>    */} 
-       <BookYourPlan/>
+       </BrowserRouter>    
+       {/* <BookYourPlan/> */}
        {/* <AmberReferrel/> */}
      {/* <Trust/> */}
      {/* <Accommodation/> */}
