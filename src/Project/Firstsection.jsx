@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './Navbar1.css';
+import './Firstsection.css';
 import { FaHeadset,} from "react-icons/fa6";
 import { GoCheckCircle } from "react-icons/go";
 import { GrCurrency } from "react-icons/gr";
@@ -31,33 +31,44 @@ function Firstsection1() {
   return (
     <div className="Nav">
      <Navbar2 />
-      <div className="header">
-        <h2 className=" " style={{ fontSize: "56px", color: "white",fontWeight:"bold" }}>
+      <div className="header text-center px-2">
+        <h2 className=" " style={{ fontSize: "clamp(28px, 6vw, 56px)", color: "white",fontWeight:"bold" }}>
           Home away from home
         </h2>
         <div className="Student">
-          <h2 className="text-light"style={{fontSize:"20px"}}>
+          <h2 className="text-light"style={{fontSize:"clamp(13px, 3vw, 20px)"}}>
             Book student accommodations near top universities and cities across the globe
           </h2>
         </div>
       </div>
-      <div className="d-flex flex-wrap verified gap-3 mt-3 text-light">
-        <div className="d-flex bg" style={{ width: "165px" }}>
-          <GoCheckCircle className="mt-1 me-2 fs-5" /> Verified Properties
-        </div>
-        <div className="d-flex bg" style={{ width: "145px" }}>
-          <FaHeadset className="mt-1 me-2 fs-5" /> 24x7 Assistance
-        </div>
-        <div className="d-flex bg" style={{ width: "200px" }}>
-          <GrCurrency className="mt-1 me-2 fs-5" /> Lowest Price Guarantee
-        </div>
-      </div>
+      <div className="container mt-4">
+       <div className="row text-light justify-content-center text-center  g-md-3 mt-3">
+
+  <div className="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">
+    <div className="d-flex bg justify-content-center align-items-center px-3 py-2 rounded">
+      <GoCheckCircle className="mt-1 me-2 fs-5" /> Verified Properties
+    </div>
+  </div>
+
+  <div className="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">
+    <div className="d-flex bg justify-content-center align-items-center px-3 py-2 rounded">
+      <FaHeadset className="mt-1 me-2 fs-5" /> 24x7 Assistance
+    </div>
+  </div>
+
+  <div className="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">
+    <div className="d-flex bg justify-content-center align-items-center px-3 py-2 rounded">
+      <GrCurrency className="mt-1 me-2 fs-5" /> Lowest Price Guarantee
+    </div>
+  </div>
+      {/* </div> */}
       <div>
+        </div></div>
         <Search />
       </div>
       <div className="d-flex  text-light  justify-content-center mt-3"
       > 
-      <div className="d-flex recent">
+      <div className="d-flex  recent">
              <div style={{fontSize:"14px",whiteSpace: "nowrap", }}className=""> Recent Searches</div>
         {recent.length === 0 ? (
           <p className="text-light ms-2">No recent searches</p>
@@ -70,7 +81,7 @@ function Firstsection1() {
               style={{ textDecoration: "none" }}
             >
               <button
-                className="country ms-2 rounded-pill"
+                className="country ms-2 rounded-pill px-3 py-2"
                 style={{
                   padding: "10px 15px",
                   borderRadius: "50px",

@@ -32,7 +32,7 @@ function  Navbar2(){
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbar-nav" />
         <Navbar.Collapse id="navbar-nav" className="pb-5">
-          <Nav className="ms-auto" style={{ marginRight: "30px" }}>
+          <Nav className="ms-auto">
             <Dropdown className="support-btn me-auto my-3 my-lg-0 mx-lg-2">
               <Dropdown.Toggle
                 id="dropdown-basic"

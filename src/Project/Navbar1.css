@@ -3,16 +3,6 @@
     margin: 0;
     padding: 0;
 }
-
-.Nav{
-    background-image:url(./../assets/bg1/bg1.jpeg);
-    height: 450px;
-    width: 100%;
-    background-repeat: no-repeat;
-    background-position:center;
-    background-size: cover;
-    /* position: absolute; */
-}
 .overflow{
     overflow:visible;
 }
@@ -38,7 +28,7 @@
  button{ 
     margin-left: 1px;
 }  
-@media(max-width:480px){
+/* @media(max-width:480px){
     .header h2{
         font-size: 35px !important;
     }
@@ -46,7 +36,7 @@
         font-size: 14px !important;
         text-align: center !important;   
     }
-}
+} */
 .navbar-toggler:focus{
     box-shadow: none;
 }
@@ -199,65 +189,41 @@
     font-size: 11px;
     text-align: center;
 }
-.header{
-    justify-items: center;
-}
-.verified{
-    justify-content: center;
-}
-h2{
-    margin-bottom: 0.1rem;
-}
-
-.bg{
-    background-color:rgba(0, 0, 0, 0.15);
-    height: 32px;
-    padding: 2px;
-   font-size: 15px;
-    justify-content: center;
-    border-radius: 4px;
-}
- .searchbar{
-    background-color: rgb(243, 64, 94);
-    width:60px;
-    height: 60px;
-    border-radius: 50%;
-    color: white;
- }
- .font{
-    color: #636161;
- }
-  @media (max-width:576px) {
-   
-    .input{
-        height:50px;
-        font-size: 14px;
-        padding-left: 20px;
-        padding-right: 45px;
-    }  
-}
-  .country{
-    background-color:hsla(0, 0%, 76%, .5);
-    color: white;
-    border: none;
-    font-size: 12px;
-    height:30px;   
-  }
-  .recent{
-    max-height:50px;
-    overflow-x: hidden; 
-    width: 685px;
-  }
-   .topcities{
-    background-color:#f9fafb;
-   }
-
 .dropdown-panel {
   scrollbar-width: none;
   -ms-overflow-style: none; 
 }
-
 .dropdown-panel::-webkit-scrollbar {
   display: none;
 }
+/* Mobile Navbar Background */
+@media (max-width: 768px) {
+  .navbar-nav {
+    background: #eb4c4c;
+    padding: 20px;
+    border-radius: 10px;
+    width:70%;
+    margin-left:10px
+  }
+  .contact-btn{
+    background-color: #eb4c4c !important;
+  }
+}
+
+/* Main Buttons */
+.nav-btn {
+  font-size: 16px;
+  font-weight: 600;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.nav-outline {
+  border: 1px solid white !important;
+  padding: 6px 15px;
+  border-radius: 8px;
+}
+
+
 
