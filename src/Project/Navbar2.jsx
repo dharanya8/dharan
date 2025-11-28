@@ -22,6 +22,7 @@ import { MdGroups } from "react-icons/md";
 import { CiViewList } from "react-icons/ci";
 import { BsPersonUp } from "react-icons/bs";
 import amber from './../assets/bg1/amber-logo-light (1).svg';
+import { Container } from "react-bootstrap";
 function  Navbar2(){
   
   return(

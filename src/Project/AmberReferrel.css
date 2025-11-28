@@ -1,74 +1,113 @@
+.Referrel {
+  background-color: #f9faf9;
+  width: 100%;
+  min-height: 420px;
+  font-family: inherit;
+}
+
+/* === RESPONSIVE CARD WIDTH === */
+
+/* Desktop */
+@media (min-width: 992px) {
+  .offer-card {
+    min-width: 470px;
+  }
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 991px) {
+  .offer-card {
+    min-width: 350px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .offer-card {
+    min-width: 85%;
+  }
+}
+
+
 .offer-card {
-  min-width: 470px;
   height: 200px;
-  margin-right: 20px;
   border-radius: 7px;
   position: relative;
+  overflow: hidden;
 }
-.Referrel{
-    background-color: #f9faf9;
-    width: 100%;
-    height: 380px;
-    font-family: inherit;
-}
+
+/* IMAGE HOVER */
 .offer-full-img {
   width: 100%;
   height: 100%;
   transition: transform 0.2s ease-in-out;
 }
 .offer-card:hover .offer-full-img {
-  transform: scale(1.09); 
+  transform: scale(1.09);
 }
+
+/* OVERLAY */
 .offer-overlay {
   position: absolute;
-  bottom: 1px;
+  bottom: 0;
   left: 0;
   padding: 20px;
-  color: #0e0808;
   width: 100%;
-  height:100%;
+  height: 100%;
+  color: #0e0808;
 }
+
+/* BUTTON */
 .offer-btn {
-  background: #ff5779 ;
+  background: #ff5779;
   border: none;
   padding: 6px 15px;
   border-radius: 8px;
   font-weight: 600;
-  margin-top: 38px;
+  margin-top: 30px;
 }
-.offer-btn:hover{
-  background:#e53863 ;
+.offer-btn:hover {
+  background: #e53863;
 }
+
+/* SCROLL AREA */
 .scroll-wrapper1 {
   width: 100%;
+  position: relative;
 }
+
 .scroll-card1 {
-  overflow-x: auto;   
+  overflow-x: auto;
+  display: flex;
+  gap: 20px;
   scroll-behavior: smooth;
+  padding-bottom: 10px;
 }
 .scroll-card1::-webkit-scrollbar {
   display: none;
 }
+
+/* ARROWS - DESKTOP ONLY */
 .arrow-btn1 {
   position: absolute;
-  top: 60%;
-  z-index: 10;
+  top: 53%;
   transform: translateY(-50%);
   background: white;
   border: none;
   width: 30px;
   height: 30px;
-  justify-content: center;
-  align-items: center;
   border-radius: 50%;
-  box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+  z-index: 10;
 }
 .arrow-left1 {
-    left:83px; 
+  left: 83px;
 }
 .arrow-right1 {
   right: 83px;
 }
+
+/* FADE BORDERS */
 .scroll-wrapper1::before,
 .scroll-wrapper1::after {
   content: "";
@@ -81,9 +120,9 @@
 }
 .scroll-wrapper1::before {
   left: 0;
-  background: linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,0));
+  background: linear-gradient(to right, #f9faf9, rgba(249,250,249,0));
 }
 .scroll-wrapper1::after {
   right: 0;
-  background: linear-gradient(to left, rgba(255,255,255,1), rgba(255,255,255,0));
+  background: linear-gradient(to left, #f9faf9, rgba(249,250,249,0));
 }

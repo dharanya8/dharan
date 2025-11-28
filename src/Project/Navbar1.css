@@ -28,15 +28,6 @@
  button{ 
     margin-left: 1px;
 }  
-/* @media(max-width:480px){
-    .header h2{
-        font-size: 35px !important;
-    }
-    .Student h2{
-        font-size: 14px !important;
-        text-align: center !important;   
-    }
-} */
 .navbar-toggler:focus{
     box-shadow: none;
 }
@@ -203,13 +194,12 @@
     padding: 20px;
     border-radius: 10px;
     width:70%;
-    margin-left:10px
+    margin-right:230px
   }
   .contact-btn{
     background-color: #eb4c4c !important;
   }
 }
-
 /* Main Buttons */
 .nav-btn {
   font-size: 16px;

@@ -7,6 +7,7 @@ import { GrCurrency } from "react-icons/gr";
 import Search from './Search';
 import { GoChevronRight } from "react-icons/go";
 import Navbar2 from "./Navbar2";
+import { Container } from "react-bootstrap";
 
 function Firstsection1() {
      const [recent, setRecent] = useState([]);
@@ -31,6 +32,7 @@ function Firstsection1() {
   return (
     <div className="Nav">
      <Navbar2 />
+     <Container>
       <div className="header text-center px-2">
         <h2 className=" " style={{ fontSize: "clamp(28px, 6vw, 56px)", color: "white",fontWeight:"bold" }}>
           Home away from home
@@ -41,23 +43,23 @@ function Firstsection1() {
           </h2>
         </div>
       </div>
-      <div className="container mt-4">
-       <div className="row text-light justify-content-center text-center  g-md-3 mt-3">
+      <div className="container ">
+       <div className="row text-light justify-content-center text-center mt-3">
 
-  <div className="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">
-    <div className="d-flex bg justify-content-center align-items-center px-3 py-2 rounded">
+  <div className="col-12 col-sm-6 col-md-4 col-lg-3 d-flex g-0 justify-content-center">
+    <div className="d-flex bg justify-content-center align-items-center lg-ms-4 px-3 py-2 rounded">
       <GoCheckCircle className="mt-1 me-2 fs-5" /> Verified Properties
     </div>
   </div>
 
-  <div className="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">
-    <div className="d-flex bg justify-content-center align-items-center px-3 py-2 rounded">
+  <div className="col-12 col-sm-6 col-md-4 col-lg-3 d-flex g-2 justify-content-center">
+    <div className="d-flex bg justify-content-center align-items-center  px-3 py-2 rounded">
       <FaHeadset className="mt-1 me-2 fs-5" /> 24x7 Assistance
     </div>
   </div>
 
-  <div className="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">
-    <div className="d-flex bg justify-content-center align-items-center px-3 py-2 rounded">
+  <div className="col-12 col-sm-6 col-md-4 col-lg-3 d-flex g-2 justify-content-center">
+    <div className="d-flex bg justify-content-center align-items-center lg-ms-4 px-3 py-2 rounded">
       <GrCurrency className="mt-1 me-2 fs-5" /> Lowest Price Guarantee
     </div>
   </div>
@@ -73,7 +75,7 @@ function Firstsection1() {
         {recent.length === 0 ? (
           <p className="text-light ms-2">No recent searches</p>
         ) : (
-          recent.map((item, i) => (
+          recent.slice(0, itemsToShow).map((item, i) => (
             <a
               key={i}
               href={`/search.html`}
@@ -101,6 +103,7 @@ function Firstsection1() {
         )}
       </div>
       </div>
+      </Container>
       </div>
       
   );

@@ -14,6 +14,7 @@ import esp from './../assets/Flags/flag-esp.svg';
 import nz from './../assets/Flags/flag-nz.svg';
 import { HiOutlineAcademicCap } from "react-icons/hi2";
 import { useNavigate } from "react-router-dom";
+import { Container } from "react-bootstrap";
 
 function Search() {
   const staticText = "Search by";
@@ -102,7 +103,8 @@ useEffect(()=>{
 
   const wordHeight = 80; 
     return (
-    <div className="d-flex justify-content-center mt-4 position-relative">
+      <Container>
+    <div className="d-flex justify-content-center lg-mt-1 mt-3 position-relative">
       <div
         className="d-flex"
         style={{ position: "relative", width: "720px" }}
@@ -121,19 +123,16 @@ useEffect(()=>{
 
         {searchText === "" && (
           <div
+          className="width position-absolute d-flex align-items-center "
            ref={dropdownRef} 
             style={{
-              position: "absolute",
               left: "33px",
               top: "50%",
               transform: "translateY(-50%)",
               pointerEvents: "none",
-              display: "flex",
-              alignItems: "center",
               gap: "5px",
               height: `${wordHeight}px`,
-              overflow: "hidden",
-              width: "680px",
+              // width: "680px",
             }}
           >
             <span style={{ fontSize: "16px" }}>{staticText}</span>
@@ -161,8 +160,8 @@ useEffect(()=>{
               
             </div>
             <div className="d-flex justify-content-center searchbar" >
-               <IoSearchOutline className="" 
-               style={{fontSize:"34px",color:"white",
+               <IoSearchOutline className="searchoutline text-light" 
+               style={{fontSize:"34px",
                 marginTop:"1px" 
                }}/>
               </div>
@@ -311,7 +310,9 @@ useEffect(()=>{
           </div>
         </div>
       )}
+    
     </div>
+      </Container>
   );
 }
 

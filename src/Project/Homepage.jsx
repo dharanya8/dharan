@@ -12,14 +12,14 @@ import BookYourPlan from "./BookYourPlan";
         <div>
         
             <Firstsection1/>
-            <Secondsection/>
+            {/* <Secondsection/>
             <Outlet/>
             <Popularcities/>
             <Thousands/>
             <Trust/>
             <Accommodation/>
             <AmberReferrel/>
-            <BookYourPlan/>
+            <BookYourPlan/> */}
        </div>
     )
    }
