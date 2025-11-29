@@ -44,7 +44,7 @@ function Firstsection1() {
         </div>
       </div>
       <div className="container ">
-       <div className="row text-light justify-content-center text-center mt-3">
+       <div className="row text-light justify-content-center text-center mt-3 ">
 
   <div className="col-12 col-sm-6 col-md-4 col-lg-3 d-flex g-0 justify-content-center">
     <div className="d-flex bg justify-content-center align-items-center lg-ms-4 px-3 py-2 rounded">
@@ -75,7 +75,7 @@ function Firstsection1() {
         {recent.length === 0 ? (
           <p className="text-light ms-2">No recent searches</p>
         ) : (
-          recent.slice(0, itemsToShow).map((item, i) => (
+          recent.map((item, i) => (
             <a
               key={i}
               href={`/search.html`}

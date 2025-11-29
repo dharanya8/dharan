@@ -91,9 +91,8 @@
 }
 .dropdown-flex {
   display: flex;
-  flex-direction: row; /* side by side */
+  flex-direction: row; 
   align-items: flex-start;
- /* top align */
 }
 .vertical-divider {
   width: 1px;
@@ -194,11 +193,22 @@
     padding: 20px;
     border-radius: 10px;
     width:70%;
-    margin-right:230px
+    margin-right:230px;
+    position:absolute;
   }
   .contact-btn{
     background-color: #eb4c4c !important;
   }
+   .dropdown-menu.show{
+    position:absolute;
+    margin-left: 0px;
+  }
+  .dropdown-menu-end[data-bs-popper]{
+    left:0;
+  }
+}
+@media(max-width:992px){
+  
 }
 /* Main Buttons */
 .nav-btn {

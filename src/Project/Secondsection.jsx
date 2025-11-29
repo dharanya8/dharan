@@ -5,7 +5,7 @@ import university from './../assets/homepage-universities.svg';
 import logowhite from './../assets/logo-white.svg';
 import star from './../assets/stars-4.5.svg';
 import Container from 'react-bootstrap/Container';
-
+import './Secondsection.css'
 function Secondsection() {
   return (
     <div>
