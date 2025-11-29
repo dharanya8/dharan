@@ -5,7 +5,7 @@ import university from './../assets/homepage-universities.svg';
 import logowhite from './../assets/logo-white.svg';
 import star from './../assets/stars-4.5.svg';
 import Container from 'react-bootstrap/Container';
-import './Secondsection.css'
+import './Secondsection.css';
 function Secondsection() {
   return (
     <div>
@@ -15,7 +15,7 @@ function Secondsection() {
             {/* Box 1 */}
             <div className="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-4 d-flex justify-content-center">
               <div className='d-flex flex-column align-items-center'>
-                <div className='d-flex flex-column'>
+                <div className='icon-title'>
                 <Image src={bed} style={{ width: "50px", height: "60px" }} />
                 <h3 className='fs-4 mt-2'>1M+ Beds</h3>
                 <p className="px-2">Book your perfect place from an extensive list of options.</p>
