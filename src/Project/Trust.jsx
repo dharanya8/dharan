@@ -46,17 +46,15 @@ const readMoreIndexes = [1, 2, 4];
 const [open, setOpen] = useState({});
 const toggle = (i) => { setOpen((prev) => ({ ...prev, [i]: !prev[i] })); };
   const scrollLeft = () => {
-    scrollRef.current.scrollBy({ left: -350, behavior: "smooth" });
+    scrollRef.current.scrollBy({ left: -400, behavior: "smooth" });
   };
-
   const scrollRight = () => {
-    scrollRef.current.scrollBy({ left: 350, behavior: "smooth" });
-  };
+    scrollRef.current.scrollBy({ left: 400, behavior: "smooth" });
+   };
   const handleScroll = () => {
     const container = scrollRef.current;
     const SL = container.scrollLeft;
     const maxSL = container.scrollWidth - container.clientWidth;
-
     setShowLeftArrow(SL > 0);
     setShowRightArrow(SL < maxSL - 10);
   };
@@ -75,13 +73,13 @@ const toggle = (i) => { setOpen((prev) => ({ ...prev, [i]: !prev[i] })); };
           <h4 className="pt-5 fw-bold">Trust of 1 Million+ students</h4>
           {/* Left Arrow */}
           {showLeftArrow && (
-            <button className="arrow-btn arrow-left d-flex d-none d-md-block" onClick={scrollLeft}>
+            <button className="arrow-btn arrow-left " onClick={scrollLeft}>
               <IoIosArrowBack size={20} />
             </button>
           )}
                    {/* Right Arrow */}
           {showRightArrow && (
-            <button className="arrow-btn arrow-right d-none d-md-block" onClick={scrollRight}>
+            <button className="arrow-btn arrow-right" onClick={scrollRight}>
               <IoIosArrowForward size={20} />
             </button>
           )}
@@ -106,7 +104,7 @@ const toggle = (i) => { setOpen((prev) => ({ ...prev, [i]: !prev[i] })); };
   </button>
 )}
                   </p>
-                  <div className="d-flex align-items-center mt-5">
+                  <div className="d-flex align-items-center mt-5 mt-sm">
                     <img src={item.flag} width="30" className="me-2" alt="" />
                     <div>
                       <h6 className="mb-0" style={{fontSize:"14px"}}>{item.name}</h6>

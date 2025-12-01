@@ -121,14 +121,14 @@ function Thousands() {
       </div>
       </div>
 <div className="property-card-section d-flex flex-wrap flex-lg-nowrap 
-            overflow-x-hidden overflow-sm-x-auto ms-sm-3">
+            overflow-x-hidden overflow-sm-x-auto ">
         {(Propesties[selectedCity] || []).map((item, index) => (
           <div key={index} className="property-card position-relative">
             <div className="wishlist-heart position-absolute mt-3  bg-light d-flex justify-content-center align-items-center"
              onClick={() => setOpenLogin(true)}>
     <FiHeart className="heart-outline mt-1" />
   </div> 
-            <div className=" ">
+            <div>
                   <Carousel className="carousel1 d-flex "interval={null}>
                     {item.images
     ? item.images.map((img, i) => (

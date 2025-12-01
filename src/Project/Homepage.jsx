@@ -11,15 +11,15 @@ import BookYourPlan from "./BookYourPlan";
     return(
         <div>
         
-            <Firstsection1/>
-             <Secondsection/>
-            {/* <Outlet/>
-            <Popularcities/>
-            <Thousands/>
+            {/* <Firstsection1/>
+             <Secondsection/> */}
+            <Outlet/> 
+             <Popularcities/> 
+            <Thousands/> 
             <Trust/>
             <Accommodation/>
-            <AmberReferrel/>
-            <BookYourPlan/> */} 
+            {/* <AmberReferrel/>
+            <BookYourPlan/>  */}
        </div>
     )
    }

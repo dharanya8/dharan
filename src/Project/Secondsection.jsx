@@ -8,37 +8,43 @@ import Container from 'react-bootstrap/Container';
 import './Secondsection.css';
 function Secondsection() {
   return (
-    <div>
+    // <div>
       <Container>
         <div className='mt-4'>
-          <div className="row justify-content-center">
+          <div className="row justify-content-center align-items-center">
             {/* Box 1 */}
             <div className="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-4 d-flex justify-content-center">
               <div className='d-flex flex-column align-items-center'>
                 <div className='icon-title'>
+                <div className="top-row">
                 <Image src={bed} style={{ width: "50px", height: "60px" }} />
-                <h3 className='fs-4 mt-2'>1M+ Beds</h3>
-                <p className="px-2">Book your perfect place from an extensive list of options.</p>
+                <h3 className='fs-4 'style={{marginTop:"10px"}}>1M+ Beds</h3>
+                </div>
+                <p className="px-2 text-secondary">Book your perfect place from an extensive list of options.</p>
               </div>
               </div>
             </div>
             {/* Box 2 */}
             <div className="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-4 d-flex justify-content-center">
               <div className='d-flex flex-column align-items-center'>
-                 <div className='d-flex flex-column' >
+                 <div className='icon-title'>
+                  <div className="top-row">
                 <Image src={university} style={{ width: "50px", height: "60px" }} />
                 <h3 className='fs-4 mt-2'>800+ Universities</h3>
-                <p className="px-2">Find the best student homes near prestigious universities.</p>
+                </div>
+                <p className="px-2 text-secondary">Find the best student homes near prestigious universities.</p>
               </div>
               </div>
             </div>
             {/* Box 3 */}
             <div className="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-4 d-flex ">
               <div className='d-flex flex-column align-items-center '>
-                 <div className='d-flex flex-column'>
+                 <div className='icon-title'>
+                  <div className="top-row">
                 <Image src={cities} style={{ width: "50px", height: "60px" }} />
                 <h3 className='fs-4 mt-2'>250+ Global Cities</h3>
-                <p className="px-2">We operate in major cities around the world.</p>
+                </div>
+                <p className="px-2 text-secondary">We operate in major cities around the world.</p>
               </div>
               </div>
             </div>
@@ -69,7 +75,7 @@ function Secondsection() {
           </div>
         </div>
       </Container>
-    </div>
+    // </div>
   );
 }
 

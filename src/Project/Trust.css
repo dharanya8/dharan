@@ -76,4 +76,39 @@
   right: 0;
   background: linear-gradient(to left, #bcf0da, rgba(255,255,255,0));
 }
+@media (max-width: 572px) {
+  .scroll-wrapper::after {
+    background: none;
+  }
+  .scroll-wrapper::before{
+    background: none;
+  }
+    .trust-card {
+    min-width: 100% !important;
+    scroll-snap-align: start;
+    padding: 20px;
+  }
+
+  .scroll-card {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory; 
+  width: 100%;
+  margin-top: 20px;
+}
+.mt-sm{
+  margin-top: 27px;
+}
+.arrow-left{
+  margin-top: 20px;
+  left: 6px;
+}
+.arrow-right{
+  margin-top: 20px;
+  right: 6px;
+}
+  
+}
+
 

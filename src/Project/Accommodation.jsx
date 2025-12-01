@@ -4,7 +4,7 @@ import Insight2 from './../assets/insight2.svg';
 import insight3 from './../assets/insight3.svg';
 import insight4 from './../assets//insight4.svg';
 import Container from 'react-bootstrap/Container';
-
+import './Secondsection.css';
 function Accommodation() {
   return (
     <div>
@@ -18,9 +18,11 @@ function Accommodation() {
             {/* Box 1 */}
             <div className="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-4 d-flex justify-content-center">
               <div className='d-flex flex-column align-items-center'>
-                <div className='d-flex flex-column'>
+                <div className='icon-title'>
+                  <div className="top-row">
                 <Image src={insight} style={{ width: "50px", height: "60px" }} />
                 <h3 className='mt-2 ms-2'style={{fontSize:"16px"}}>Instant & Easy Bookings</h3>
+                </div>
                 <p className="px-2 text-secondary"style={{fontSize:"14px"}}>Time is money. Save both when you book with us..</p>
               </div>
               </div>
@@ -28,9 +30,11 @@ function Accommodation() {
             {/* Box 2 */}
             <div className="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-4 d-flex justify-content-center">
               <div className='d-flex flex-column align-items-center'>
-                 <div className='d-flex flex-column' >
+                <div className='icon-title'>
+                <div className="top-row">
                 <Image src={Insight2} style={{ width: "50px", height: "60px" }} />
                 <h3 className='mt-2 ms-2'style={{fontSize:"16px"}}>Lowest Price Guarantee</h3>
+                </div>
                 <p className="px-2 text-secondary"style={{fontSize:"14px"}}>Find a lower price and we'll match it. No questions asked..</p>
               </div>
               </div>
@@ -38,9 +42,11 @@ function Accommodation() {
             {/* Box 3 */}
             <div className="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-4 d-flex justify-content-center">
               <div className='d-flex flex-column align-items-center '>
-                 <div className='d-flex flex-column'>
+                <div className='icon-title'>
+                <div className="top-row">
                 <Image src={insight3} style={{ width: "50px", height: "60px" }} />
                 <h3 className=' mt-2 ms-2'style={{fontSize:"16px"}}>24x7 Assistance</h3>
+                </div>
                 <p className="px-2 text-secondary"style={{fontSize:"14px"}}>If you have a doubt or a query, we’re always a call away..
 </p>
               </div>
@@ -49,9 +55,11 @@ function Accommodation() {
             {/* Box 4 */}
             <div className="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-4 d-flex justify-content-center">
               <div className='d-flex flex-column align-items-center'>
-                <div className='d-flex flex-column'>
+                <div className='icon-title'>
+                  <div className="top-row">
                 <Image src={insight4} style={{ width: "50px", height: "60px" }} />
                 <h3 className='mt-2 ms-2'style={{fontSize:"16px"}}>100% Verified Listings</h3>
+                </div>
                 <p className="px-2 text-secondary"style={{fontSize:"14px",}}>We promise to deliver what you see on the website..</p>
               </div>
               </div>

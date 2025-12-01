@@ -1,20 +1,24 @@
 .icon-title {
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
-
-/* Small screen (mobile) ku img + h3 same row */
 @media (max-width: 576px) {
   .icon-title {
+    flex-direction: column;  
+    text-align: center;
+  }
+  .icon-title h3{
+    margin-top: 20px !important;
+    margin-left: 15px;
+  }
+  .icon-title .top-row {
+    display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: center;
     gap: 10px;
   }
-
   .icon-title p {
-    text-align: center;
-    margin-top: 8px;
+    margin-top: 10px;
+    width: 70%;
+    text-align: left;
   }
 }

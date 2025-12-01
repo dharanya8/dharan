@@ -124,7 +124,7 @@
   height: 150px;
 padding: 0%;
 }
-.carousel img{
+.carousel1 img{
   width: 238px;
 }
 .rating{
@@ -135,8 +135,8 @@ padding: 0%;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
 }
-.carousel:hover .carousel-control-prev,
-.carousel:hover .carousel-control-next {
+.carousel1:hover .carousel-control-prev,
+.carousel1:hover .carousel-control-next {
   opacity: 1;
 }
 .carousel-control-next{
@@ -160,7 +160,6 @@ padding: 0%;
   cursor: pointer;
   z-index: 10;
 }
-
 @media (max-width: 992px) {
   .property-card {
     width: calc(33.33% - 18px);
@@ -170,17 +169,35 @@ padding: 0%;
   .property-card {
     width: calc(50% - 18px);
   }
+  .wishlist-heart{
+    margin-right: 25px;
+  }
+
 }
 @media (max-width: 480px) {
-  .property-card {
-    width: 100%;
+  .thousand{
+    padding: 35px 50px;
+  }
+  .property-card-section{
+    width:100%;
+    margin-left: 7px;
+  }
+   .wishlist-heart{
+    margin-top: 100px !important;
+   margin-left: 40px;
   }
   .drop-content{
     align-items: start;
   }
 }
-@media (max-width:320px){
-  .drop-content{
-    align-items: center;
+@media (max-width:425px){
+  .property-card-section{
+         margin-left: 1px;
+         width:250px
   }
+}
+@media (max-width:375px){
+.carousel1{
+      margin-left: 0px;
+}
 }
