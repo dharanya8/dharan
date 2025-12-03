@@ -6,7 +6,7 @@ import Steparrowright from './../assets/step-arrow-right.svg';
 import './BookYourPlan.css';
 function BookYourPlan(){
     return(
-        <div style={{height:"360px"}}>
+        <div>
             <div className="container">
                 <h4 className="fw-bold pt-5 ms-1">Book your place in 3 easy steps</h4>
                 <p className="text-secondary ms-1">Book places in major cities and universities across the globe</p>

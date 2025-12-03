@@ -41,13 +41,13 @@ const navigate = useNavigate();
         </p>
         {/* Left Arrow */}
         {showLeftArrow && (
-          <button className="arrow-btn1 arrow-left1 d-none d-md-block" onClick={scrollLeft}>
+          <button className="arrow-btn1 arrow-left1 " onClick={scrollLeft}>
             <IoIosArrowBack size={20} />
           </button>
         )}
         {/* Right Arrow */}
         {showRightArrow && (
-          <button className="arrow-btn1 arrow-right1 d-none d-md-block " onClick={scrollRight}>
+          <button className="arrow-btn1 arrow-right1  " onClick={scrollRight}>
             <IoIosArrowForward size={20} />
           </button>
         )}

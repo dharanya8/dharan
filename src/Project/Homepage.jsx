@@ -7,19 +7,24 @@ import Trust from "./Trust";
 import Accommodation from "./Accommodation";
 import AmberReferrel from "./AmberReferrel";
 import BookYourPlan from "./BookYourPlan";
+import Thebestpartner from "./Thebestpartner";
+import Feature from "./Feature";
+import Partnerwithus from "./Partnerwithus";
    function Homepage(){
     return(
         <div>
         
-            {/* <Firstsection1/>
-             <Secondsection/> */}
-            <Outlet/> 
+             <Firstsection1/>
+             {/* <Secondsection/>  */}
              <Popularcities/> 
             <Thousands/> 
-            <Trust/>
-            <Accommodation/>
-            {/* <AmberReferrel/>
-            <BookYourPlan/>  */}
+            {/* <Trust/> */}
+            {/* <Accommodation/> */}
+            {/* <AmberReferrel/>  */}
+            {/* <BookYourPlan/> */}
+            {/* <Thebestpartner/>  */}
+            {/* <Partnerwithus/> */}
+            {/* <Feature/> */}
        </div>
     )
    }

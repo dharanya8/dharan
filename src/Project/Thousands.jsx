@@ -132,13 +132,13 @@ function Thousands() {
                   <Carousel className="carousel1 d-flex "interval={null}>
                     {item.images
     ? item.images.map((img, i) => (
-        <Carousel.Item key={i}>
+        <Carousel.Item className="carousal-item" key={i}>
            
           <img src={img} alt={item.name} className="property-img" />
         </Carousel.Item>
       ))
     : (
-      <Carousel.Item>
+      <Carousel.Item className="carosal-item">
         <img src={item.image} alt={item.name} className="property-img" />
       </Carousel.Item>
     )}

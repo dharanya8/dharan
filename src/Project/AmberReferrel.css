@@ -5,38 +5,42 @@
   font-family: inherit;
 }
 
-/* === RESPONSIVE CARD WIDTH === */
-
-/* Desktop */
 @media (min-width: 992px) {
   .offer-card {
     min-width: 470px;
   }
 }
-
-/* Tablet */
 @media (min-width: 768px) and (max-width: 991px) {
   .offer-card {
     min-width: 350px;
   }
 }
-
-/* Mobile */
 @media (max-width: 767px) {
   .offer-card {
-    min-width: 85%;
+    min-width: 100%;
+  }
+  .arrow-left1{
+    left: 20px !important;
+  }
+  .arrow-right1{
+    right: 20px !important;
+  }
+  .arrow-btn1{
+    margin-top: 20px;
   }
 }
-
-
+@media (max-width:375px) {
+  .offer-overlay h5,p{
+    font-size: 14px !important;
+  }
+  
+}
 .offer-card {
   height: 200px;
   border-radius: 7px;
   position: relative;
   overflow: hidden;
 }
-
-/* IMAGE HOVER */
 .offer-full-img {
   width: 100%;
   height: 100%;
@@ -45,8 +49,6 @@
 .offer-card:hover .offer-full-img {
   transform: scale(1.09);
 }
-
-/* OVERLAY */
 .offer-overlay {
   position: absolute;
   bottom: 0;
@@ -56,8 +58,6 @@
   height: 100%;
   color: #0e0808;
 }
-
-/* BUTTON */
 .offer-btn {
   background: #ff5779;
   border: none;
@@ -69,8 +69,6 @@
 .offer-btn:hover {
   background: #e53863;
 }
-
-/* SCROLL AREA */
 .scroll-wrapper1 {
   width: 100%;
   position: relative;
@@ -86,8 +84,6 @@
 .scroll-card1::-webkit-scrollbar {
   display: none;
 }
-
-/* ARROWS - DESKTOP ONLY */
 .arrow-btn1 {
   position: absolute;
   top: 53%;
@@ -106,8 +102,6 @@
 .arrow-right1 {
   right: 83px;
 }
-
-/* FADE BORDERS */
 .scroll-wrapper1::before,
 .scroll-wrapper1::after {
   content: "";
@@ -125,4 +119,12 @@
 .scroll-wrapper1::after {
   right: 0;
   background: linear-gradient(to left, #f9faf9, rgba(249,250,249,0));
+}
+@media (max-width: 425px) {
+  .scroll-card1 {
+    scroll-snap-type: x mandatory;
+  }
+  .offer-card {
+    scroll-snap-align: start;
+  }
 }

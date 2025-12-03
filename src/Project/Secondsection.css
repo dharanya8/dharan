@@ -18,7 +18,10 @@
   }
   .icon-title p {
     margin-top: 10px;
-    width: 70%;
+    width: 100%;
     text-align: left;
   }
+}
+.row{
+  padding-right:none !important;
 }

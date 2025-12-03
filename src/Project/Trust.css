@@ -84,18 +84,20 @@
     background: none;
   }
     .trust-card {
-    min-width: 100% !important;
+    min-width: 90% !important;
     scroll-snap-align: start;
     padding: 20px;
+    
   }
 
   .scroll-card {
   display: flex;
-  gap: 20px;
+  gap: 45px;
   overflow-x: auto;
   scroll-snap-type: x mandatory; 
   width: 100%;
   margin-top: 20px;
+  margin-left: 20px;
 }
 .mt-sm{
   margin-top: 27px;

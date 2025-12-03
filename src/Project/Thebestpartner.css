@@ -1,0 +1,50 @@
+.scrol-wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.scrol-content {
+  display: flex;
+  gap: 60px;
+  width: max-content;
+  animation: marquee 20s linear infinite;
+}
+
+.scrol-img {
+  width: 80px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Mobile Responsive */
+@media (max-width: 576px) {
+  .scrol-img {
+    width: 50px;
+  }
+  .scrol-content {
+    gap: 30px;
+  }
+}
+
+/* Tablet */
+@media (min-width: 577px) and (max-width: 991px) {
+  .scrol-img {
+    width: 65px;
+  }
+}
+
+/* Animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.33%);
+  }
+}
+
+.bestpartner {
+  width: 100%;
+  background-color: #f9fafb;
+  padding-bottom: 30px;
+}

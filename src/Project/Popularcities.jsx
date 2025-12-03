@@ -268,7 +268,7 @@ function Popularcities() {
     <div
       key={index}
       className="image-card"
-      onClick={() => navigate(city.link)} // 👈 navigate when clicked
+      onClick={() => navigate(city.link)} 
       style={{ cursor: "pointer" }}
     >
       <div className="image-overlay">

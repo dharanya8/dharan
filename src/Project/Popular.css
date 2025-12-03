@@ -1,3 +1,4 @@
+
 .contain {
   width: 100%;
   font-family: inherit;
@@ -166,6 +167,9 @@ margin-top: 230px;
   .contain {
     padding: 25px 29px;
   }
+  .button-group{
+    width: 90%;
+  }
   .carousel-title {
     font-size: 20px;
   }
@@ -176,6 +180,12 @@ margin-top: 230px;
     width: 140px;
     height: 140px;
   }
+  .arrow.left{
+    margin-top:160px ;
+  }
+  .arrow.right{
+    margin-top: 160px;
+  }
   .city-name1 {
     font-size: 0.9rem;
     left: 10px;
@@ -184,7 +194,9 @@ margin-top: 230px;
   .image-overlay{
     width:100%;
     height:100%;
+    margin-left: 15px;
   }
+  
 
   .filter-btn {
     font-size: 12px;
@@ -224,11 +236,18 @@ margin-top: 230px;
   }
 .arrow.left{
   margin-top: 180px;
-  left: 5px;
+  left: 10px;
 }
 .arrow.right{
   margin-top: 180px;
   right: 5px;
+}
+.carousel img{
+  width:350px;
+}
+.image-overlay{
+  width:100%;
+
 }
   .carousel-image {
     width: 100%;
@@ -236,19 +255,38 @@ margin-top: 230px;
     object-fit: cover;
   }
 }
+@media(max-width:425px){
+  .image-overlay{
+    margin-left: 0px;
+  }
+  .arrow.right{
+    margin-right: 15px;
+  }
+  .arrow.left{
+    margin-left: 8px;
+  }
+  .popularcountry{
+    width: 280px;
+  }
+}
 @media (max-width: 425px) and (max-width: 572px) {
+  .contain {
+    padding: 25px 0px;
+  }
+  .city-name1 {
+    left: 50px;
+  }
+      .filter-btn {
+        padding: 6px 15px;
+      }
   .carousel {
     display: flex;
     overflow-x: scroll !important;
     scroll-snap-type: x mandatory;
     gap: 42px;
     margin-top: 90px;
-    margin-left: 20px;
   }
-  .carousel img{
-    width: 180px;
-    height: 210px;
-  }
+
   .city-name1{
     margin-bottom: 2px;
   }
@@ -272,16 +310,35 @@ margin-top: 230px;
     margin-top: 190px;
   }
 }
-@media (max-width:375px){
-.carousel{
-      margin-left: 3px;
+ @media (max-width:375px){ 
+  .carousel img{
+    width: 285px;
+    height: 210px;
+  }
+  .filter-btn{
+    padding: 6px 23px;
+  }
+  .image-overlay{
+    width: 100%;
+  }
+  .arrow.left{
+    margin-left: 17px;
+  }
+  .arrow.right{
+    margin-right: 20px;
+  }
+} 
+ @media (max-width:320px){
+.carousel img{
+  width:255px
 }
+.arrow.left{
+  margin-left: 5px;
 }
-@media (max-width:320px){
-.carousel{
-      margin-left: 7px;
+.arrow.right{
+  margin-right: 10px;
 }
-}
+} 
 
  
 
