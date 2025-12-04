@@ -10,21 +10,25 @@ import BookYourPlan from "./BookYourPlan";
 import Thebestpartner from "./Thebestpartner";
 import Feature from "./Feature";
 import Partnerwithus from "./Partnerwithus";
+import Needhelp from "./Needhelp";
+import Footer from './Footer';
    function Homepage(){
     return(
         <div>
         
              <Firstsection1/>
-             {/* <Secondsection/>  */}
+             <Secondsection/> 
              <Popularcities/> 
             <Thousands/> 
-            {/* <Trust/> */}
-            {/* <Accommodation/> */}
-            {/* <AmberReferrel/>  */}
-            {/* <BookYourPlan/> */}
-            {/* <Thebestpartner/>  */}
-            {/* <Partnerwithus/> */}
+            <Trust/>
+            <Accommodation/>
+            <AmberReferrel/> 
+            <BookYourPlan/>
+            <Thebestpartner/> 
+            <Partnerwithus/>
             {/* <Feature/> */}
+            <Needhelp/>
+            <Footer/>
        </div>
     )
    }

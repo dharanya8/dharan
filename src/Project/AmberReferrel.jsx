@@ -78,8 +78,7 @@ const navigate = useNavigate();
               <img src={Offercard3}className="offer-full-img" />
               <div className="offer-overlay">
                 <h5 className="fw-bold"style={{fontSize:"18px"}}>Save up to £300 with amber+</h5>
-                <p className=""style={{fontSize:"15px"}}>Get exclusive discounts from 150+ trusted 
-<br/>partners at this one-stop student platform</p>
+                <p className=""style={{fontSize:"15px"}}>Get exclusive discounts from 150+ trusted partners at this one-stop student platform</p>
                 <button onClick={() => navigate("/ClaimNow")}
                 className="offer-btn text-light">Claim Now</button>
               </div>
@@ -91,9 +90,9 @@ const navigate = useNavigate();
                 <h5 className="fw-bold"style={{fontSize:"18px"}}>Get additional £20 cashback on your
  booking!</h5>
                 <p style={{fontSize:"15px"}}>Book your student accommodation via the amber 
-<br/>app to avail this offer!</p>
+app to avail this offer!</p>
                 <button onClick={() => navigate("/AvailNow")}
-                className="offer-btn  text-light">Avail Now</button>
+                className="offer-btn avail-btn text-light">Avail Now</button>
               </div>
             </div>
           </div>
