@@ -94,9 +94,12 @@ font-size: 12px !important;
 }
   .partner-card{
     height: 180px;
-    width:250px;
+    width:295px;
   }
   .partner-section{
     padding:20px 25px;
+  }
+  .row1{
+    padding-left: 1px !important;
   }
 }

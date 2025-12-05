@@ -8,7 +8,7 @@ import Button from 'react-bootstrap/Button';
 
 function Partnerwithus(){
     return(
-    <div className="partner-section">
+    <div className="partner-section row1">
       <Container>
         <Row className="g-4">
           <Col xs={12} md={6}>

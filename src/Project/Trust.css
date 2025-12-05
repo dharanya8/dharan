@@ -84,7 +84,7 @@
     background: none;
   }
     .trust-card {
-    min-width: 90% !important;
+    min-width: 95% !important;
     scroll-snap-align: start;
     padding: 20px;
     
@@ -92,15 +92,18 @@
 
   .scroll-card {
   display: flex;
-  gap: 45px;
+  gap: 40px;
   overflow-x: auto;
   scroll-snap-type: x mandatory; 
   width: 100%;
   margin-top: 20px;
-  margin-left: 20px;
+  /* margin-left: 12px; */
+  /* margin: 0 auto !important; */
+  justify-content: center;
+  align-items: center;
 }
 .mt-sm{
-  margin-top: 27px;
+  margin-top: 25px !important;
 }
 .arrow-left{
   margin-top: 20px;

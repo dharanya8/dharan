@@ -27,7 +27,7 @@ function  Navbar2(){
   
   return(
     <div className="overflow">
-      <Navbar expand="lg" className="navbar  navbar-sticky">
+      <Navbar expand="lg" className="navbar ">
         <Navbar.Brand href="#Amber" className="ms-5 mb-5 align">
           <Image src={amber} alt="Amber Logo" className="ms-4 mt-2 no-highlight" />
         </Navbar.Brand>

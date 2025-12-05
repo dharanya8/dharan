@@ -10,7 +10,7 @@
     background: none !important;
     background-color: transparent !important;
     box-shadow: none !important;
-    z-index: 1050;
+    z-index: 9999;
     position: sticky;
 }
 @media  screen and (max-width:720px) {

@@ -5,12 +5,15 @@ import LondonPage from "./../Project/Pages/London";
 import Citypage from "./../Project/Pages/Citypage";
 import Universitypage from "./../Project/Pages/Universitypage";
 import Thousands from "./../Project/Thousands";
+import Navbar2 from "./Navbar2";
 
 function App() {
 
   return (
 
     <>
+    
+    {/* <Navbar2/> */}
           <Routes>
         <Route path="/" element={<Homepage />}>
           {/* <Route index element={<Popularcities />} /> */}

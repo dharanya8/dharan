@@ -1,0 +1,26 @@
+.footer-link {
+  color: #6c757d;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.footer-link:hover {
+  color: #e5002c;
+  font-weight: 500;
+}
+@media(max-width:320px){
+    .getapp{
+        width:250px !important;
+    }
+}
+@media (max-width:768px){
+    .border{
+        width:250px !important;
+    }
+}
+.transition {
+    transform: transform 0.5s ease-in-out;
+}
+.transition:hover{
+    transform: scale(1.1);
+}
