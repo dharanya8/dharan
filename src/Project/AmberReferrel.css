@@ -127,7 +127,34 @@
   .scroll-card1 {
     scroll-snap-type: x mandatory;
   }
+  .offer-card{
+    /* min-width: 380px !important; */
+  }
+  .arrow-left1 {
+  left: 3px !important;
+}
+.arrow-right1 {
+  right: 2px !important;
+}
   .offer-card {
     scroll-snap-align: start;
   }
+  .scroll-wrapper1::after{
+    background: none;
+  }
+  .scroll-wrapper1::before{
+    background: none;
+  }
+}
+@media (max-width:375px){
+  .arrow-left1{
+left: 1px !important;
+  }
+  .arrow-right1{
+    right: 1px !important;
+  }
+  .arrow-btn1{
+    margin-top: 45px !important;
+  }
+  
 }

@@ -34,13 +34,41 @@
         flex-direction: column;
         gap: 30px;
     }
-
     .arrow1 {
         display: none;
     }
+    .step-box{
+        margin-left: 0px !important;
+        width: 400px !important;
+    }
+    .step-num{
+        margin-left: 0px !important;
+    }
 } 
+@media (max-width:425px){
+    .step-box{
+        margin-left: 0px !important;
+        width:397px !important ;
+    }
+    .step-num{
+        display: none !important;
+    }
+}
+@media(max-width:375px){
+    .step-box{
+        width:350px!important;
+        margin-left: 0px !important ;
+    }
+    .step-num{
+        display: none !important ;
+    }
+}
 @media(max-width:320px){
     .step-box{
-        width:260px!important;
+        width:290px!important;
+        margin-left: 0px !important ;
+    }
+    .step-num{
+        display: none !important ;
     }
 }

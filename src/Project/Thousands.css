@@ -120,11 +120,11 @@
 .Location{
   margin-bottom: 1px !important;
 }
-.carousel1{
+.carousalcard{
   height: 150px;
 padding: 0%;
 }
-.carousel1 img{
+.carousalcard img{
   width: 238px;
 }
 .rating{
@@ -135,8 +135,8 @@ padding: 0%;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
 }
-.carousel1:hover .carousel-control-prev,
-.carousel1:hover .carousel-control-next {
+.carousalcard:hover .carousel-control-prev,
+.carousalcard:hover .carousel-control-next {
   opacity: 1;
 }
 .carousel-control-next{

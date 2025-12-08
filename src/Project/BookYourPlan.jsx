@@ -12,8 +12,8 @@ function BookYourPlan(){
                 <p className="text-secondary ms-1">Book places in major cities and universities across the globe</p>
                 <div className="steps-row d-flex align-items-center overflow-x-hidden">
              <div className="step position-relative  ">
-            <div className="step-num d-flex ms-4 justify-content-center align-items-center position-absolute">1</div>
-            <div className="step-box ms-4 ">
+            <div className="step-num d-flex  justify-content-center align-items-center position-absolute"style={{marginLeft:"22px"}}>1</div>
+            <div className="step-box"style={{marginLeft:"23px"}}>
                 <img src={bookinghd1}  className="icon"></img>
                 <h3 style={{fontSize:"18px"}}>Discover and Finalise</h3>
                 <p style={{fontSize:"14px"}}>Choose from a plethora of verified student home listings</p>

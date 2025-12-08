@@ -129,7 +129,7 @@ function Thousands() {
     <FiHeart className="heart-outline mt-1" />
   </div> 
             <div>
-                  <Carousel className="carousel1 d-flex "interval={null}>
+                  <Carousel className="carousalcard d-flex "interval={null}>
                     {item.images
     ? item.images.map((img, i) => (
         <Carousel.Item className="carousal-item" key={i}>

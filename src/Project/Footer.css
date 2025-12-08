@@ -8,13 +8,19 @@
   color: #e5002c;
   font-weight: 500;
 }
-@media(max-width:320px){
-    .getapp{
+
+@media (max-width:768px){
+    .border{
         width:250px !important;
     }
 }
-@media (max-width:768px){
-    .border{
+@media (max-width:425px){
+    .Footer{
+        padding: 20px 1px !important;
+    }
+}
+@media(max-width:320px){
+    .getapp{
         width:250px !important;
     }
 }

@@ -18,7 +18,7 @@ import { BsTelephone } from "react-icons/bs";
 
 function Footer() {
   return (
-    <div style={{ backgroundColor: "#fff", padding: "20px 40px" }}>
+    <div className='Footer' style={{ backgroundColor: "#fff", padding: "20px 40px" }}>
       <Container>
         <img src={amber} alt="logo" />
 

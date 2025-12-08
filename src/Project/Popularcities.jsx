@@ -263,7 +263,7 @@ function Popularcities() {
       <IoIosArrowBack className="text-dark fs-5"style={{marginBottom:"32px"}} />
     </button>
   )}
-  <div className="carousel" ref={carouselRef}>
+  <div className="carousal" ref={carouselRef}>
   {cities.map((city, index) => (
     <div
       key={index}
@@ -272,7 +272,7 @@ function Popularcities() {
       style={{ cursor: "pointer" }}
     >
       <div className="image-overlay">
-        <img src={city.img} alt={city.name} className="carousel-image" />
+        <img src={city.img} alt={city.name} className="carouselimage" />
         <span className="city-name1 ms-5">{city.name}</span>
       </div>
     </div>
