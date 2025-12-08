@@ -8,7 +8,7 @@ import aus from '../assets/Flags/flag-aus.svg';
 import usa from '../assets/Flags/flag-usa.svg';
 import ger from '../assets/Flags/flag-ger.svg';
 import esp from '../assets/Flags/flag-esp.svg';
-import squk from '../assets/Flags/Sq-flag-uk.svg'
+import squk from '../assets/Flags/sq-flag-uk.svg'
 import squs from '../assets/Flags/sq-flag-us.svg'
 import sqaus from '../assets/Flags/sq-flag-aus.svg'
 import sqcan from '../assets/Flags/sq-flag-can.svg'
