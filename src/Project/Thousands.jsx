@@ -16,7 +16,7 @@ import sqesp from '../assets/flags/sq-flag-esp.svg'
 import sqger from '../assets/flags/sq-flag-ger.svg'
 import sqire from '../assets/flags/sq-flag-ire.svg'
 import { GoCheck } from "react-icons/go";
-import Propesties from './../Project/Properties.json'
+import Properties from './../Project/Properties.json'
 import Carousel from 'react-bootstrap/Carousel';
 import { FiHeart } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
@@ -122,7 +122,7 @@ function Thousands() {
       </div>
 <div className="property-card-section d-flex flex-wrap flex-lg-nowrap 
             overflow-x-hidden overflow-sm-x-auto ">
-        {(Propesties[selectedCity] || []).map((item, index) => (
+        {(Properties[selectedCity] || []).map((item, index) => (
           <div key={index} className="property-card position-relative">
             <div className="wishlist-heart position-absolute mt-3  bg-light d-flex justify-content-center align-items-center"
              onClick={() => setOpenLogin(true)}>
