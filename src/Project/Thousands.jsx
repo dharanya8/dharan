@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Thousands.css";
 import { HiOutlineChevronDown } from "react-icons/hi2";
-import uk from '../assets/flag/flag-uk.svg';
+import uk from '../assets/flag/flaguk.svg';
 import ire from '../assets/flag/flag-ire.svg';
 import can from '../assets/flag/flag-can.svg';
 import aus from '../assets/flag/flag-aus.svg';

@@ -4,7 +4,7 @@ import { IoSearchOutline } from "react-icons/io5";
 import { CiCircleRemove } from "react-icons/ci";
 import { TfiLocationPin } from "react-icons/tfi";
 import { PiClockCounterClockwiseThin } from "react-icons/pi";
-import uk from '../assets/flag/flag-uk.svg';
+import uk from '../assets/flag/flaguk.svg';
 import ire from '../assets/flag/flag-ire.svg';
 import can from '../assets/flag/flag-can.svg';
 import aus from '../assets/flag/flag-aus.svg';
