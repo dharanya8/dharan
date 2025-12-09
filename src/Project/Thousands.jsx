@@ -8,13 +8,13 @@ import aus from '../assets/flag/flag-aus.svg';
 import usa from '../assets/flag/flag-usa.svg';
 import ger from '../assets/flag/flag-ger.svg';
 import esp from '../assets/flag/flag-esp.svg';
-import squk from '../assets/flag/sq-flag-uk.svg'
-import squs from '../assets/flag/sq-flag-us.svg'
-import sqaus from '../assets/flag/sq-flag-aus.svg'
-import sqcan from '../assets/flag/sq-flag-can.svg'
-import sqesp from '../assets/flag/sq-flag-esp.svg'
-import sqger from '../assets/flag/sq-flag-ger.svg'
-import sqire from '../assets/flag/sq-flag-ire.svg'
+import squk from '../assets/flag/sq-flag-uk.svg';
+import squs from '../assets/flag/sq-flag-us.svg';
+import sqaus from '../assets/flag/sq-flag-aus.svg';
+import sqcan from '../assets/flag/sq-flag-can.svg';
+import sqesp from '../assets/flag/sq-flag-esp.svg';
+import sqger from '../assets/flag/sq-flag-ger.svg';
+import sqire from '../assets/flag/sq-flag-ire.svg';
 import { GoCheck } from "react-icons/go";
 import Properties from './../Project/Properties.json'
 import Carousel from 'react-bootstrap/Carousel';
