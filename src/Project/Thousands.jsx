@@ -1,20 +1,20 @@
 import React, { useState } from "react";
 import "./Thousands.css";
 import { HiOutlineChevronDown } from "react-icons/hi2";
-import uk from '../assets/Flags/flag-uk.svg';
-import ire from '../assets/Flags/flag-ire.svg';
-import can from '../assets/Flags/flag-can.svg';
-import aus from '../assets/Flags/flag-aus.svg';
-import usa from '../assets/Flags/flag-usa.svg';
-import ger from '../assets/Flags/flag-ger.svg';
-import esp from '../assets/Flags/flag-esp.svg';
-import squk from '../assets/Flags/sq-flag-uk.svg'
-import squs from '../assets/Flags/sq-flag-us.svg'
-import sqaus from '../assets/Flags/sq-flag-aus.svg'
-import sqcan from '../assets/Flags/sq-flag-can.svg'
-import sqesp from '../assets/Flags/sq-flag-esp.svg'
-import sqger from '../assets/Flags/sq-flag-ger.svg'
-import sqire from '../assets/Flags/sq-flag-ire.svg'
+import uk from '../assets/flags/flag-uk.svg';
+import ire from '../assets/flags/flag-ire.svg';
+import can from '../assets/flags/flag-can.svg';
+import aus from '../assets/flags/flag-aus.svg';
+import usa from '../assets/flags/flag-usa.svg';
+import ger from '../assets/flags/flag-ger.svg';
+import esp from '../assets/flags/flag-esp.svg';
+import squk from '../assets/flags/sq-flag-uk.svg'
+import squs from '../assets/flags/sq-flag-us.svg'
+import sqaus from '../assets/flags/sq-flag-aus.svg'
+import sqcan from '../assets/flags/sq-flag-can.svg'
+import sqesp from '../assets/flags/sq-flag-esp.svg'
+import sqger from '../assets/flags/sq-flag-ger.svg'
+import sqire from '../assets/flags/sq-flag-ire.svg'
 import { GoCheck } from "react-icons/go";
 import Propesties from './../Project/Properties.json'
 import Carousel from 'react-bootstrap/Carousel';
