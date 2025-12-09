@@ -1,7 +1,7 @@
 import { Container } from "react-bootstrap";
 import { useState, useRef, useEffect } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import In from './../assets/Flags/in_flag.svg';
+import In from './../assets/flag/in_flag.svg';
 import "./Trust.css";
 
 function Trust() {
