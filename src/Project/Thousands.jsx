@@ -138,7 +138,7 @@ function Thousands() {
         </Carousel.Item>
       ))
     : (
-      <Carousel.Item className="carosal-item">
+      <Carousel.Item className="carousal-item">
         <img src={item.image} alt={item.name} className="property-img" />
       </Carousel.Item>
     )}
