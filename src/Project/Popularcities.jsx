@@ -48,14 +48,14 @@ import new1 from '../assets/Popularimg/new1.avif'
 import new2 from '../assets/Popularimg/new2.avif'
 import france1 from'../assets/Popularimg/france1.avif'
 import singapore from '../assets/Popularimg/Singapore.avif'
-import uk from '../assets//Flags/flag-uk.svg';
-import ire from '../assets/Flags/flag-ire.svg';
-import can from '../assets/Flags/flag-can.svg';
-import aus from '../assets/Flags/flag-aus.svg';
-import usa from '../assets/Flags/flag-usa.svg';
-import ger from '../assets/Flags/flag-ger.svg';
-import esp from '../assets/Flags/flag-esp.svg';
-import nz from '../assets/Flags/flag-nz.svg';
+import uk from '../assets/flag/flaguk.svg';
+import ire from '../assets/flag/flag-ire.svg';
+import can from '../assets/flag/flag-can.svg';
+import aus from '../assets/flag/flag-aus.svg';
+import usa from '../assets/flag/flag-usa.svg';
+import ger from '../assets/flag/flag-ger.svg';
+import esp from '../assets/flag/flag-esp.svg';
+import nz from '../assets/flag/flag-nz.svg';
 import france from '../assets/Popularimg/flag-france.svg'
 import sin from '../assets/Popularimg/flag-singapore.svg'
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
