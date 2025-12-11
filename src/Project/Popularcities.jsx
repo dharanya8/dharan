@@ -161,12 +161,12 @@ function Popularcities() {
 
   return (
     <div className="contain">
-      <h4 className="carousel-title ms-3 fw-bold">Popular Cities Across the Globe</h4>
+      <h4 className="carousel-title ms-3 ms-sm-1 fw-bold">Popular Cities Across the Globe</h4>
       <p className="carousel-subtitle ms-3">
         Book student accommodations near top cities and universities around the world.
       </p>
       {/* 🌍 Country Buttons */}
-      <div className="button-group  ms-3">
+      <div className="button-group ms-3">
         <div className=" popularcountry ">
           <button
           className={`filter-btn  ${selectedCountry === "uk" ? "active" : ""}`}
