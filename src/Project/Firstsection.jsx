@@ -8,10 +8,16 @@ import Search from './Search';
 import { GoChevronRight } from "react-icons/go";
 import Navbar2 from "./Navbar2";
 import { Container } from "react-bootstrap";
-
 function Firstsection1() {
      const [recent, setRecent] = useState([]);
-
+const defaultSearches=[
+  "London",
+  "University of Chester",
+  "Conventry University",
+  "Toronto",
+  "Birmingham",
+  "University",
+]
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem("recentSearches"));
     if (saved && saved.length > 0) {

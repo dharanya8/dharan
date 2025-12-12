@@ -23,8 +23,10 @@ import { CiViewList } from "react-icons/ci";
 import { BsPersonUp } from "react-icons/bs";
 import amber from './../assets/bg1/amber-logo-light (1).svg';
 import { Container } from "react-bootstrap";
+import LoginModal from "./LoginModal";
+// import { useState } from "react";
 function  Navbar2(){
-  
+  const [show, setShow] = useState(false);
   return(
     <div className="overflow">
       <Navbar expand="lg" className="navbar ">
@@ -108,6 +110,7 @@ function  Navbar2(){
               <IoMdHeartEmpty className="fw-bolder me-2 mb-1 fs-5" /> Shortlist
             </Button></div>
             <Button
+            onClick={()=> setShow(true)}
               className="text-light me-auto fw-bold mb-5 mb-lg-0 mx-lg-2 shortlist"
               variant="none"
               style={{
@@ -119,6 +122,7 @@ function  Navbar2(){
             >
               <LuLogIn className="fs-5 me-2 mb-1" /> Login
             </Button>
+          <LoginModal show={show} onClose={() => setShow(false)}/>
             <Dropdown className="mb-5 mb-lg-0 mx-lg-2 contact-btn">
               <Dropdown.Toggle
                 id="contact-dropdown"

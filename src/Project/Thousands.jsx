@@ -20,7 +20,7 @@ import Properties from './../Project/Properties.json'
 import Carousel from 'react-bootstrap/Carousel';
 import { FiHeart } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
-import LoginModal from './../Project/Login'
+import LoginModal from './LoginModal'
 import { TiStarFullOutline } from "react-icons/ti";
 
 function Thousands() {
@@ -129,10 +129,10 @@ function Thousands() {
     <FiHeart className="heart-outline mt-1" />
   </div> 
             <div>
-                  <Carousel className="carousalcard d-flex "interval={null}>
+                  <Carousel className="carousalcard d-flex ms-md-3"interval={null}>
                     {item.images
     ? item.images.map((img, i) => (
-        <Carousel.Item className="carousal-item" key={i}>
+        <Carousel.Item className="carousal-item ms-md-" key={i}>
            
           <img src={img} alt={item.name} className="property-img" />
         </Carousel.Item>
@@ -143,7 +143,7 @@ function Thousands() {
       </Carousel.Item>
     )}
     </Carousel>
-     <div className="border border-top-1">
+     <div className="border border-top-1 ms-md-3">
             <div className="property-info ms-3 ">
               <h4 className="mt-3">{item.name}</h4>
               <p className="Location">{item.location}</p>

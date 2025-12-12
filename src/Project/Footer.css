@@ -8,9 +8,11 @@
   color: #e5002c;
   font-weight: 500;
 }
-
+.border1{
+    border: 1px solid #e5e7eb;
+}
 @media (max-width:768px){
-    .border{
+    .border1{
         width:250px !important;
     }
 }
@@ -18,10 +20,21 @@
     .Footer{
         padding: 20px 1px !important;
     }
+    .border1{
+        width: 394px !important;
+    }
+}
+@media(max-width:375px){
+    .border1{
+        width: 330px  !important;
+    }
 }
 @media(max-width:320px){
     .getapp{
         width:250px !important;
+    }
+    .border1{
+        width: 295px !important;
     }
 }
 .transition {

@@ -1,39 +1,16 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
-import  Nav1  from './Project/Nav1'
-import Navbar3 from './Project/Navbar2'
-import Searchbar from './Project/Searchbar'
-import Search from './Project/Search'
-import Secondsection from './Project/Secondsection'
-import Homepage from './Project/Homepage'
-import LoginModal from './Project/Login'
-import Navbar2 from './Project/Navbar2'
+import LoginModal from "./Project/LoginModal"
 import Router1 from './Project/Router1'
-import Popularcities from './Project/Popularcities'
-import Thousands from './Project/Thousands'
-import Trust from './Project/Trust'
-import Accommodation from './Project/Accommodation'
-import AmberReferrel from './Project/AmberReferrel'
-import BookYourPlan from './Project/BookYourPlan';
+import App from './Project/Router1'
+import Ap from'./Project/App';
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-         <BrowserRouter>   
+         <BrowserRouter>    
                  <Router1/> 
-                {/* <Thousands/>    */}
-            {/* <Popularcities/> */}
-       </BrowserRouter>    
-       {/* <BookYourPlan/> */}
-       {/* <AmberReferrel/> */}
-     {/* <Trust/> */}
-     {/* <Accommodation/> */}
-       {/* <Firstsection1/>   */}
-            {/* <Secondsection/> */}
-         
-             {/* <Searchbar/>  */}
-            {/* <Search/> */}
-        
-           {/* <Navbar2/> */}
+       </BrowserRouter>     
             {/* <LoginModal/> */}
+            {/* <Ap/> */}
       </StrictMode>
 )

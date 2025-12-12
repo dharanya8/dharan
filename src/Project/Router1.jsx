@@ -8,11 +8,8 @@ import Thousands from "./../Project/Thousands";
 import Navbar2 from "./Navbar2";
 
 function App() {
-
   return (
-
     <>
-    
     {/* <Navbar2/> */}
           <Routes>
         <Route path="/" element={<Homepage />}>

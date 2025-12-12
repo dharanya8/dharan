@@ -1,0 +1,110 @@
+.input-row {
+  display: flex;
+  gap: 10px;
+}
+.floating-label {
+  position: relative;
+}
+.modal-content{
+  width:85% !important;
+}
+.floating-label input {
+  width: 100%;
+  padding: 10px 30px 10px 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  outline: none;
+  font-size: 14px;
+  transition: 0.3s;
+}
+.floating-label input:focus {
+  border-color: #000000;
+}
+.continue{
+  border: 1px solid ;
+}
+/* Label behavior */
+.floating-label label {
+  position: absolute;
+  left: 12px;
+  top: 10px;
+  color: #888;
+  background-color: white;
+  transition: all 0.2s ease;
+  padding: 0 5px;
+  pointer-events: none;
+}
+.floating-label label.float {
+  top: -8px;
+  left: 8px;
+  font-size: 12px;
+  color: #000000;
+}
+
+/* Dropdown container */
+.code-input {
+  position: relative;
+  cursor: pointer;
+}
+/* Arrow icon */
+.arrow2 {
+  position: absolute;
+  right: 10px;
+  top: 12px;
+  transition: 0.3s;
+  color: #888;
+}
+.arrow2.open {
+  transform: rotate(180deg);
+}
+/* Dropdown list */
+.drop-list2 {
+  max-height: 250px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #fff;
+  margin-top: 4px;
+  z-index: 1000;
+  position: absolute;
+  width: 100%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+.drop-item2{
+  padding: 8px 10px;
+  cursor: pointer;
+   height: 60px;
+   border-radius: 10px;
+}
+.drop-item2:hover
+{
+  width: 170px;
+  background-color:#f3faf7;
+}
+.drop-item2:hover .drop-p,
+.drop-item2:hover .drop-h6 {
+  color: #0e9f6e;
+}
+.drop-p{
+  font-size: 12px;
+  opacity: .65;
+}
+.drop-h6{
+  font-size: 15px;
+}
+
+/* Remove icon */
+.remove-icon {
+  position: absolute;
+  right: 8px;
+  top: 10px;
+  cursor: pointer;
+  color: #666;
+}
+.custom-btn1:not(:disabled):hover {
+  background-color: #dc3545 !important;
+}
+.custom-btn1 {
+  background-color: #dd4454 !important;
+  border: none;
+}
