@@ -138,11 +138,11 @@
 }
 .arrow.left {
   left: 10px;
-  margin-top: 230px;
+  margin-top: 38px;
 }
 .arrow.right {
   right: 10px;
-margin-top: 230px;
+margin-top: 38px;
 }
 .carousel-wrapper::before,
 .carousel-wrapper::after {
@@ -180,12 +180,12 @@ margin-top: 230px;
     width: 140px;
     height: 140px;
   }
-  .arrow.left{
-    margin-top:160px ;
+   .arrow.left{ 
+    margin-top:20px ;
   }
   .arrow.right{
-    margin-top: 160px;
-  }
+    margin-top: 20px;
+  } 
   .city-name1 {
     font-size: 0.9rem;
     left: 10px;
@@ -224,11 +224,9 @@ margin-top: 230px;
      flex-shrink: 0;
   }
   .arrow.right{
-    margin-top: 120px;
      margin-right: -6px;
   }
   .arrow.left{
-    margin-top: 120px;
     margin-left: -6px;
   }
   .city-name1{
@@ -246,7 +244,7 @@ margin-top: 230px;
   .arrow.right{
     margin-right: -6px;
   }
-  .city-name1{
+  .city-name1{ 
     font-size: 15px !important;
    margin-left: 120px !important;
   }
