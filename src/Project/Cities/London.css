@@ -1,0 +1,8 @@
+.navbar{
+    background: transparent;
+    color: white;
+}
+body.light-navbar .navbar{
+    background: white;
+    color: black;
+}

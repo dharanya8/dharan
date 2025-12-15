@@ -30,8 +30,8 @@ function  Navbar2(){
   return(
     <div className="overflow">
       <Navbar expand="lg" className="navbar ">
-        <Navbar.Brand href="#Amber" className="ms-5 mb-5 align">
-          <Image src={amber} alt="Amber Logo" className="ms-4 mt-2 no-highlight" />
+        <Navbar.Brand href="#Amber" className="ms-3 ms-md-5 mb-5 align">
+          <Image src={amber} alt="Amber Logo" className="ms-1 ms-md-4 mt-2 no-highlight" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbar-nav" />
         <Navbar.Collapse id="navbar-nav" className="pb-5">

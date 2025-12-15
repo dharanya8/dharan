@@ -6,12 +6,13 @@ import Citypage from "./../Project/Pages/Citypage";
 import Universitypage from "./../Project/Pages/Universitypage";
 import Thousands from "./../Project/Thousands";
 import Navbar2 from "./Navbar2";
-
+import Layout from "./Layout";
 function App() {
   return (
     <>
-    {/* <Navbar2/> */}
+    {/* <Navbar2 /> */}
           <Routes>
+             {/* <Route element={<Layout />}> */}
         <Route path="/" element={<Homepage />}>
           {/* <Route index element={<Popularcities />} /> */}
           {/* <Route path="thousands" element={<Thousands />} />    */}

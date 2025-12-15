@@ -40,3 +40,7 @@
     }
   
 }  
+.Navbar2, .NavBar2.sticky-top {
+  background-color: transparent !important;
+  box-shadow: none; /* remove shadow if any */
+}

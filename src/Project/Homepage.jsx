@@ -12,12 +12,13 @@ import Feature from "./Feature";
 import Partnerwithus from "./Partnerwithus";
 import Needhelp from "./Needhelp";
 import Footer from './Footer';
+import Navbar2 from "./Navbar2";
    function Homepage(){
     return(
         <div>
-        
+        {/* <Navbar2 className="position-sticky"/> */}
              <Firstsection1/>
-             <Secondsection/> 
+             {/* <Secondsection/> 
              <Popularcities/> 
             <Thousands/> 
             <Trust/>
@@ -27,8 +28,8 @@ import Footer from './Footer';
             <Thebestpartner/> 
             <Partnerwithus/>
             {/* <Feature/> */}
-            <Needhelp/>
-            <Footer/>
+            {/* <Needhelp/>
+            <Footer/> */}
        </div>
     )
    }

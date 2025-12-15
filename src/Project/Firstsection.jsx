@@ -36,8 +36,8 @@ const defaultSearches=[
   };
 
   return (
-    <div className="Nav">
-     <Navbar2 />
+    <div className="Nav position-relative">
+     <Navbar2 className="position-sticky bg-transparent" sticky="top"/>
      <Container>
       <div className="header text-center px-2">
         <h2 className=" " style={{ fontSize: "clamp(28px, 6vw, 56px)", color: "white",fontWeight:"bold" }}>

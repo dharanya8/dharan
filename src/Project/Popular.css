@@ -81,9 +81,9 @@
 .carousal::-webkit-scrollbar {
   display: none; 
 }
-.carousel img {
-  width: 220px;
-  height:210px;
+.carousal img {
+  /* width: 220px; */
+  /* height:210px; */
   border-radius: 10px; 
   object-fit: cover;
  transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -111,7 +111,7 @@
   object-fit: cover;
   display: block;
 }
-.carousel img:hover {
+.carousal img:hover {
   transform: scale(1.05);
  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
