@@ -297,7 +297,18 @@ padding: 0%;
     font-size: 13px;
   }
 }
-@media(min-width:320px) and (max-width:360px){
+@media(max-width:360px){
+  .carousalcard img{
+    width:330px !important;
+  }
+  .border{
+    width: 330px !important;
+  }
+  .wishlist-heart{
+    left: 270px;
+  }
+}
+@media(min-width:320px) and (max-width:350px){
   .carousalcard img{
     width:290px !important;
   }
