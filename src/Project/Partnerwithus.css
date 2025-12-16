@@ -46,7 +46,7 @@
   position: absolute;
 }
 /* Responsive */
-@media (max-width: 768px) {
+@media (min-width: 768px) and (max-width:800px) {
   .partner-card,
   .partner-card.reverse {
     flex-direction: column;
@@ -80,14 +80,57 @@ font-size: 15px !important;
     height: 230px;
   }
 }
-
+ @media (max-width:640px){
+  .partner-card{
+    height: 210px;
+    width:530px !important ;
+  }
+  .partner-image{
+    width:530px;
+    object-fit:fill;
+  }
+}
+ @media (max-width:560px){
+  .partner-card{
+    height: 210px;
+    width:515px !important ;
+  }
+  .partner-image{
+    width:515px;
+    object-fit:fill;
+  }
+}
+ @media (max-width:460px){
+  .partner-card{
+    height: 210px;
+    width:420px !important ;
+  }
+  .partner-image{
+    width:420px;
+    object-fit:fill;
+  }
+}
 @media (max-width:425px){
   .partner-card{
     height: 210px;
-    width:400px !important ;
+    width:385px !important ;
   }
   .partner-section{
-    padding: 40px 0px;
+    padding: 10px 10px;
+  }
+  .partner-image{
+    width:390px;
+    object-fit:fill;
+  }
+}
+@media (max-width:414px){
+  .partner-card{
+    height: 210px;
+    width:375px !important ;
+  }
+  .partner-image{
+    width:390px;
+    object-fit:fill;
   }
 }
 @media (max-width:375px){
@@ -105,7 +148,17 @@ font-size: 13px !important;
     padding: 40px 0px;
   }
 }
-@media (max-width:350px){
+@media(max-width:360px){
+  .partner-card{
+    height: 180px;
+    width:335px !important;
+  }
+  .partner-image{
+    width:340px;
+    object-fit:fill;
+  }
+}
+@media (max-width:350px) {
   .partner-text p{
 font-size: 12px !important;
 }
@@ -121,6 +174,10 @@ font-size: 12px !important;
   }
   .partner-section{
     padding:20px 25px;
+  }
+  .partner-image{
+    width:295px;
+    object-fit:fill;
   }
   .row1{
     padding-left: 1px !important;

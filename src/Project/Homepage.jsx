@@ -20,13 +20,13 @@ import Navbar2 from "./Navbar2";
              <Firstsection1/>
              {/* <Secondsection/>  */}
              {/* <Popularcities/>  */}
-            <Thousands/> 
+            {/* <Thousands/>  */}
             {/* <Trust/> */}
             {/* <Accommodation/> */}
             {/* <AmberReferrel/>  */}
             {/* <BookYourPlan/> */}
             {/* <Thebestpartner/>  */}
-            {/* <Partnerwithus/> */}
+            <Partnerwithus/>
             {/* <Feature/> */}
             {/* <Needhelp/> */}
             {/* <Footer/> */}

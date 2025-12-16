@@ -191,7 +191,7 @@ useEffect(()=>{
           className="dropdown-panel"
                  >
           {/* Country Tabs */}
-          <div
+          <div  className="panel"
             style={{
               display: "flex",
               overflowX: "hidden",
