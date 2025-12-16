@@ -54,23 +54,34 @@
   z-index: 10;
   transition: all 0.3s ease;
 }
- /* 🔹 Responsive Adjustments
-@media (max-width: 1024px) {
-  .dropdown-panel {
-    width: 70%;
-   
-  }
-  .input {
-    height: 70px;
-    font-size: 15px;
+ 
+ @media (min-width:768px) and (max-width:998px){
+.input {
+    height: 60px !important;
+    width: 670px !important;
+    font-size: 14px;
+    padding-left: 25px; 
   }
   .searchbar {
-    width: 60px;
-    height: 60px;
-  margin-left: 333px;
+    width: 55px;
+    height: 55px;
+    margin-left: 290px;
   }
-} */
-@media (min-width: 571px) and  (max-width:768px) {
+ } 
+ @media (min-width:755px) and (max-width:767px){
+  .input {
+    height: 55px !important;
+    width: 495px !important;
+    font-size: 14px;
+    padding-left: 25px; 
+  }
+  .searchbar {
+    width: 50px;
+    height: 50px;
+    margin-left: 120px;
+  }
+ }
+@media (min-width: 571px) and  (max-width:754px) {
   .dropdown-panel {
     width: 95%;
     left: 50%; 
@@ -79,8 +90,8 @@
     /* padding: 15px; */
   }
   .input {
-    height: 60px !important;
-    width: 485px !important;
+    height: 60px ;
+    width: 485px;
     font-size: 14px;
      padding-left: 25px; 
   }

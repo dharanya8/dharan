@@ -39,7 +39,7 @@ const defaultSearches=[
     <div className="Nav position-relative">
      <Navbar2 className="position-sticky bg-transparent" sticky="top"/>
      <Container>
-      <div className="header text-center px-2">
+      <div className="header text-center px-1 px-lg-4">
         <h2 className=" " style={{ fontSize: "clamp(28px, 6vw, 56px)", color: "white",fontWeight:"bold" }}>
           Home away from home
         </h2>

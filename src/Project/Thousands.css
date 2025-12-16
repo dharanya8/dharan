@@ -92,7 +92,7 @@
 }
 .property-img{
   width:100%;
-  /* height:50px; */
+  height:150px;
   border-top-left-radius:10px ;
   border-top-right-radius:10px ;
   transition: none;
@@ -185,48 +185,133 @@ padding: 0%;
   .wishlist-heart{
     left: 255px;
   }
+  .drop{
+    padding: 2px 25px;
+  }
+  .city-btn{
+    padding: 5px 15px;
+    font-size: 13px;
+  }
 }
-@media (max-width:425px){
-  .property-card-section{
-    gap: 30px !important;
+@media (min-width:560px) and (max-width:640px){
+  .wishlist-heart{
+    left: 545px;
   }
-  .carousalcard{
-    width: 400px;
-  }
-  .carousalcard img{
-    width: 399px;
-    height: 180px;
-  }
-  .border{
-    width: 399px !important;
-  height: 130px;
+  .property-card{
+    width:calc(44.33% );
   }
   .thousand{
-    padding: 30px 12px;
+    padding: 40px 14px;
+  }
+  .carousalcard{
+    width: 610px;
+  }
+  .carousalcard img{
+    width: 610px !important;
+  }
+  .border{
+    width:610px !important ;
+  }
+}
+@media(min-width:460px) and (max-width:559px){
+  .wishlist-heart{
+    left: 340px;
+  }
+  .thousand{
+    padding: 40px 14px;
+  }
+  .carousalcard{
+    width: 430px;
+  }
+  .carousalcard img{
+    width: 430px !important;
+  }
+  .border{
+    width:430px !important ;
+  }
+  .drop{
+    padding: 4px 20px;
+  }
+  .city-btn{
+    padding: 5px 10px;
+    font-size: 13px;
+  }
+}
+@media (max-width:459px){
+  .wishlist-heart{
+    left: 340px;
+  }
+  .thousand{
+    padding: 40px 15px;
+  }
+  .carousalcard{
+    width: 395px;
+  }
+  .carousalcard img{
+    width: 395px !important;
+  }
+  .border{
+    width:395px !important ;
+  }
+  .drop{
+    padding: 2px 20px;
+  }
+  .city-btn{
+    padding: 5px 10px;
+    font-size: 13px;
+  }
+}
+@media (min-width:414px) and (max-width:424px){
+  .carousalcard img{
+    width:388px !important
+  }
+  .border{
+    width: 388px !important;
   }
   .wishlist-heart{
     left: 330px;
   }
+  .drop{
+    padding: 4px 61px;
+  }
+  .city-btn{
+    padding: 5px 10px;
+    font-size: 13px;
+  }
 }
-@media (max-width:375px){
+@media (min-width:360px) and (max-width:413px){
+  .carousalcard img{
+    width:335px !important
+  }
+  .border{
+    width: 335px !important;
+  }
   .wishlist-heart{
-    left: 300px;
+    left: 270px;
   }
-  .carousalcard img{
-    width: 350px !important;
+  .drop{
+    padding: 6px 69px;
   }
-  .border{
-    width:350px !important ;
+  .city-btn{
+    padding: 5px 10px;
+    font-size: 13px;
   }
 }
-@media(max-width:320px){
+@media(min-width:320px) and (max-width:359px){
   .carousalcard img{
-    width:295px !important;
+    width:290px !important;
   }
   .border{
-    width: 295px !important;
+    width: 290px !important;
   }
   .wishlist-heart{
     left: 240px;
+  }
+  .drop{
+    padding: 4px 61px;
+  }
+  .city-btn{
+    padding: 5px 10px;
+    font-size: 13px;
   }
 }
