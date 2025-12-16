@@ -18,18 +18,18 @@ import Navbar2 from "./Navbar2";
         <div>
         {/* <Navbar2 className="position-sticky"/> */}
              <Firstsection1/>
-             {/* <Secondsection/>  */}
-             {/* <Popularcities/>  */}
-            {/* <Thousands/>  */}
-            {/* <Trust/> */}
-            {/* <Accommodation/> */}
-            {/* <AmberReferrel/>  */}
-            {/* <BookYourPlan/> */}
-            {/* <Thebestpartner/>  */}
+             <Secondsection/> 
+             <Popularcities/> 
+            <Thousands/> 
+            <Trust/>
+            <Accommodation/>
+            <AmberReferrel/> 
+            <BookYourPlan/>
+            <Thebestpartner/> 
             <Partnerwithus/>
             {/* <Feature/> */}
-            {/* <Needhelp/> */}
-            {/* <Footer/> */}
+            <Needhelp/>
+            <Footer/>
        </div>
     )
    }
