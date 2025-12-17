@@ -22,6 +22,8 @@
     text-align: left;
   }
 }
+@media(max-width:560px){
+}
 .row{
   padding-right:none !important;
 }

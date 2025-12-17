@@ -24,12 +24,17 @@
         width: 394px !important;
     }
 }
+@media(max-width:414px){
+    .border1{
+        width: 390px !important;
+    }
+}
 @media(max-width:375px){
     .border1{
         width: 330px  !important;
     }
 }
-@media(max-width:320px){
+@media(min-width:320px) and (max-width:349px){
     .getapp{
         width:250px !important;
     }

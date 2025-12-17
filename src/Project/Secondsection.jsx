@@ -13,7 +13,7 @@ function Secondsection() {
         <div className='mt-4'>
           <div className="row justify-content-center align-items-center">
             {/* Box 1 */}
-            <div className="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-4 d-flex justify-content-center">
+            <div className="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-4 d-flex">
               <div className='d-flex flex-column align-items-center'>
                 <div className='icon-title'>
                 <div className="top-row">
@@ -25,7 +25,7 @@ function Secondsection() {
               </div>
             </div>
             {/* Box 2 */}
-            <div className="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-4 d-flex justify-content-center">
+            <div className="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-4 d-flex">
               <div className='d-flex flex-column align-items-center'>
                  <div className='icon-title'>
                   <div className="top-row">
@@ -37,7 +37,7 @@ function Secondsection() {
               </div>
             </div>
             {/* Box 3 */}
-            <div className="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-4 d-flex ">
+            <div className="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-4 d-flex">
               <div className='d-flex flex-column align-items-center '>
                  <div className='icon-title'>
                   <div className="top-row">
