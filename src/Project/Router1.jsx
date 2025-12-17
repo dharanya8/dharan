@@ -7,6 +7,7 @@ import Universitypage from "./../Project/Pages/Universitypage";
 import Thousands from "./../Project/Thousands";
 import Navbar2 from "./Navbar2";
 import Layout from "./Layout";
+import London from "./Cities/London";
 function App() {
   return (
     <>
@@ -18,6 +19,7 @@ function App() {
           {/* <Route path="thousands" element={<Thousands />} />    */}
        {/* <Route path="uk/london" element={<LondonPage/>} /> */}
         </Route>
+        {/* <Route path="/" element={<London/>}></Route> */}
         {/* <Route path="/city/:London" element={<Citypage/>} /> */}
         <Route path="/university/:universityName" element={<Universitypage />} />
       </Routes>

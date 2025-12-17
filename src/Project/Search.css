@@ -144,6 +144,12 @@
     width: 18px;
     height: 18px;
   }
+  .circleremove{
+width: 50px !important;
+}
+.circle{
+  right: 40px !important;
+}
 }
 @media (min-width: 421px)and (max-width:475px){
   .searchbar{
@@ -172,6 +178,9 @@
     width:380px;
     height: 48px;
   }
+  .circleremove{
+width: 53px !important;
+}
 }
 @media (min-width: 375px)and (max-width:420px){
   .searchbar{
@@ -200,6 +209,9 @@
 }
   .font{
   display: none;
+}
+.circleremove{
+width: 53px !important;
 }
 }
 @media(min-width:320px)and (max-width:374px){
@@ -231,6 +243,9 @@ height:40px;
 }
 .panel{
   margin-left: 1px !important;
+}
+.circleremove{
+width: 50px !important;
 }
 }
 .dropdown-panel::-webkit-scrollbar {

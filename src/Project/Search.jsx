@@ -168,18 +168,18 @@ useEffect(()=>{
           </div>
         )}
         {searchText && (
-          <div
+          <div className="circle"
             style={{
               position: "absolute",
-              right: "20px",
+              right:"10px",
               top: "50%",
               transform: "translateY(-50%)",
               cursor: "pointer",
-              color: "#666",
+              // color: "#666",
             }}
             onClick={() => setSearchText("")}
           >
-            <CiCircleRemove size={56} style={{background:"gray"}}/>
+            <CiCircleRemove size={58} className="circleremove" />
           </div>
         )}
       </div>
