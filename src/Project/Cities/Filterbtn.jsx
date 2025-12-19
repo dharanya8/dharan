@@ -10,6 +10,8 @@ import { BsPersonUp } from "react-icons/bs";
 import { FaHeadset, FaWhatsapp, FaRegEnvelope, FaRegHandshake } from "react-icons/fa6";
 import { CiViewList } from "react-icons/ci";
 import { ButtonGroup } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
+import { BsFilterLeft } from "react-icons/bs";
 
 import './Filterbtn.css'
 const Filterbtn = ({ data, onFilter }) => {
@@ -49,26 +51,58 @@ const Filterbtn = ({ data, onFilter }) => {
   }, [filters, data, onFilter]);
 
   return (
-    <div className="d-flex flex-wrap gap-2 ms-5"style={{fontFamily:"inherit"}}>
+    <div className="d-flex flex-wrap gap-2 mt- align-items-center"style={{fontFamily:"inherit",
+       position: "sticky",
+         top: 65,
+         zIndex:1050,
+         backgroundColor: "white",
+         height:55,
+         
+    }}>
       {/* SORT */}
-      <Dropdown as={ButtonGroup}>
-        <Dropdown.Toggle variant="light" className="rounded-pill">
-          Sort
+      <Dropdown as={ButtonGroup} className="ms-3">
+        <Dropdown.Toggle variant="light" className="rounded-pill sort ">
+          <div className="d-flex align-items-center">
+          <BsFilterLeft  className="fs-4 text-secondary"/>
+          <span className="ms-1 fw-bold"style={{fontSize:"13px"}}>Sort</span>
+       </div>
         </Dropdown.Toggle>
-        <Dropdown.Menu>
-          <Dropdown.Item onClick={() => setFilters({ ...filters, sort: "lowToHigh" })}>
-            Price (Low → High)
-          </Dropdown.Item>
-          <Dropdown.Item onClick={() => setFilters({ ...filters, sort: "highToLow" })}>
-            Price (High → Low)
-          </Dropdown.Item>
-        </Dropdown.Menu>
+      
+  <Dropdown.Menu className="mt-2"style={{width:"250px"}}>
+     <Dropdown.Header style={{ fontSize: "15px",boxShadow:"initial"}} className="text-dark fw-bolder ">
+        Sort By
+     </Dropdown.Header>
+    <Form.Check
+      type="radio"
+      label="Price (Low to High)"
+      name="priceSort"
+      id="lowToHigh"
+      checked={filters.sort === "lowToHigh"}
+      onChange={() =>
+        setFilters({ ...filters, sort: "lowToHigh" })
+      }
+      className="px-3  ms-4"
+    />
+    <Form.Check
+      type="radio"
+      label="Price (High to Low)"
+      style={{marginTop:"15px"}}
+      name="priceSort"
+      id="highToLow"
+      checked={filters.sort === "highToLow"}
+      onChange={() =>
+        setFilters({ ...filters, sort: "highToLow" })
+      }
+      className="px-3  ms-4 "
+    />
+  </Dropdown.Menu>
       </Dropdown>
-
       {/* UNIVERSITY */}
       <Dropdown as={ButtonGroup}>
-        <Dropdown.Toggle variant="light" className="rounded-pill">
-          University
+        <Dropdown.Toggle variant="light" className="rounded-pill sort">
+         <div className="d-flex align-items-center">
+          <span className="fw-bold"style={{fontSize:"13px"}}>University</span>
+        </div>
         </Dropdown.Toggle>
         <Dropdown.Menu>
           <Dropdown.Item onClick={() => setFilters({ ...filters, university: "Oxford" })}>
@@ -82,8 +116,10 @@ const Filterbtn = ({ data, onFilter }) => {
 
       {/* BUDGET */}
       <Dropdown as={ButtonGroup}>
-        <Dropdown.Toggle variant="light" className="rounded-pill">
-          Budget
+        <Dropdown.Toggle variant="light" className="rounded-pill sort">
+          <div className="d-flex align-items-center">
+         <span className="fw-bold"style={{fontSize:"13px"}}> Budget </span>
+          </div>
         </Dropdown.Toggle>
         <Dropdown.Menu>
           <Dropdown.Item onClick={() => setFilters({ ...filters, budget: "below10k" })}>
@@ -97,12 +133,14 @@ const Filterbtn = ({ data, onFilter }) => {
 
       {/* RESET */}
       <button
-        className="btn btn-outline-secondary rounded-pill"
+        className=" rounded-pill sort"
         onClick={() =>
           setFilters({ sort: "", university: "", budget: "" })
         }
       >
-        Reset
+        <div className="d-flex  align-items-center">
+        <span className="fw-bold"style={{fontSize:"13px"}}>
+        Reset</span></div>
       </button>
     </div>
   );

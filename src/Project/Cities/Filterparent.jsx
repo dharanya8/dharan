@@ -5,6 +5,18 @@ const properties = [
   { id: 1, price: 8000, university: "Oxford" },
   { id: 2, price: 12000, university: "Cambridge" },
   { id: 3, price: 6000, university: "Oxford" },
+  { id: 1, price: 8000, university: "Oxford" },
+  { id: 2, price: 12000, university: "Cambridge" },
+  { id: 3, price: 6000, university: "Oxford" },
+  { id: 1, price: 8000, university: "Oxford" },
+  { id: 2, price: 12000, university: "Cambridge" },
+  { id: 3, price: 6000, university: "Oxford" },
+  { id: 1, price: 8000, university: "Oxford" },
+  { id: 2, price: 12000, university: "Cambridge" },
+  { id: 3, price: 6000, university: "Oxford" },
+  { id: 1, price: 8000, university: "Oxford" },
+  { id: 2, price: 12000, university: "Cambridge" },
+  { id: 3, price: 6000, university: "Oxford" },
 ];
 
 const Filterparent = () => {

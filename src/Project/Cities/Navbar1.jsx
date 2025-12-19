@@ -29,9 +29,18 @@ import Search from "../Search";
 function  Navbar2(){
   const [show, setShow] = useState(false);
   return(
-    <div className="overflow " style={{height:"65px"}}>
-      <Navbar expand="lg" className="navbar text-dark "sticky="top">
-        <Navbar.Brand href="#Amber" className="ms-3 ms-md-5 mb-5 align">
+    <div className="" style={{height:"65px",
+       position: "sticky",
+         top: 0,
+         zIndex:1050,
+         backgroundColor: "white",
+         borderBottom:"1px Solid #e5e7eb"
+    }}>
+      
+      <Navbar expand="lg" className="navbar text-dark "sticky="top"style={{
+        
+      }}>
+        <Navbar.Brand href="#Amber" className="ms-3 ms-md-3 mb-5 align">
           <Image src={amber} alt="Amber Logo" className="ms-1 ms-md-4 mt-2 no-highlight" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbar-nav" />

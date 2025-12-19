@@ -1,8 +1,14 @@
 .navbar{
-    background: transparent;
-    color: white;
+    background: white;
+    color: rgb(235, 115, 115);
 }
 body.light-navbar .navbar{
     background: white;
     color: black;
+}
+.sticky{
+  position: sticky;
+  top: 0;
+  z-index: 1040;
+  background-color: white;
 }

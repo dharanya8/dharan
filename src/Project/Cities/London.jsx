@@ -6,11 +6,14 @@ import { IoFilter } from "react-icons/io5";
 import Navbar1 from "./Navbar1";
 import Filterbtn from "./Filterbtn";
 import Filterparent from "./Filterparent";
+import './London.css'
 function London() {
 return(
   <div>
+  <div className="sticky">
     <Navbar1/>
     <Filterparent/>
+  </div>
   </div>    
   );
 }
