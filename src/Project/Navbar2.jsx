@@ -25,8 +25,12 @@ import amber from './../assets/bg1/amber-logo-light (1).svg';
 import { Container } from "react-bootstrap";
 import LoginModal from "./LoginModal";
 // import { useState } from "react";
+import Shortlist from '../Project/Shortlist';
+import { useNavigate } from "react-router-dom";
+
 function  Navbar2(){
   const [show, setShow] = useState(false);
+    const navigate = useNavigate();
   return(
     <div className="overflow">
       <Navbar expand="lg" className="navbar ">
@@ -106,6 +110,7 @@ function  Navbar2(){
                 fontSize: "16px",
                 height: "35px",
               }}
+              
             >
               <IoMdHeartEmpty className="fw-bolder me-2 mb-1 fs-5" /> Shortlist
             </Button></div>

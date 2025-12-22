@@ -34,9 +34,7 @@ const Filterbtn = ({ data, onFilter }) => {
 
     // UNIVERSITY
     if (filters.university) {
-      result = result.filter(
-        (item) => item.university === filters.university
-      );
+        result = result.filter((item) => item.university === filters.university);
     }
 
     // BUDGET
@@ -105,8 +103,8 @@ const Filterbtn = ({ data, onFilter }) => {
         </div>
         </Dropdown.Toggle>
         <Dropdown.Menu>
-          <Dropdown.Item onClick={() => setFilters({ ...filters, university: "Oxford" })}>
-            Oxford
+          <Dropdown.Item onClick={() => setFilters({ ...filters, university: "Canvas Student Barnard Point,London" })}>
+            Canvas Student Barnard Point,London
           </Dropdown.Item>
           <Dropdown.Item onClick={() => setFilters({ ...filters, university: "Cambridge" })}>
             Cambridge

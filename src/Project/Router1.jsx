@@ -11,17 +11,12 @@ import London from "./Cities/London";
 function App() {
   return (
     <>
-    {/* <Navbar2 /> */}
           <Routes>
-             {/* <Route element={<Layout />}> */}
-        {/* <Route path="/" element={<Homepage />}> */}
-          {/* <Route index element={<Popularcities />} /> */}
-          {/* <Route path="thousands" element={<Thousands />} />    */}
-       {/* <Route path="uk/london" element={<LondonPage/>} /> */}
-        {/* </Route> */}
-        <Route path="/" element={<London/>}></Route>
-        {/* <Route path="/city/:London" element={<Citypage/>} /> */}
-        {/* <Route path="/university/:universityName" element={<Universitypage />} /> */}
+        <Route path="/" element={<Homepage />}/>
+        <Route path="/popularcities" element={<Popularcities />} />
+        <Route path="/cities/London" element={<London />} />
+        <Route path="/city/:London" element={<Citypage/>} />
+        <Route path="/university/:universityName" element={<Universitypage />} />
       </Routes>
     </>
   );

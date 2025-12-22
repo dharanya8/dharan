@@ -26,8 +26,11 @@ import { Container } from "react-bootstrap";
 import LoginModal from "../LoginModal";
 import Search from "../Search";
 // import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 function  Navbar2(){
   const [show, setShow] = useState(false);
+    const navigate = useNavigate();
   return(
     <div className="" style={{height:"65px",
        position: "sticky",
@@ -40,8 +43,8 @@ function  Navbar2(){
       <Navbar expand="lg" className="navbar text-dark "sticky="top"style={{
         
       }}>
-        <Navbar.Brand href="#Amber" className="ms-3 ms-md-3 mb-5 align">
-          <Image src={amber} alt="Amber Logo" className="ms-1 ms-md-4 mt-2 no-highlight" />
+        <Navbar.Brand  className="ms-3 ms-md-3 mb-5 align">
+          <Image src={amber} onClick={() => navigate("/")} alt="Amber Logo" className="ms-1 ms-md-4 mt-2 no-highlight" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbar-nav" />
         {/* <Search/> */}
