@@ -25,12 +25,24 @@ import amber from './../assets/bg1/amber-logo-light (1).svg';
 import { Container } from "react-bootstrap";
 import LoginModal from "./LoginModal";
 // import { useState } from "react";
-import Shortlist from '../Project/Shortlist';
 import { useNavigate } from "react-router-dom";
 
 function  Navbar2(){
   const [show, setShow] = useState(false);
     const navigate = useNavigate();
+    const [shortlistCount, setShortlistCount] = useState(0);
+useEffect(() => {
+  const updateCount = () => {
+    const list = JSON.parse(localStorage.getItem("shortlist")) || [];
+    setShortlistCount(list.length);
+  };
+
+  updateCount();
+  window.addEventListener("storage", updateCount);
+
+  return () => window.removeEventListener("storage", updateCount);
+}, []);
+
   return(
     <div className="overflow">
       <Navbar expand="lg" className="navbar ">
@@ -102,18 +114,24 @@ function  Navbar2(){
               </Dropdown.Menu>
             </Dropdown>
             <div className="shortlist2">
-            <Button
-              className="text-light me-auto fw-bold mb-5 mb-lg-0 mx-lg-2 shortlist"
-              variant="none"
-              style={{
-                fontFamily: "'Nunito', sans-serif",
-                fontSize: "16px",
-                height: "35px",
-              }}
-              
-            >
-              <IoMdHeartEmpty className="fw-bolder me-2 mb-1 fs-5" /> Shortlist
-            </Button></div>
+           <Button
+  onClick={() => navigate("/shortlist")}
+  className="text-light fw-bold position-relative shortlist"
+  variant="none"
+>
+  <IoMdHeartEmpty className="me-2 fs-5" />
+  Shortlist
+
+  {shortlistCount > 0 && (
+    <span
+      className="position-absolute  top-0 start-100 translate-middle badge rounded-pill bg-danger"
+      style={{ fontSize: "11px",marginRight:"10px" }}
+    >
+      {shortlistCount}
+    </span>
+  )}
+</Button>
+</div>
             <Button
             onClick={()=> setShow(true)}
               className="text-light me-auto fw-bold mb-5 mb-lg-0 mx-lg-2 shortlist"

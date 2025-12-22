@@ -8,6 +8,7 @@ import Thousands from "./../Project/Thousands";
 import Navbar2 from "./Navbar2";
 import Layout from "./Layout";
 import London from "./Cities/London";
+import Shortlist from "./Shortlist";
 function App() {
   return (
     <>
@@ -17,6 +18,8 @@ function App() {
         <Route path="/cities/London" element={<London />} />
         <Route path="/city/:London" element={<Citypage/>} />
         <Route path="/university/:universityName" element={<Universitypage />} />
+        <Route path="/shortlist" element={<Shortlist />} />
+
       </Routes>
     </>
   );

@@ -24,6 +24,31 @@ import LoginModal from './LoginModal'
 import { TiStarFullOutline } from "react-icons/ti";
 
 function Thousands() {
+  const handleAddToWishlist = (item) => {
+  const existing = JSON.parse(localStorage.getItem("shortlist")) || [];
+
+  const alreadyAdded = existing.some(
+    (p) => p.name === item.name
+  );
+
+  let updatedList;
+
+  if (alreadyAdded) {
+    // remove (optional toggle)
+    updatedList = existing.filter(p => p.name !== item.name);
+  } else {
+    // add
+    updatedList = [...existing, item];
+  }
+
+  localStorage.setItem("shortlist", JSON.stringify(updatedList));
+  setWishlist(updatedList);
+};
+
+const [wishlist, setWishlist] = useState(
+  JSON.parse(localStorage.getItem("shortlist")) || []
+);
+
   const data = {
     "United Kingdom": ["London", "Birmingham", "Leicester", "Liverpool", "Sheffield"],
     "United States": ["New York", "Boston", "San Francisco", "Chicago"],
@@ -124,10 +149,21 @@ function Thousands() {
             overflow-x-hidden overflow-md-hidden overflow-sm-x-auto ">
         {(Properties[selectedCity] || []).map((item, index) => (
           <div key={index} className="property-card position-relative">
-            <div className="wishlist-heart position-absolute mt-3  bg-light d-flex justify-content-center align-items-center"
-             onClick={() => setOpenLogin(true)}>
-    <FiHeart className="heart-outline mt-1" />
-  </div> 
+           <div
+  className="wishlist-heart position-absolute mt-3 bg-light d-flex justify-content-center align-items-center"
+  onClick={() => handleAddToWishlist(item)}
+>
+  <FiHeart
+    className="mt-1"
+    style={{
+      color: wishlist.some(p => p.name === item.name)
+        ? "red"
+        : "#555"
+    }}
+  />
+</div>
+
+
             <div className="w-100">
                   <Carousel className="carousalcard d-flex ms-md-3"interval={null}>
                     {item.images
@@ -160,7 +196,7 @@ function Thousands() {
           </div>
         ))}
         </div>
-        <LoginModal show={openLogin} onClose={() => setOpenLogin(false)} />
+        {/* <LoginModal show={openLogin} onClose={() => setOpenLogin(false)} /> */}
     </div>
   );
 }

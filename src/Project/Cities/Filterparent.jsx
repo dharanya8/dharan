@@ -21,6 +21,7 @@ const properties = [
   { 
     id: 1,    
     title: "Canvas Student Barnard Point, London",
+      university: "Canvas Student Barnard Point",
     address: "N End Rd, Wembley, HA9 0UU",
     distance: "8.8 mi from City Center",
     travel: {

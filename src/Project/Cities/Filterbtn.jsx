@@ -26,16 +26,19 @@ const Filterbtn = ({ data, onFilter }) => {
 
     // SORT
     if (filters.sort === "lowToHigh") {
-      result.sort((a, b) => a.price - b.price);
-    }
-    if (filters.sort === "highToLow") {
-      result.sort((a, b) => b.price - a.price);
-    }
+    result.sort((a, b) => a.price - b.price);
+  }
+  if (filters.sort === "highToLow") {
+    result.sort((a, b) => b.price - a.price);
+  }
 
-    // UNIVERSITY
     if (filters.university) {
-        result = result.filter((item) => item.university === filters.university);
-    }
+  result = result.filter(item =>
+    item.university
+      ?.toLowerCase()
+      .includes(filters.university.toLowerCase())
+  );
+}
 
     // BUDGET
     if (filters.budget === "below10k") {
@@ -103,8 +106,8 @@ const Filterbtn = ({ data, onFilter }) => {
         </div>
         </Dropdown.Toggle>
         <Dropdown.Menu>
-          <Dropdown.Item onClick={() => setFilters({ ...filters, university: "Canvas Student Barnard Point,London" })}>
-            Canvas Student Barnard Point,London
+          <Dropdown.Item onClick={() => setFilters({ ...filters, university: "Canvas Student Barnard Point" })}>
+            Canvas Student Barnard Point, London
           </Dropdown.Item>
           <Dropdown.Item onClick={() => setFilters({ ...filters, university: "Cambridge" })}>
             Cambridge
