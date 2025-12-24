@@ -143,4 +143,8 @@ background: #f43f5e;
   .wishlist-remove {
     right: 6px;
   }
+  .shortlist-img img{
+    width: 278px !important;
+  }
+  
 }

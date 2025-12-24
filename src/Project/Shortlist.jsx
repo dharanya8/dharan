@@ -61,7 +61,7 @@ function Shortlist() {
 
           {/* IMAGE */}
           <div className="shortlist-img">
-            <Carousel interval={null} >
+            <Carousel interval={null} indicators={false}>
               {(item.images || [item.image]).map((img, i) => (
                 <Carousel.Item key={i}>
                   <img src={img} alt={item.name} />
