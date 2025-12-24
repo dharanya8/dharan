@@ -176,7 +176,6 @@ const [wishlist, setWishlist] = useState(
                     {item.images
     ? item.images.map((img, i) => (
         <Carousel.Item className="carousal-item ms-md-" key={i}>
-           
           <img src={img} alt={item.name} className="property-img" />
         </Carousel.Item>
       ))

@@ -126,6 +126,9 @@ background: #f43f5e;
   .banner{
     width: 330px !important;
   }
+  .London{
+    font-size: 13px !important;
+  }
 }
 @media(max-width:320px){
   .banner{
