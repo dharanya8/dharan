@@ -43,11 +43,13 @@ function Thousands() {
 
   localStorage.setItem("shortlist", JSON.stringify(updatedList));
   setWishlist(updatedList);
+   window.dispatchEvent(new Event("shortlistUpdated"));
 };
 
 const [wishlist, setWishlist] = useState(
   JSON.parse(localStorage.getItem("shortlist")) || []
 );
+
 
   const data = {
     "United Kingdom": ["London", "Birmingham", "Leicester", "Liverpool", "Sheffield"],
@@ -150,15 +152,20 @@ const [wishlist, setWishlist] = useState(
         {(Properties[selectedCity] || []).map((item, index) => (
           <div key={index} className="property-card position-relative">
            <div
-  className="wishlist-heart position-absolute mt-3 bg-light d-flex justify-content-center align-items-center"
+  className="wishlist-heart position-absolute mt-3  d-flex justify-content-center align-items-center"
   onClick={() => handleAddToWishlist(item)}
+  style={{
+    backgroundColor: wishlist.some(p => p.name === item.name)
+        ? "red"
+        : "white"
+  }}
 >
   <FiHeart
-    className="mt-1"
+    className="mt-"
     style={{
       color: wishlist.some(p => p.name === item.name)
-        ? "red"
-        : "#555"
+        ? "white"
+        : "#555",
     }}
   />
 </div>

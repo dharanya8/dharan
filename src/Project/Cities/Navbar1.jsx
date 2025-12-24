@@ -31,6 +31,19 @@ import { useNavigate } from "react-router-dom";
 function  Navbar2(){
   const [show, setShow] = useState(false);
     const navigate = useNavigate();
+        const [shortlistCount, setShortlistCount] = useState(0);
+    useEffect(() => {
+      const updateCount = () => {
+        const list = JSON.parse(localStorage.getItem("shortlist")) || [];
+        setShortlistCount(list.length);
+      };
+    
+      updateCount();
+  window.addEventListener("shortlistUpdated", updateCount);
+      return () => {
+    window.removeEventListener("shortlistUpdated", updateCount);
+      };
+    }, []);
   return(
     <div className="" style={{height:"65px",
        position: "sticky",
@@ -111,18 +124,26 @@ function  Navbar2(){
                 </div>
               </Dropdown.Menu>
             </Dropdown>
-            <div className="shortlist2">
-            <Button
-              className="text-dark me-auto fw-bold mb-5 mb-lg-0 mx-lg-2 shortlist"
-              variant="none"
-              style={{
-                fontFamily: "'Nunito', sans-serif",
-                fontSize: "16px",
-                height: "35px",
-              }}
-            >
-              <IoMdHeartEmpty className="fw-bolder me-2 mb-1 fs-5" /> Shortlist
-            </Button></div>
+           <div className="shortlist2  me-auto my-3 my-lg-0 mx-lg-2">
+           <Button
+  onClick={() => navigate("/shortlist")}
+  className="text-dark fw-bold position-relative shortlist"
+  variant="none"
+>
+  <IoMdHeartEmpty className="me-2 fs-5" />
+  <span className="">
+  Shortlist
+</span>
+  {shortlistCount > 0 && (
+    <span
+      className="position-absolute mt-1   translate-middle badge rounded-pill bg-danger"
+      style={{ fontSize: "11px",marginLeft:"5px" }}
+    >
+      {shortlistCount}
+    </span>
+  )}
+</Button>
+</div>
             <Button
             onClick={()=> setShow(true)}
               className="text-dark me-auto fw-bold mb-5 mb-lg-0 mx-lg-2 shortlist"

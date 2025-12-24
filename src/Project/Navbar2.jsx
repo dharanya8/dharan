@@ -38,10 +38,11 @@ useEffect(() => {
   };
 
   updateCount();
-  window.addEventListener("storage", updateCount);
-
-  return () => window.removeEventListener("storage", updateCount);
-}, []);
+  window.addEventListener("shortlistUpdated", updateCount);
+  return () => {
+    window.removeEventListener("shortlistUpdated", updateCount);
+  };
+  }, []);
 
   return(
     <div className="overflow">
@@ -51,8 +52,8 @@ useEffect(() => {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbar-nav" />
         <Navbar.Collapse id="navbar-nav" className="pb-5">
-          <Nav className="ms-auto navbar-nav">
-            <Dropdown className="support-btn me-auto my-3 my-lg-0 mx-lg-2">
+          <Nav className="ms-auto navbar-nav mt-3 ">
+            <Dropdown className="support-btn me-auto ms-md-2 my-3 my-lg-0 mx-lg-2">
               <Dropdown.Toggle
                 id="dropdown-basic"
                 style={{
@@ -113,28 +114,30 @@ useEffect(() => {
                 </div>
               </Dropdown.Menu>
             </Dropdown>
-            <div className="shortlist2">
+            <div className="shortlist2  me-auto my-3 my-lg-0 mx-lg-2">
            <Button
   onClick={() => navigate("/shortlist")}
   className="text-light fw-bold position-relative shortlist"
   variant="none"
 >
   <IoMdHeartEmpty className="me-2 fs-5" />
+  <span className="">
   Shortlist
-
+</span>
   {shortlistCount > 0 && (
     <span
-      className="position-absolute  top-0 start-100 translate-middle badge rounded-pill bg-danger"
-      style={{ fontSize: "11px",marginRight:"10px" }}
+      className="position-absolute    translate-middle badge rounded-pill bg-danger"
+      style={{ fontSize: "11px",marginLeft:"5px" }}
     >
       {shortlistCount}
     </span>
   )}
 </Button>
 </div>
+<div className="me-auto my-3 my-lg-0 mx-lg-2">
             <Button
             onClick={()=> setShow(true)}
-              className="text-light me-auto fw-bold mb-5 mb-lg-0 mx-lg-2 shortlist"
+              className="text-light me-auto fw-bold mb-3   shortlist"
               variant="none"
               style={{
                 fontFamily: "'Nunito', sans-serif",
@@ -145,8 +148,9 @@ useEffect(() => {
             >
               <LuLogIn className="fs-5 me-2 mb-1" /> Login
             </Button>
+            </div>
           <LoginModal show={show} onClose={() => setShow(false)}/>
-            <Dropdown className="mb-5 mb-lg-0 mx-lg-2 contact-btn">
+            <Dropdown className="mb-5 mb-lg-0 my-3 my-lg-0 mx-lg-2  contact-btn">
               <Dropdown.Toggle
                 id="contact-dropdown"
                 variant="none"

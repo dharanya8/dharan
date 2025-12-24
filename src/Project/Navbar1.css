@@ -106,12 +106,11 @@
 .support-items{
     width: 60%;
 }
-@media screen and (max-width:768px){
+/* @media screen and (max-width:768px){
     .shortlist2{
-        margin-top:20px;
-    }
-    
-}
+        /* margin-top:10px; */
+    /* }  
+} */ 
 .help{
     width:135px;
     border-radius: 7px;
@@ -192,12 +191,12 @@
     background: #eb4c4c;
     padding: 20px;
     border-radius: 10px;
-    width:70%;
+    width:50%;
     margin-right:230px;
     position:absolute;
   }
   .contact-btn{
-    background-color: #eb4c4c !important;
+    background-color:transparent !important;
   }
    .dropdown-menu.show{
     position:absolute;

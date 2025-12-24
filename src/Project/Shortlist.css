@@ -1,0 +1,143 @@
+.shortlist-card {
+  background-color: #fff;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+  width: 95%;
+  height: 70%;
+}
+.shortlist-card:hover{
+  box-shadow: 0 0 10px rgba(0,0,0,0.08);
+}
+.shortlist-img {
+  width: 350px;
+  cursor: pointer;
+}
+
+.shortlist-img img {
+  width: 350px;
+  height: 220px;
+  object-fit: cover;
+}
+.shortlist-content {
+  padding: 20px;
+  width: 100%;
+}
+.wishlist-remove {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #f43f5e;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.features span {
+  border: 1px solid #eee;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.view-btn {
+  background:linear-gradient(90deg, #ff4d6d, #ed3a56);
+  border: none;
+  color: white;
+  padding: 3px 45px;
+  border-radius: 8px;
+  font-weight: 500;
+}
+.view-btn:hover{
+background: #f43f5e;
+}
+.explore-btn {
+  background: linear-gradient(90deg, #ff4d6d, #ed3a56);
+  color: white;
+  border: none;
+  padding: 10px 10px;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  width: 150px;
+  font-size: 14px;
+}
+@media (max-width:1024px){
+.banner{
+  padding: 0px !important;
+}
+}
+@media(max-width:992px){
+  .view-btn{
+    padding: 8px 30px;
+  }
+}
+@media (max-width:768px){
+  .banner{
+    width:100% !important;
+  }
+  .shortlist-img{
+    width:628px
+  }
+  .shortlist-img img {
+  width: 628px;
+  }
+}
+@media(max-width:648px){
+  .banner{
+    width:100% !important;
+    
+  }
+  .short{
+    padding: 40px 20px !important;
+  }
+  .list{
+    margin-left: 5px !important;
+  }
+}
+@media (max-width:425px){
+  .containe{
+    padding-right:calc(var(--bs-gutter-x) * .0);
+    padding-left:calc(var(--bs-gutter-x) * .0);
+  }
+  .banner{
+    width: 395px !important;
+  }
+  .short{
+    padding:40px 12px !important;
+  }
+}
+@media(max-width:414px){
+  .banner{
+    width: 380px !important;
+  }
+}
+@media(max-width:360px){
+  .banner{
+    width: 330px !important;
+  }
+}
+@media(max-width:320px){
+  .banner{
+    width: 295px !important;
+  }
+  .view-btn{
+    padding: 8px 15px;
+  }
+  .London{
+    font-size: 13px !important;
+  }
+  .wishlist-remove {
+    right: 6px;
+  }
+}
