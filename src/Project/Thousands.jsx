@@ -20,7 +20,6 @@ import Properties from './../Project/Properties.json'
 import Carousel from 'react-bootstrap/Carousel';
 import { FiHeart } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
-import LoginModal from './LoginModal'
 import { TiStarFullOutline } from "react-icons/ti";
 
 function Thousands() {
@@ -86,8 +85,7 @@ const [wishlist, setWishlist] = useState(
     setSelectedCountry(country);
     setOpenDropdown(false);
   };
-   const navigate = useNavigate();
-   const [openLogin, setOpenLogin] = useState(false);
+  
   return (
     <div className="thousand">
       <h2 className="properties mb-2">Thousands of properties globally</h2>
@@ -202,7 +200,6 @@ const [wishlist, setWishlist] = useState(
           </div>
         ))}
         </div>
-        {/* <LoginModal show={openLogin} onClose={() => setOpenLogin(false)} /> */}
     </div>
   );
 }

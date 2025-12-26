@@ -4,7 +4,34 @@ import { IoClose } from "react-icons/io5";
 import { MdClose } from "react-icons/md";
 import { FaFacebook, FaApple, FaEnvelope, FaChevronDown } from "react-icons/fa";
 import "./LoginModal.css";
+// import Viewcard from "./Viewcard";
+import { useNavigate } from "react-router-dom";
+
 function LoginModal({ show, onClose }) {
+const [step, setStep] = useState("login");
+const [otp, setOtp] = useState("");
+const [error, setError] = useState("");
+const [attempts, setAttempts] = useState(0);
+const navigate = useNavigate();
+const handleContinue = () => {
+  if (!mobile || !selectedCode.code) return;
+
+  setStep("otp"); 
+};
+
+ const handleVerifyOtp = () => {
+  // user any 6 digit number enter panna podhum
+  if (/^\d{6}$/.test(otp)) {
+    setError("");
+    onClose();
+    const redirect = localStorage.getItem("redirectAfterLogin");
+navigate(redirect || "/");
+ 
+    // navigate("/viewcard");
+  } else {
+    setError("Please enter 6 digit OTP");
+  }
+};
   const [mobile, setMobile] = useState("");
   const [open, setOpen] = useState(false);
 
@@ -35,7 +62,7 @@ function LoginModal({ show, onClose }) {
 
   return (
     <Modal show={show} onHide={onClose} centered style={{fontFamily:"inherit"}}>
-      <Modal.Body className="p-4 position-relative">
+      <Modal.Body className="p-4 Model position-relative">
         {/* Close Button */}
         <IoClose
           size={26}
@@ -48,9 +75,32 @@ function LoginModal({ show, onClose }) {
           }}
           onClick={onClose}
         />
+        {step === "otp" && (
+  <>
+    <h5 className="text-center fw-bold mb-3">Enter OTP</h5>
 
+    <input
+      type="text"
+      maxLength="6"
+      value={otp}
+      onChange={(e) => setOtp(e.target.value)}
+      className="form-control text-center"
+      placeholder="Enter any 6 digit number"
+    />
+
+    {error && (
+      <p className="text-danger text-center mt-2">{error}</p>
+    )}
+
+    <Button
+      className="w-100 py-2 mt-3 custom-btn1"
+      onClick={handleVerifyOtp}
+    >
+      Verify OTP
+    </Button>
+  </>
+)}
         <h5 className="mb-4 text-center fw-bold">Login to Amber</h5>
-
         {/* Code + Mobile Input */}
         <div className="input-row">
           {/* Code Input */}
@@ -136,12 +186,19 @@ function LoginModal({ show, onClose }) {
         </div>
 
         {/* Continue Button */}
-        <Button
-          className="w-100 py-2 mt-3 custom-btn1"
-          disabled={!mobile || !selectedCode.code}
-        >
-          Continue
-        </Button>
+        {step === "login" && (
+  <>
+    {/* Existing login UI */}
+
+    <Button
+      className="w-100 py-2 mt-3 custom-btn1"
+      disabled={!mobile || !selectedCode.code}
+      onClick={handleContinue}
+    >
+      Continue
+    </Button>
+  </>
+)}
 
         <div className="text-center my-3 text-secondary">or log in using</div>
 

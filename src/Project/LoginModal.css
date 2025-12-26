@@ -108,3 +108,18 @@
   background-color: #dd4454 !important;
   border: none;
 }
+.modal {
+  z-index: 9999 !important;
+}
+
+.modal-backdrop {
+  z-index: 9998 !important;
+}
+
+/* @media(max-width:768px){
+  .Modal {
+  z-index: 2000 !important;
+}
+
+
+} */

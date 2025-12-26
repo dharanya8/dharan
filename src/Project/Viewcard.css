@@ -1,0 +1,15 @@
+.view-img{
+    width: 600px; 
+    cursor: pointer; 
+}
+.view-carousel{
+    width: 600px;
+}
+.view-img img{
+    width: 600px;
+    height: 350px;
+    object-fit: cover;
+}
+.view-item{
+    width: 600px;
+}

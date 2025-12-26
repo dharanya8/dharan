@@ -185,6 +185,12 @@
 .dropdown-panel::-webkit-scrollbar {
   display: none;
 }
+.navbar,
+.navbar-collapse,
+.navbar-nav {
+  z-index: 1000 !important;
+}
+
 /* Mobile Navbar Background */
 @media (max-width: 768px) {
   .navbar-nav {
