@@ -13,3 +13,10 @@
 .view-item{
     width: 600px;
 }
+.enquiry:hover{
+    background-color: #fff !important;
+}
+.Droplist{
+    background: radial-gradient(50% 50% at 50% 50%, #ffe5eb 0, hsla(0, 0%, 100%, 0) 100%);;
+}
+          

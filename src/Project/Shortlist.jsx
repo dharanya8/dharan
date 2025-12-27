@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import Footer from '../Project/Footer';
 import { IoIosArrowForward } from "react-icons/io";
 import LoginModal from './LoginModal';
+import { RiDeleteBinLine } from "react-icons/ri";
 
 function Shortlist() {
   const [items, setItems] = useState([]);
@@ -74,7 +75,7 @@ function Shortlist() {
 
                       {/* HEART (REMOVE) */}
                       <div className="wishlist-remove" onClick={() => removeItem(item.name)}>
-                        <FiHeart color="white" size={18} />
+                        <RiDeleteBinLine color="white" size={20} />
                       </div>
 
                       <div style={{ cursor: "pointer" }}>
