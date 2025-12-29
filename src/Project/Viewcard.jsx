@@ -16,16 +16,22 @@ import { FaRegCircleCheck } from "react-icons/fa6";
 import { CgGym } from "react-icons/cg";
 import { CgSmartHomeWashMachine } from "react-icons/cg";
 import { GiBlackBook } from "react-icons/gi";
-import Filterbtn from "./Cities/Filterbtn";
 import { IoMdHeart } from "react-icons/io";
 import { FaPhoneAlt } from "react-icons/fa";
 import Review from '../assets/review.svg';
 import Image from 'react-bootstrap/Image';
 import './Viewcard.css';
+import viewvideo from '../assets/viewvideo.mp4';
+import viewimg from '../assets/viewimg.avif';
+import viewimg2 from '../assets/viewimg2.avif';
+import Insight2 from './../assets/insight2.svg';
+import insight3 from './../assets/insight3.svg';
+import { PiCalendarCheckLight } from "react-icons/pi";
+import { BsShieldCheck } from "react-icons/bs";
+import { IoIosArrowUp,IoIosArrowDown  } from "react-icons/io";
+import Roomcard from './Roomcard';
 function Viewcard() {
-     const view={title: "Canvas Student Barnard Point, London",
-          university: "Canvas Student Barnard Point",
-        address: "N End Rd, Wembley, HA9 0UU",
+     const view={
         distance: "8.8 mi from City Center",
         travel: {
           bus: "33m",
@@ -44,6 +50,40 @@ function Viewcard() {
           "Study Spaces":<GiBlackBook/>,
         },
     }
+    const infoList = [
+  {
+    title: "Instant Booking",
+    desc: "Instant booking allows you to quickly book the property by paying the amount.",
+    icon: <PiCalendarCheckLight className="fs-4" />,
+  },
+  {
+    title: "Lowest Price Guaranteed",
+    desc: "We guarantee to match the price of your accommodation if you find an identical offer on another..",
+    icon: <Image src={Insight2} style={{ width: 25 }} />,
+  },
+  {
+    title: "Verified Properties",
+    desc: "We guarantee that what you see on our website is exactly what you'll get.",
+    icon: <BsShieldCheck style={{ fontSize: 23 }} fill="gray" />,
+  },
+  {
+    title: "24x7 Personal Assistance",
+    desc: "For any doubts or queries, a quick call is all it takes - we're here to assist you promptly..",
+    icon: <Image src={insight3} style={{ width: 25 }} />,
+  },
+  {
+    title:"8.8k+ Reviews",
+    desc:"We've earned an excellent rating from over 8,700+ students for our outstanding services.",
+    icon:<Image src={Review} 
+    style={{width:30,height:30,}}/>
+  }
+];
+const [openIndex, setOpenIndex] = useState(null);
+
+const toggleDropdown = (index) => {
+  setOpenIndex(openIndex === index ? null : index);
+};
+
   const [item, setItem] = useState(null);
       const handleAddToWishlist = (item) => {
       const existing = JSON.parse(localStorage.getItem("shortlist")) || [];
@@ -86,66 +126,92 @@ function Viewcard() {
       </>
     );
   }
-
-
   return (
     <>
-    
       <Navbar1 />
-
-      <Container fluid className="px-5 py-4 bg-light">
+      <Container fluid className="px-5 py-4 bg-light"style={{fontFamily:"inherit"}}>
         <Row>
           {/* LEFT SIDE */}
           <Col lg={8}>
-            <Card className="border-0 shadow-sm position-relative">
+            <Card className="border-0 shadow-sm position-relative"style={{padding:"20px 0px"}}>
                 <div className="view-img">
-              <Carousel className="view-carousel ms-3 mt-5" interval={null} indicators={true}>
-                {(item.images || [item.image]).map((img, index) => (
-                  <Carousel.Item key={index} className="view-item ">
-                    <img
-                      src={img}
-                      alt={item.name}
-                      className="d-block rounded"
-                    />
-                  </Carousel.Item>
-                ))}
-              </Carousel>
+              <Row className="mt-3">
+  <Col lg={9} md={6}>
+    <Carousel interval={null} className="ms-3 view-carousel">
+      {(item.images || [item.image]).map((img, index) => (
+        <Carousel.Item key={index}>
+          <img
+            src={img}
+            alt="property"
+            className="d-block w-100 rounded"
+          />
+        </Carousel.Item>
+      ))}
+    </Carousel>
+  </Col>
+
+  {/* RIGHT - VIDEO */}
+  <Col lg={3} md={4} style={{cursor:"pointer"}}>
+    <div className="video-box">
+      <video
+        src={viewvideo}
+        controls
+        poster={item.image}  
+        className="video-player "
+        style={{width:"90%",borderRadius:"10px",}}
+      />
+    </div>
+    <div>
+      <Image src={viewimg} className="mt-3" style={{width:"90%",height:"50%",borderRadius:"10px"}}></Image>
+    </div>
+           <div>
+           <Image src={viewimg2}className="mt-3"style={{width:"90%",height:"50%",borderRadius:"10px"}}></Image>
+            </div>
+            </Col>
+             </Row>
+
               </div>
               {/* <Badge bg="success" className="position-absolute m-3 px-3 py-2">
                 <FaStar /> 5.0
               </Badge> */}
-              <div className="ms-3">
-            <h3 className="fw-bold mt-4">{item.name}</h3>
+              <div className="ms-3 mt-3"style={{cursor:"pointer"}}>
+            <h3 className="fw-bold ">{item.name}</h3>
             <p className="text-muted">{item.location}</p>
-            
-                    {/* FEATURES */}
-                    <div className="d-flex flex-wrap gap-3">
-                      {item.features &&
-                      Object.entries(item.features).map(([text,icon], i) => (
-                        <span
-                          key={i}
-                          className=" rounded-pill  text-dark border2 "
-                        >
-                          {React.cloneElement(icon, {
-                          color: "#ed3a56",
-                          size: 16,
-                          
-                         })}
-                         <span className="ms-2">
-                         {text}
-                         </span>
-                        </span>
-                      ))}
-                    </div>
+            <p className="text-muted">
+            <IoLocationOutline /> {view.distance}
+            </p>
+             </div>
+             <div className="d-flex gap-2 mt-2 ms-3"style={{cursor:"pointer"}}>
+              (
+             <span>
+              <LiaBusAltSolid className="text-muted"/> {view.travel.bus}
+              </span>
+              <span>
+              <PiTrainLight className="text-muted" /> {view.travel.train}
+              </span>
+              <span>
+              <LiaWalkingSolid className="text-muted"/> {view.travel.walk}
+            </span>)
+            </div>
+            <div className="d-flex flex-wrap gap-3 mt-3 ms-3 "style={{cursor:"pointer"}}>
+            {Object.entries(view.features).map(([text, icon], index) => (
+            <span key={index} className="border rounded-pill px-3 py-1">
+            {React.cloneElement(icon, {
+            color: "#ed3a56",
+            size: 19,
+            })}
+            <span className="ms-2">{text}</span>
+            </span>
+            ))}
             </div>
             </Card>
           </Col>
 
           {/* RIGHT SIDE */}
-          <Col lg={4} className="h-50"> <Card className="shadow-sm border-0 p-3"> 
+          <Col lg={4} className="h-50 position-sticky"> 
+          <Card className="shadow-sm border-0 p-3 sticky-right"> 
             <div className="d-flex justify-content-between align-items-center"> 
             <h5 className="fw-bold mb-0"> {item.name} </h5>
-         
             <div
               className="wishlist-heart  position-absolute  d-flex justify-content-center align-items-center"
               onClick={() => handleAddToWishlist(item)}
@@ -165,7 +231,7 @@ function Viewcard() {
               />
             </div>
             </div> 
-            <Button className="mt-3 py-2" style={{ backgroundColor: "#ed3a56", border: "none" }} > View Rooms </Button> 
+            {/* <Button className="mt-3 py-2" style={{ backgroundColor: "#ed3a56", border: "none" }} > View Rooms </Button>  */}
             <Button  className="mt-2 py-2 enquiry"style={{border:"2px solid #ed3a56",color:"#ed3a56"}} > Enquire Now </Button>
             <div className="bg-light rounded-pill mt-3">
               <Carousel indicators={false}className="">
@@ -179,27 +245,40 @@ function Viewcard() {
               </Carousel>
              </div>
              </Card>
-                 <Card className="shadow-sm border-0 p-3 mt-3">
-                  <div>
-            <p className="fw-semibold">Instant Booking</p> 
-            <p className="fw-semibold">Lowest Price Guaranteed</p>
-             <p className="fw-semibold">Verified Properties </p> 
-            <p className="fw-semibold">24x7 Personal Assistance</p>
-            <div className="d-flex">
-            <div className="Droplist">
-              <Image src={Review} style={{width:"70%",height:"70%"}}className="ms-1"></Image>
-              </div>
-              <p className="fw-semibold">
-            8.7K+ Reviews</p>
-            </div>
-             <hr /> 
-            <h5 className="fw-bold"> From <span className="text-danger">£429</span> </h5> 
-            <p className="text-muted">per week</p>
-            </div>
-                 </Card>
+                 <Card className="shadow-sm border-0 p-3 mt-3 sticky-right">
+                  
+                  {infoList.map((item, index) => (
+                  <div key={index} className="mb-2">
+      
+          <div
+            className="d-flex justify-content-between align-items-center cursor-pointer"
+            onClick={() => toggleDropdown(index)}
+          >
+        <div className="d-flex align-items-center mt-1">
+          <div className="Droplist">
+          <div className="">{item.icon}</div></div>
+          <p className="ms-2 mb-0" style={{ fontSize: "15px" }}>
+            {item.title}
+          </p>
+        </div>
+        <span>
+        {openIndex === index ? <IoIosArrowUp /> : <IoIosArrowDown />}
+        </span>
+      </div>
+            {openIndex === index && (
+              <p className="text-muted mt-2 ms-5" style={{ fontSize: "14px" }}>
+              {item.desc}
+               </p>
+                )}
+                </div>
+                 ))}
+                </Card>
                
                  </Col>
         </Row>
+        <div className="mt-4">
+          <Roomcard />
+        </div>
       </Container>
     </>
   );

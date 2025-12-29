@@ -21,35 +21,39 @@ import Carousel from 'react-bootstrap/Carousel';
 import { FiHeart } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import { TiStarFullOutline } from "react-icons/ti";
+import { RxCross2 } from "react-icons/rx";
 
 function Thousands() {
+  const [showToast, setShowToast] = useState(false);
+const [toastMsg, setToastMsg] = useState("");
   const handleAddToWishlist = (item) => {
   const existing = JSON.parse(localStorage.getItem("shortlist")) || [];
-
   const alreadyAdded = existing.some(
     (p) => p.name === item.name
   );
-
   let updatedList;
-
   if (alreadyAdded) {
-    // remove (optional toggle)
     updatedList = existing.filter(p => p.name !== item.name);
+    showPopup("Removed from Shortlist!");
   } else {
-    // add
     updatedList = [...existing, item];
+    showPopup("Added to Shortlist!");
   }
-
   localStorage.setItem("shortlist", JSON.stringify(updatedList));
   setWishlist(updatedList);
-   window.dispatchEvent(new Event("shortlistUpdated"));
+  window.dispatchEvent(new Event("shortlistUpdated"));
 };
+const showPopup = (msg) => {
+  setToastMsg(msg);
+  setShowToast(true);
 
+  setTimeout(() => {
+    setShowToast(false);
+  }, 3000);
+}; 
 const [wishlist, setWishlist] = useState(
   JSON.parse(localStorage.getItem("shortlist")) || []
 );
-
-
   const data = {
     "United Kingdom": ["London", "Birmingham", "Leicester", "Liverpool", "Sheffield"],
     "United States": ["New York", "Boston", "San Francisco", "Chicago"],
@@ -88,11 +92,27 @@ const [wishlist, setWishlist] = useState(
   
   return (
     <div className="thousand">
+      {showToast && (
+      <div className="shortlist-toast">
+      <div className="toast-bar"></div>
+      <div className="toast-content">
+      <strong>{toastMsg}</strong>
+      <p>This inventory has been added to your shortlist</p>
+      </div>
+
+      <span
+      className="toast-close"
+      onClick={() => setShowToast(false)}
+      >
+      <RxCross2/>
+      </span>
+      </div>
+      )}
+
       <h2 className="properties mb-2">Thousands of properties globally</h2>
       <p className="studio mb-4">
         From studios to private rooms to shared apartments, we’ve got it all.
       </p>
-
       {/* Dropdown */}
       <div className="dropdown-row flex-wrap d-flex position-relative mb-4">
         <button
@@ -167,8 +187,6 @@ const [wishlist, setWishlist] = useState(
     }}
   />
 </div>
-
-
             <div className="w-100">
                   <Carousel className="carousalcard d-flex ms-md-3"interval={null}>
                     {item.images

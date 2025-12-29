@@ -1,5 +1,5 @@
 .view-img{
-    width: 600px; 
+    /* width: 600px;  */
     cursor: pointer; 
 }
 .view-carousel{
@@ -7,7 +7,7 @@
 }
 .view-img img{
     width: 600px;
-    height: 350px;
+    height: 380px;
     object-fit: cover;
 }
 .view-item{
@@ -17,6 +17,10 @@
     background-color: #fff !important;
 }
 .Droplist{
-    background: radial-gradient(50% 50% at 50% 50%, #ffe5eb 0, hsla(0, 0%, 100%, 0) 100%);;
+    background: radial-gradient(50% 50% at 50% 50%, #ffe5eb 0, hsla(0, 0%, 100%, 0) 100%);
+    padding: 8px;
 }
-          
+.sticky-right {
+  position: sticky;
+  top: 90px; 
+}

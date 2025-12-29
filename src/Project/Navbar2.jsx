@@ -28,7 +28,7 @@ import LoginModal from "./LoginModal";
 import { useNavigate } from "react-router-dom";
 
 function  Navbar2(){
-  const [show, setShow] = useState(false);
+     const [show, setShow] = useState(false);
     const navigate = useNavigate();
     const [shortlistCount, setShortlistCount] = useState(0);
 useEffect(() => {

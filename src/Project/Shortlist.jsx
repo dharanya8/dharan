@@ -12,10 +12,13 @@ import Footer from '../Project/Footer';
 import { IoIosArrowForward } from "react-icons/io";
 import LoginModal from './LoginModal';
 import { RiDeleteBinLine } from "react-icons/ri";
+import { RxCross2 } from "react-icons/rx";
 
 function Shortlist() {
   const [items, setItems] = useState([]);
   const [openLogin, setOpenLogin] = useState(false);
+  const [showToast, setShowToast] = useState(false);
+
   const navigate = useNavigate();
 
   // Load shortlist from localStorage
@@ -26,15 +29,40 @@ function Shortlist() {
 
   // Remove an item from shortlist
   const removeItem = (name) => {
-    const updated = items.filter(item => item.name !== name);
-    setItems(updated);
-    localStorage.setItem("shortlist", JSON.stringify(updated));
-    window.dispatchEvent(new Event("shortlistUpdated"));
-  };
+  // remove item
+  const updated = items.filter(item => item.name !== name);
+  setItems(updated);
+  localStorage.setItem("shortlist", JSON.stringify(updated));
+
+  // 👇 popup show
+  setShowToast(true);
+
+  // 👇 3 sec apram hide
+  setTimeout(() => {
+    setShowToast(false);
+  }, 3000);
+};
 
   return (
     <div style={{ fontFamily: "inherit" }}>
       <Navbar1 />
+      {showToast && (
+  <div className="shortlist-toast">
+    <div className="toast-bar"></div>
+
+    <div className="toast-content">
+      <strong>Removed from Shortlist!</strong>
+      <p>This inventory has been removed from your shortlist</p>
+    </div>
+
+    <span
+      className="toast-close"
+      onClick={() => setShowToast(false)}
+    >
+      <RxCross2/>
+    </span>
+  </div>
+)}
       <div className="short" style={{ backgroundColor: "#f3f4f6", padding: "40px" }}>
         <div className="container containe">
           <div className="pt-2 fw-bold fs-4 list" style={{ marginLeft: "115px" }}>Shortlist</div>
@@ -69,52 +97,41 @@ function Shortlist() {
                         ))}
                       </Carousel>
                     </div>
-
-                    {/* CONTENT */}
                     <div className="shortlist-content position-relative">
-
                       {/* HEART (REMOVE) */}
                       <div className="wishlist-remove" onClick={() => removeItem(item.name)}>
-                        <RiDeleteBinLine color="white" size={20} />
+                      <RiDeleteBinLine color="white" size={20} />
                       </div>
-
                       <div style={{ cursor: "pointer" }}>
                         <h3 className="fw-bold London" style={{ fontSize: "18px" }}>{item.name}</h3>
                         <p className="text-muted London mb-2" style={{ fontWeight: "inherit", fontSize: "100%" }}>{item.location}</p>
-
                         {/* FEATURES */}
                         <div className="features mb-3">
                           <span className="London"><BsLightningCharge style={{ color: "#ed3a56", fontSize: "18px" }} /> Instant Booking</span>
                           <span className="London"><FaRegCircleCheck style={{ color: "#ed3a56", fontSize: "18px" }} /> Study Area</span>
                           <span className="London"><FaRegCircleCheck style={{ color: "#ed3a56", fontSize: "18px" }} /> Laundry Facility</span>
                         </div>
-
                         {/* PRICE + VIEW BUTTON */}
                         <div className="d-flex justify-content-between align-items-center">
                           <p className="mb-0">
                             From <strong>£{item.price}</strong> / week
                           </p>
                           <button
-  className="view-btn"
-  onClick={() => {
-    // 👇 shortlist item FULL data save
-    localStorage.setItem(
-      "selectedProperty",
-      JSON.stringify(item)
-    );
-
-    // 👇 where to go after login
-    localStorage.setItem(
-      "redirectAfterLogin",
-      "/viewcard"
-    );
-
-    setOpenLogin(true);
-  }}
->
-  View <IoIosArrowForward />
-</button>
-
+                          className="view-btn"
+                          onClick={() => {
+                          localStorage.setItem(
+                         "selectedProperty",
+                          JSON.stringify(item)
+                          );
+                          localStorage.setItem(
+                         "redirectAfterLogin",
+                         "/viewcard"
+                          );
+                         setOpenLogin(true);
+                         }}
+                        >
+                        View <IoIosArrowForward />
+                        </button>
                         </div>
                       </div>
                     </div>
@@ -122,7 +139,6 @@ function Shortlist() {
                 ))}
               </>
             )}
-
           </div>
         </div>
       </div>
