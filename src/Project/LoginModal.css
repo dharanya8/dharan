@@ -115,11 +115,18 @@
 .modal-backdrop {
   z-index: 9998 !important;
 }
-
-/* @media(max-width:768px){
-  .Modal {
-  z-index: 2000 !important;
+.model-text{
+  font-size: 14px;
 }
-
-
-} */
+.model-button{
+  width:100%;
+  border: 2px solid #888;
+}
+@media(max-width:560px){
+  .modal-content{
+    margin: 0 auto;
+  }
+  .model-btn{
+    width: 30% !important;
+  }
+}

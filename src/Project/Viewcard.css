@@ -20,7 +20,222 @@
     background: radial-gradient(50% 50% at 50% 50%, #ffe5eb 0, hsla(0, 0%, 100%, 0) 100%);
     padding: 8px;
 }
-.sticky-right {
-  position: sticky;
-  top: 90px; 
+.sticky-wrapper {
+  position: fixed;
+  top:90px;
+  width: 30%;
+}
+.view-carousel,
+.view-item,
+.view-img img {
+  width: 100%;
+}
+
+.view-img img {
+  height: auto;
+  max-height: 380px;
+  object-fit: cover;
+}
+.video-player {
+  width: 100%;
+  height: auto;
+}
+.carousel-text{
+    font-size: 13px;
+    height: 30px;
+}
+@media (min-width: 992px) and (max-width:1024px) {
+  .carousel-text{
+    font-size: 10px !important;
+    height: 30px !important ;
+  }
+} 
+@media (min-width: 768px) and (max-width:991px) {
+  .enquiry {
+    width: 100%;
+  }
+  .Droplist {
+    padding: 6px;
+  }
+  .fluid{
+    padding: 10px 16px !important;
+  }
+  .view-carousel{
+    height: 565px;
+  }
+  .view-item{
+    height: 565px;
+  }
+  .view-img img{
+    height: 565px ;
+    max-height: 565px !important;
+    object-fit: cover !important;
+  }
+  .sticky-wrapper{
+    position: static;
+    width: 100%;
+    margin-top: 20px;
+  }
+  .view-delete{
+    margin-left: 435px;
+  }
+  .enquiry{
+    margin-top: 15px !important;
+  }
+}
+@media (min-width:641px) and (max-width:767px){
+     .view-delete{
+         margin-left: 260px !important; 
+     }
+     .view-img img{
+    height: 335px ;
+    max-height: 355px !important;
+    object-fit: cover !important;
+  }
+  .enquiry{
+    margin-top: 20px !important;
+  }
+  .sticky-wrapper{
+    position: static;
+    width: 100%;
+    margin-top: 20px;
+  }
+    .view-carousel{
+        width: 95%;
+        max-height: 340px;
+        height: 340px;
+    }
+    .video-box{
+        margin-top: 20px;
+        margin-left: 15px;
+    }
+    .video-player{
+        width: 98% !important;
+    }
+    .view-image{
+        width: 95% !important;
+        margin-left: 15px;
+    }
+    .view-border{
+        width: 98% !important;
+    }
+}
+@media (max-width:640px){
+    .view-delete{
+         margin-left: 15px !important; 
+     }
+     .view-img img{
+    height: 335px ;
+    max-height: 355px !important;
+    object-fit: cover !important;
+  }
+  .enquiry{
+    margin-top: 20px !important;
+  }
+  .sticky-wrapper{
+    position: static;
+    width: 100%;
+    margin-top: 20px;
+  }
+    .view-carousel{
+        width: 95%;
+        max-height: 340px;
+        height: 340px;
+    }
+    .video-box{
+        margin-top: 20px;
+        margin-left: 15px;
+    }
+    .video-player{
+        width: 98% !important;
+    }
+    .view-image{
+        width: 95% !important;
+        margin-left: 15px;
+    }
+    .view-border{
+        width: 98% !important;
+    }
+    .fluid{
+        padding: 20px 15px !important;
+    }
+}
+@media (max-width:460px){
+    .view-carousel{
+        margin-left: 10px !important;
+    }
+    .video-box{
+        margin-left: 10px;
+    }
+    .view-delete{
+        margin-left: 40px !important;
+    }
+}
+@media (min-width:425px) and (max-width:459px){
+    .view-carousel{
+        margin-left: 10px !important;
+    }
+    .video-box{
+        margin-left: 10px;
+    }
+    .view-delete{
+        margin-left: 8px !important;
+    }
+}
+@media (min-width:414px) and (max-width:424px){
+    .view-delete{
+        margin-left: 8px !important;
+    }
+}
+@media (min-width:375px) and (max-width:413px){
+    .view-delete{
+        margin-left: 28px !important;
+    }
+    .view-carousel{
+        margin-left: 8px !important;
+    }
+    .view-image{
+        margin-left: 8px !important;
+    }
+    .carousel-text{
+        font-size: 11px !important;
+    }
+    .view-h5{
+        font-size: 17px !important;
+    }
+}
+@media (min-width:360px) and (max-width:374px){
+    .view-delete{
+        margin-left: 12px !important;
+    }
+    .view-carousel{
+        margin-left: 8px !important;
+    }
+    .view-image{
+        margin-left: 8px !important;
+    }
+    .carousel-text{
+        font-size: 11px !important;
+    }
+    .view-h5{
+        font-size: 15px !important;
+    }
+}
+@media (min-width:320px) and (max-width:359px){
+    .view-delete{
+        margin-left: 4px !important;
+    }
+    .view-carousel{
+        margin-left: 8px !important;
+    }
+    .view-image{
+        margin-left: 8px !important;
+    }
+    .carousel-text{
+        font-size: 9px !important;
+        margin-top: 10px !important  ;
+    }
+    .view-h5{
+        font-size: 15px;
+    }
 }

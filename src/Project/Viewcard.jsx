@@ -129,21 +129,21 @@ const toggleDropdown = (index) => {
   return (
     <>
       <Navbar1 />
-      <Container fluid className="px-5 py-4 bg-light"style={{fontFamily:"inherit"}}>
-        <Row>
+      <Container fluid className=" bg-light fluid"style={{fontFamily:"inherit",padding:"25px 40px"}}>
+        <Row className="align-items-center">
           {/* LEFT SIDE */}
-          <Col lg={8}>
+          <Col lg={8} md={12} sm={12}>
             <Card className="border-0 shadow-sm position-relative"style={{padding:"20px 0px"}}>
                 <div className="view-img">
               <Row className="mt-3">
-  <Col lg={9} md={6}>
+  <Col lg={9} md={7}>
     <Carousel interval={null} className="ms-3 view-carousel">
       {(item.images || [item.image]).map((img, index) => (
-        <Carousel.Item key={index}>
+        <Carousel.Item key={index}className="view-item">
           <img
             src={img}
             alt="property"
-            className="d-block w-100 rounded"
+            className="d-block w-100 rounded "
           />
         </Carousel.Item>
       ))}
@@ -151,7 +151,7 @@ const toggleDropdown = (index) => {
   </Col>
 
   {/* RIGHT - VIDEO */}
-  <Col lg={3} md={4} style={{cursor:"pointer"}}>
+  <Col lg={3} md={5} style={{cursor:"pointer"}}>
     <div className="video-box">
       <video
         src={viewvideo}
@@ -162,10 +162,10 @@ const toggleDropdown = (index) => {
       />
     </div>
     <div>
-      <Image src={viewimg} className="mt-3" style={{width:"90%",height:"50%",borderRadius:"10px"}}></Image>
+      <Image src={viewimg} className="mt-3 view-image" style={{width:"90%",height:"50%",borderRadius:"10px"}}></Image>
     </div>
            <div>
-           <Image src={viewimg2}className="mt-3"style={{width:"90%",height:"50%",borderRadius:"10px"}}></Image>
+           <Image src={viewimg2}className="mt-3 view-image"style={{width:"90%",height:"50%",borderRadius:"10px"}}></Image>
             </div>
             </Col>
              </Row>
@@ -195,7 +195,7 @@ const toggleDropdown = (index) => {
             </div>
             <div className="d-flex flex-wrap gap-3 mt-3 ms-3 "style={{cursor:"pointer"}}>
             {Object.entries(view.features).map(([text, icon], index) => (
-            <span key={index} className="border rounded-pill px-3 py-1">
+            <span key={index} className="border rounded-pill px-3 py-1 view-border">
             {React.cloneElement(icon, {
             color: "#ed3a56",
             size: 19,
@@ -208,12 +208,13 @@ const toggleDropdown = (index) => {
           </Col>
 
           {/* RIGHT SIDE */}
-          <Col lg={4} className="h-50 position-sticky"> 
-          <Card className="shadow-sm border-0 p-3 sticky-right"> 
+          <Col lg={4} md={12} sm={12} className=""> 
+          <div className="sticky-wrapper">
+          <Card className="shadow-sm border-0 p-3"> 
             <div className="d-flex justify-content-between align-items-center"> 
-            <h5 className="fw-bold mb-0"> {item.name} </h5>
+            <h5 className="fw-bold mb-0 view-h5"> {item.name} </h5>
             <div
-              className="wishlist-heart  position-absolute  d-flex justify-content-center align-items-center"
+              className="wishlist-heart view-delete  position-absolute  d-flex justify-content-center align-items-center"
               onClick={() => handleAddToWishlist(item)}
               style={{
                 backgroundColor: wishlist.some(p => p.name === item.name)
@@ -235,21 +236,20 @@ const toggleDropdown = (index) => {
             <Button  className="mt-2 py-2 enquiry"style={{border:"2px solid #ed3a56",color:"#ed3a56"}} > Enquire Now </Button>
             <div className="bg-light rounded-pill mt-3">
               <Carousel indicators={false}className="">
-            <Carousel.Item style={{fontSize:"13px",height:"30px"}}className="mt-2 ms-3">
+            <Carousel.Item className="mt-2 ms-3 carousel-text">
             <IoMdHeart className="text-primary"style={{fontSize:"16px"
             }}/> 558 students shortlisted this property in last 30 days
               </Carousel.Item>
-            <Carousel.Item style={{fontSize:"13px",height:"30px"}}className="mt-2 ms-3">
+            <Carousel.Item style={{fontSize:"13px",height:"30px"}}className="mt-2 ms-3 carousel-text">
              <FaPhoneAlt className="text-primary"style={{fontSize:"16px"}}/> 11 students enquired about this property in last 15 days
             </Carousel.Item>
               </Carousel>
              </div>
              </Card>
-                 <Card className="shadow-sm border-0 p-3 mt-3 sticky-right">
-                  
+                 <Card className="shadow-sm border-0 p-3 mt-3 ">
+
                   {infoList.map((item, index) => (
                   <div key={index} className="mb-2">
-      
           <div
             className="d-flex justify-content-between align-items-center cursor-pointer"
             onClick={() => toggleDropdown(index)}
@@ -273,12 +273,12 @@ const toggleDropdown = (index) => {
                 </div>
                  ))}
                 </Card>
-               
+                </div>
                  </Col>
         </Row>
-        <div className="mt-4">
+        {/* <div className="mt-4">
           <Roomcard />
-        </div>
+        </div> */}
       </Container>
     </>
   );

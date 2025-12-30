@@ -5,8 +5,9 @@ import { MdClose } from "react-icons/md";
 import { FaFacebook, FaApple, FaEnvelope, FaChevronDown } from "react-icons/fa";
 import "./LoginModal.css";
 // import Viewcard from "./Viewcard";
+import Image from 'react-bootstrap/Image';
 import { useNavigate } from "react-router-dom";
-
+import facebook from '../assets/facebooklog.svg'
 function LoginModal({ show, onClose }) {
 const [step, setStep] = useState("login");
 const [otp, setOtp] = useState("");
@@ -199,39 +200,39 @@ navigate(redirect || "/");
     </Button>
   </>
 )}
-
         <div className="text-center my-3 text-secondary">or log in using</div>
 
         {/* Social Login */}
         <div className="d-flex flex-column gap-2">
           <Button
-            variant="outline-secondary"
-            className="d-flex align-items-center justify-content-center gap-2 continue"
+            variant="outline-dark"
+            className="d-flex align-items-center gap-2 model-button"
           >
-            <FaEnvelope /> Continue with Email
+            <FaEnvelope/> 
+            <div className="model-text"style={{marginLeft:"86px"}}>
+             Continue with Email</div>
           </Button>
-
           <Button
-            variant="outline-primary"
-            className="d-flex align-items-center justify-content-center gap-2"
+            variant="outline-dark"
+            className="d-flex model-button align-items-center gap-2"
             onClick={() =>
               (window.location.href = "https://www.facebook.com/login")
             }
           >
-            <FaFacebook /> Continue with Facebook
+          <Image src={facebook} style={{width:"6%",}} /> 
+            <div className="model-text"style={{marginLeft:"80px"}}>
+            Continue with Facebook</div>
           </Button>
-
           <Button
             variant="outline-dark"
-            className="d-flex align-items-center justify-content-center gap-2"
+            className="d-flex model-button align-items-center   gap-2"
             onClick={() =>
               (window.location.href = "https://appleid.apple.com/sign-in")
             }
           >
-            <FaApple /> Continue with Apple
+            <FaApple /> <div className="model-text"style={{marginLeft:"86px"}}>Continue with Apple</div>
           </Button>
         </div>
-
         <p className="small text-center mt-3 text-muted">
           By signing in, you agree to our{" "}
           <a href="#">Privacy Policy</a> and{" "}
