@@ -3,8 +3,16 @@ import { Card, Row, Col, Button, Badge } from "react-bootstrap";
 import { BsCheckCircle } from "react-icons/bs";
 import { MdOutlineBathtub, MdKitchen, MdHeight } from "react-icons/md";
 import { IoBedOutline } from "react-icons/io5";
+import './Roomcard.css';
+import Booknow from "./Booknow";
 function RoomCard() {
+  const [selectedPrice, setSelectedPrice] = useState(null);
+  
   const [item, setItem] = useState(null);
+const [showBookNow, setShowBookNow] = useState(false);
+
+const handleOpen = () => setShowBookNow(true);
+const handleClose = () => setShowBookNow(false);
 
   useEffect(() => {
     const data = localStorage.getItem("selectedProperty");
@@ -12,12 +20,10 @@ function RoomCard() {
       setItem(JSON.parse(data));
     }
   }, []);
-
   if (!item) return null;
-
   return (
     <div>
-    <Card className="shadow-sm border-0  mb-4" style={{ width: "66%" }}>     
+    <Card className="shadow-sm border-0 Roomcard mb-4" style={{ width: "66%" }}>     
       {/* TOP SECTION */}
       <Row className="p-3">
         {/* IMAGE */}
@@ -29,7 +35,7 @@ function RoomCard() {
           />
         </Col>
         {/* CONTENT */}
-        <Col md={9}>
+        <Col md={9}className="Secondroom">
           <h5 className="fw-bold">{item.name}</h5>
           <div className="d-flex align-items-center gap-2 mb-2">
             <Badge bg="success">Available from: 27 Dec, 2025</Badge>
@@ -68,7 +74,11 @@ function RoomCard() {
         </Col>
         <Col md={4} className="text-md-end mt-3 mt-md-0">
           <p className="fw-bold mb-1">£350/week</p>
-          <Button className="px-4" style={{ background: "#ed3a56", border: "none" }}>
+          <Button
+            className="px-4"
+            style={{ background: "#ed3a56", border: "none" }}
+            onClick={handleOpen}
+           >
             Book
           </Button>
         </Col>
@@ -98,7 +108,7 @@ function RoomCard() {
         </Col>
       </Row>
     </Card>
-    <Card className="shadow-sm border-0  mb-4" style={{ width: "66%" }}>     
+    <Card className="shadow-sm border-0 Roomcard mb-4" style={{ width: "66%" }}>     
       {/* TOP SECTION */}
       <Row className="p-3">
         {/* IMAGE */}
@@ -110,12 +120,12 @@ function RoomCard() {
           />
         </Col>
         {/* CONTENT */}
-        <Col md={9}>
+        <Col md={9} className="Secondroom">
           <h5 className="fw-bold">{item.name}</h5>
           <div className="d-flex align-items-center gap-2 mb-2">
-            <Badge bg="success">Available from: 27 Dec, 2025</Badge>
+            <Badge bg="success">Available from: 16 Nov, 2025</Badge>
             <span className="text-muted">
-              Starting From: <strong>£350/week</strong>
+              Starting From: <strong>£380/week</strong>
             </span>
           </div>
           <div className="d-flex flex-wrap gap-4 text-muted mb-2">
@@ -135,20 +145,20 @@ function RoomCard() {
           <div className="d-flex gap-5 text-muted">
             <div>
               <small>Duration</small>
-              <p className="fw-semibold mb-0">33 weeks</p>
+              <p className="fw-semibold mb-0">30 weeks</p>
             </div>
             <div>
               <small>Available From</small>
-              <p className="fw-semibold mb-0">27 Dec, 2025</p>
+              <p className="fw-semibold mb-0">16 Nov, 2025</p>
             </div>
             <div>
               <small>Move Out</small>
-              <p className="fw-semibold mb-0">15 Aug, 2026</p>
+              <p className="fw-semibold mb-0">13 sep, 2026</p>
             </div>
           </div>
         </Col>
         <Col md={4} className="text-md-end mt-3 mt-md-0">
-          <p className="fw-bold mb-1">£350/week</p>
+          <p className="fw-bold mb-1">£380/week</p>
           <Button className="px-4" style={{ background: "#ed3a56", border: "none" }}>
             Book
           </Button>
@@ -167,18 +177,23 @@ function RoomCard() {
             </div>
             <div>
               <small>Move Out</small>
-              <p className="fw-semibold mb-0">15 Sep, 2026</p>
+              <p className="fw-semibold mb-0">15 Nov, 2026</p>
             </div>
           </div>
         </Col>
         <Col md={4} className="text-md-end mt- mt-md-0">
-          <p className="fw-bold mb-1">£355/week</p>
+          <p className="fw-bold mb-1">£385/week</p>
           <Button className="px-4" style={{ background: "#ed3a56", border: "none" }}>
             Book
           </Button>
         </Col>
       </Row>
     </Card>
+    <Booknow
+      show={showBookNow}
+      handleClose={handleClose}
+      item={item}
+  />
     </div>
   );
 }

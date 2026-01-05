@@ -276,9 +276,9 @@ const toggleDropdown = (index) => {
                 </div>
                  </Col>
         </Row>
-        {/* <div className="mt-4">
+        <div className="mt-4">
           <Roomcard />
-        </div> */}
+        </div>
       </Container>
     </>
   );

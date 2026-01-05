@@ -1,0 +1,35 @@
+@media(max-width:768px){
+    .Roomcard{
+        width: 100% !important;
+    }
+}
+@media(min-width:640px) and (max-width:767px){
+    .Secondroom{
+        margin-top: 12%;
+    }
+}
+@media(min-width:560px) and (max-width:639px){
+    .Secondroom{
+        margin-top: 12%;
+    }
+}
+@media(min-width:460px) and (max-width:559px){
+    .Secondroom{
+        margin-top: 12%;
+    }
+}
+@media(min-width:414px) and (max-width:459px){
+    .Secondroom{
+        margin-top: 12%;
+    }
+}
+@media(min-width:360px) and (max-width:413px){
+    .Secondroom{
+        margin-top: 12%;
+    }
+}
+@media(min-width:320px) and (max-width:359px){
+    .Secondroom{
+        margin-top: 12%;
+    }
+}

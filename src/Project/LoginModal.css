@@ -126,7 +126,31 @@
   .modal-content{
     margin: 0 auto;
   }
-  .model-btn{
-    width: 30% !important;
+}
+@media(max-width:425px){
+  .floating-label label{
+    font-size: 15px;
+  }
+  .model-text{
+    margin-left: 45px !important;
+  }
+}
+@media(min-width:360px) and (max-width:378px){
+  .floating-label label {
+    font-size: 12px;
+  }
+  .model-text{
+    margin-left: 38px !important;
+  }
+}
+@media(min-width:320px) and (max-width:359px){
+  .floating-label label{
+    font-size: 11px;
+  }
+  .modal-body{
+    padding: 10px !important;
+  }
+  .model-text{
+    margin-left: 20px !important;
   }
 }

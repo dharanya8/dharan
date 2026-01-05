@@ -63,7 +63,7 @@ navigate(redirect || "/");
 
   return (
     <Modal show={show} onHide={onClose} centered style={{fontFamily:"inherit"}}>
-      <Modal.Body className="p-4 Model position-relative">
+      <Modal.Body className=" Model position-relative"style={{padding:"30px"}}>
         {/* Close Button */}
         <IoClose
           size={26}
@@ -206,7 +206,7 @@ navigate(redirect || "/");
         <div className="d-flex flex-column gap-2">
           <Button
             variant="outline-dark"
-            className="d-flex align-items-center gap-2 model-button"
+            className="d-flex align-items-center gap-2 model-button"style={{border:"2px solid #ccc"}}
           >
             <FaEnvelope/> 
             <div className="model-text"style={{marginLeft:"86px"}}>
@@ -214,7 +214,7 @@ navigate(redirect || "/");
           </Button>
           <Button
             variant="outline-dark"
-            className="d-flex model-button align-items-center gap-2"
+            className="d-flex model-button align-items-center gap-2"style={{border:"2px solid #ccc"}}
             onClick={() =>
               (window.location.href = "https://www.facebook.com/login")
             }
@@ -225,7 +225,7 @@ navigate(redirect || "/");
           </Button>
           <Button
             variant="outline-dark"
-            className="d-flex model-button align-items-center   gap-2"
+            className="d-flex model-button align-items-center gap-2"style={{border:"2px solid #ccc"}}
             onClick={() =>
               (window.location.href = "https://appleid.apple.com/sign-in")
             }
