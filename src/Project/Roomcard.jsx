@@ -1,18 +1,41 @@
 import React, { useEffect, useState } from "react";
 import { Card, Row, Col, Button, Badge } from "react-bootstrap";
-import { BsCheckCircle } from "react-icons/bs";
-import { MdOutlineBathtub, MdKitchen, MdHeight } from "react-icons/md";
 import { IoBedOutline } from "react-icons/io5";
-import './Roomcard.css';
+import { MdOutlineBathtub, MdKitchen } from "react-icons/md";
+import "./Roomcard.css";
 import Booknow from "./Booknow";
-function RoomCard() {
-  const [selectedPrice, setSelectedPrice] = useState(null);
-  
-  const [item, setItem] = useState(null);
-const [showBookNow, setShowBookNow] = useState(false);
 
-const handleOpen = () => setShowBookNow(true);
-const handleClose = () => setShowBookNow(false);
+function RoomCard() {
+  const rooms = [
+    {
+      id: 1,
+      duration: "33 weeks",
+      moveIn: "27 Dec, 2025",
+      moveOut: "15 Aug, 2026",
+      price: "£350/week",
+    },
+    {
+      id: 2,
+      duration: "33 weeks",
+      moveIn: "12 Sep, 2025",
+      moveOut: "15 Sep, 2026",
+      price: "£355/week",
+    },
+  ];
+
+  const [item, setItem] = useState(null);
+  const [selectedRoom, setSelectedRoom] = useState(null);
+  const [showBookNow, setShowBookNow] = useState(false);
+
+  const handleOpen = (room) => {
+    setSelectedRoom(room);
+    setShowBookNow(true);
+  };
+
+  const handleClose = () => {
+    setShowBookNow(false);
+    setSelectedRoom(null);
+  };
 
   useEffect(() => {
     const data = localStorage.getItem("selectedProperty");
@@ -20,181 +43,82 @@ const handleClose = () => setShowBookNow(false);
       setItem(JSON.parse(data));
     }
   }, []);
+
   if (!item) return null;
+
   return (
-    <div>
-    <Card className="shadow-sm border-0 Roomcard mb-4" style={{ width: "66%" }}>     
-      {/* TOP SECTION */}
-      <Row className="p-3">
-        {/* IMAGE */}
-        <Col md={3}>
-          <img
-            src={item.images ? item.images[0] : item.image}
-            alt={item.name}
-            className="img-fluid rounded"style={{height:"115%",cursor:"pointer"}}
-          />
-        </Col>
-        {/* CONTENT */}
-        <Col md={9}className="Secondroom">
-          <h5 className="fw-bold">{item.name}</h5>
-          <div className="d-flex align-items-center gap-2 mb-2">
-            <Badge bg="success">Available from: 27 Dec, 2025</Badge>
-            <span className="text-muted">
-              Starting From: <strong>£350/week</strong>
-            </span>
-          </div>
-          <div className="d-flex flex-wrap gap-4 text-muted mb-2">
-            <span><IoBedOutline /> Shared Room</span>
-            <span><MdOutlineBathtub /> Shared Bathroom</span>
-            <span><MdKitchen /> Shared Kitchen</span>
-          </div>
-          <a href="#" className="text-danger fw-semibold text-decoration-none"style={{cursor:"pointer"}}>
-            View More Details →
-          </a>
-        </Col>
-      </Row>
-      <hr />
-      {/* BOTTOM */}
-      <Row className="align-items-center"style={{padding:"0px 20px",cursor:"pointer"}}>
-        <Col md={8}>
-          <div className="d-flex gap-5 text-muted">
-            <div>
-              <small>Duration</small>
-              <p className="fw-semibold mb-0">33 weeks</p>
+    <>
+      <Card className="shadow-sm border-0 Roomcard mb-4" style={{ width: "66%" }}>
+        {/* TOP */}
+        <Row className="p-3">
+          <Col md={3}>
+            <img
+              src={item.images?.[0] || item.image}
+              alt={item.name}
+              className="img-fluid rounded"
+            />
+          </Col>
+
+          <Col md={9}>
+            <h5 className="fw-bold">{item.name}</h5>
+            <Badge bg="success" className="mb-2">
+              Available
+            </Badge>
+
+            <div className="d-flex gap-4 text-muted mb-2">
+              <span><IoBedOutline /> Shared Room</span>
+              <span><MdOutlineBathtub /> Shared Bathroom</span>
+              <span><MdKitchen /> Shared Kitchen</span>
             </div>
-            <div>
-              <small>Available From</small>
-              <p className="fw-semibold mb-0">27 Dec, 2025</p>
-            </div>
-            <div>
-              <small>Move Out</small>
-              <p className="fw-semibold mb-0">15 Aug, 2026</p>
-            </div>
-          </div>
-        </Col>
-        <Col md={4} className="text-md-end mt-3 mt-md-0">
-          <p className="fw-bold mb-1">£350/week</p>
-          <Button
-            className="px-4"
-            style={{ background: "#ed3a56", border: "none" }}
-            onClick={handleOpen}
-           >
-            Book
-          </Button>
-        </Col>
-      </Row><hr/> 
-      <Row className="align-items-center"style={{padding:"0px 20px",paddingBottom:"20px",cursor:"pointer"}}>
-        <Col md={8}>
-          <div className="d-flex gap-5 text-muted">
-            <div>
-              <small>Duration</small>
-              <p className="fw-semibold mb-0">33 weeks</p>
-            </div>
-            <div>
-              <small>Move In</small>
-              <p className="fw-semibold mb-0">12 Sep, 2025</p>
-            </div>
-            <div>
-              <small>Move Out</small>
-              <p className="fw-semibold mb-0">15 Sep, 2026</p>
-            </div>
-          </div>
-        </Col>
-        <Col md={4} className="text-md-end mt- mt-md-0">
-          <p className="fw-bold mb-1">£355/week</p>
-          <Button className="px-4" style={{ background: "#ed3a56", border: "none" }}>
-            Book
-          </Button>
-        </Col>
-      </Row>
-    </Card>
-    <Card className="shadow-sm border-0 Roomcard mb-4" style={{ width: "66%" }}>     
-      {/* TOP SECTION */}
-      <Row className="p-3">
-        {/* IMAGE */}
-        <Col md={3}>
-          <img
-            src={item.images ? item.images[0] : item.image}
-            alt={item.name}
-            className="img-fluid rounded"style={{height:"115%",cursor:"pointer"}}
-          />
-        </Col>
-        {/* CONTENT */}
-        <Col md={9} className="Secondroom">
-          <h5 className="fw-bold">{item.name}</h5>
-          <div className="d-flex align-items-center gap-2 mb-2">
-            <Badge bg="success">Available from: 16 Nov, 2025</Badge>
-            <span className="text-muted">
-              Starting From: <strong>£380/week</strong>
-            </span>
-          </div>
-          <div className="d-flex flex-wrap gap-4 text-muted mb-2">
-            <span><IoBedOutline /> Shared Room</span>
-            <span><MdOutlineBathtub /> Shared Bathroom</span>
-            <span><MdKitchen /> Shared Kitchen</span>
-          </div>
-          <a href="#" className="text-danger fw-semibold text-decoration-none"style={{cursor:"pointer"}}>
-            View More Details →
-          </a>
-        </Col>
-      </Row>
-      <hr />
-      {/* BOTTOM */}
-      <Row className="align-items-center"style={{padding:"0px 20px",cursor:"pointer"}}>
-        <Col md={8}>
-          <div className="d-flex gap-5 text-muted">
-            <div>
-              <small>Duration</small>
-              <p className="fw-semibold mb-0">30 weeks</p>
-            </div>
-            <div>
-              <small>Available From</small>
-              <p className="fw-semibold mb-0">16 Nov, 2025</p>
-            </div>
-            <div>
-              <small>Move Out</small>
-              <p className="fw-semibold mb-0">13 sep, 2026</p>
-            </div>
-          </div>
-        </Col>
-        <Col md={4} className="text-md-end mt-3 mt-md-0">
-          <p className="fw-bold mb-1">£380/week</p>
-          <Button className="px-4" style={{ background: "#ed3a56", border: "none" }}>
-            Book
-          </Button>
-        </Col>
-      </Row><hr/> 
-      <Row className="align-items-center"style={{padding:"0px 20px",paddingBottom:"20px",cursor:"pointer"}}>
-        <Col md={8}>
-          <div className="d-flex gap-5 text-muted">
-            <div>
-              <small>Duration</small>
-              <p className="fw-semibold mb-0">33 weeks</p>
-            </div>
-            <div>
-              <small>Move In</small>
-              <p className="fw-semibold mb-0">12 Sep, 2025</p>
-            </div>
-            <div>
-              <small>Move Out</small>
-              <p className="fw-semibold mb-0">15 Nov, 2026</p>
-            </div>
-          </div>
-        </Col>
-        <Col md={4} className="text-md-end mt- mt-md-0">
-          <p className="fw-bold mb-1">£385/week</p>
-          <Button className="px-4" style={{ background: "#ed3a56", border: "none" }}>
-            Book
-          </Button>
-        </Col>
-      </Row>
-    </Card>
-    <Booknow
-      show={showBookNow}
-      handleClose={handleClose}
-      item={item}
-  />
-    </div>
+          </Col>
+        </Row>
+
+        <hr />
+
+        {/* ROOMS LIST */}
+        {rooms.map((room) => (
+          <React.Fragment key={room.id}>
+            <Row className="px-4 align-items-center">
+              <Col md={8}>
+                <div className="d-flex gap-5 text-muted">
+                  <div>
+                    <small>Duration</small>
+                    <p className="fw-semibold mb-0">{room.duration}</p>
+                  </div>
+                  <div>
+                    <small>Move In</small>
+                    <p className="fw-semibold mb-0">{room.moveIn}</p>
+                  </div>
+                  <div>
+                    <small>Move Out</small>
+                    <p className="fw-semibold mb-0">{room.moveOut}</p>
+                  </div>
+                </div>
+              </Col>
+
+              <Col md={4} className="text-md-end">
+                <p className="fw-bold mb-1">{room.price}</p>
+                <Button
+                  style={{ background: "#ed3a56", border: "none" }}
+                  onClick={() => handleOpen(room)}
+                >
+                  Book
+                </Button>
+              </Col>
+            </Row>
+            <hr />
+          </React.Fragment>
+        ))}
+      </Card>
+
+      {/* BOOK NOW MODAL */}
+      <Booknow
+        show={showBookNow}
+        handleClose={handleClose}
+        item={item}
+        room={selectedRoom}
+      />
+    </>
   );
 }
 
