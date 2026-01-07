@@ -10,6 +10,7 @@ import Layout from "./Layout";
 import London from "./Cities/London";
 import Shortlist from "./Shortlist";
 import Viewcard from "./Viewcard";
+import Booknow from "./Booknow";
 function App() {
   return (
     <>
@@ -21,7 +22,7 @@ function App() {
         <Route path="/university/:universityName" element={<Universitypage />} />
         <Route path="/shortlist" element={<Shortlist />} />
         <Route path="/viewcard" element={<Viewcard />} />
-
+        <Route path="/Booknow"element={<Booknow/>}/>
       </Routes>
     </>
   );

@@ -4,6 +4,7 @@ import { IoBedOutline } from "react-icons/io5";
 import { MdOutlineBathtub, MdKitchen } from "react-icons/md";
 import "./Roomcard.css";
 import Booknow from "./Booknow";
+import { move } from "formik";
 
 function RoomCard() {
   const rooms = [
@@ -21,6 +22,20 @@ function RoomCard() {
       moveOut: "15 Sep, 2026",
       price: "£355/week",
     },
+    // {
+    //   id:3,
+    //   duration:"35 weeks",
+    //   moveIn:"14 Nov, 2025",
+    //   moveOut:"13 Oct, 2026",
+    //   price: "£360/week",
+    // },
+    // {
+    //   id:4,
+    //   duration:"30 weeks",
+    //   moveIn:"16 Nov, 2025",
+    //   moveOut:"13 Sep, 2026",
+    //   price: "£350/week",
+    // }
   ];
 
   const [item, setItem] = useState(null);
@@ -70,11 +85,10 @@ function RoomCard() {
               <span><MdOutlineBathtub /> Shared Bathroom</span>
               <span><MdKitchen /> Shared Kitchen</span>
             </div>
+            <a href="#" className="text-danger fw-semibold text-decoration-none"style={{cursor:"pointer"}}> View More Details → </a>
           </Col>
         </Row>
-
         <hr />
-
         {/* ROOMS LIST */}
         {rooms.map((room) => (
           <React.Fragment key={room.id}>
@@ -95,7 +109,6 @@ function RoomCard() {
                   </div>
                 </div>
               </Col>
-
               <Col md={4} className="text-md-end">
                 <p className="fw-bold mb-1">{room.price}</p>
                 <Button
@@ -106,11 +119,10 @@ function RoomCard() {
                 </Button>
               </Col>
             </Row>
-            <hr />
+          <hr/>
           </React.Fragment>
         ))}
       </Card>
-
       {/* BOOK NOW MODAL */}
       <Booknow
         show={showBookNow}

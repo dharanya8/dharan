@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Modal, Button } from "react-bootstrap";
 import { IoClose } from "react-icons/io5";
 import { MdClose } from "react-icons/md";
@@ -12,34 +12,10 @@ function LoginModal({ show, onClose }) {
 const [step, setStep] = useState("login");
 const [otp, setOtp] = useState("");
 const [error, setError] = useState("");
-const [attempts, setAttempts] = useState(0);
+const [mobile, setMobile] = useState("");
+const [open, setOpen] = useState(false);
 const navigate = useNavigate();
-const handleContinue = () => {
-  if (!mobile || !selectedCode.code) return;
-
-  setStep("otp"); 
-};
-
- const handleVerifyOtp = () => {
-  // user any 6 digit number enter panna podhum
-  if (/^\d{6}$/.test(otp)) {
-    setError("");
-    onClose();
-    const redirect = localStorage.getItem("redirectAfterLogin");
-navigate(redirect || "/");
- 
-    // navigate("/viewcard");
-  } else {
-    setError("Please enter 6 digit OTP");
-  }
-};
-  const [mobile, setMobile] = useState("");
-  const [open, setOpen] = useState(false);
-
-  const [isCodeFocused, setIsCodeFocused] = useState(false);
-  const [isMobileFocused, setIsMobileFocused] = useState(false);
-
-  const [selectedCode, setSelectedCode] = useState({
+const [selectedCode, setSelectedCode] = useState({
     code: "+91",
     country: "India",
   });
@@ -61,6 +37,27 @@ navigate(redirect || "/");
     { code: "+52", country: "Mexico" },
   ];
 
+const handleContinue = () => {
+  if (!mobile || !selectedCode.code) return;
+  setStep("otp"); 
+};
+
+ const handleVerifyOtp = () => {
+  if (/^\d{6}$/.test(otp)) {
+    localStorage.setItem("isLoggedIn", "true");
+    window.dispatchEvent(new Event("loginStatusChanged"));
+    setError("");
+    onClose();
+    const redirect = localStorage.getItem("redirectAfterLogin");
+    navigate(redirect || "/");
+  } else {
+    setError("Please enter 6 digit OTP");
+  }
+};
+
+  const [isCodeFocused, setIsCodeFocused] = useState(false);
+  const [isMobileFocused, setIsMobileFocused] = useState(false);
+  
   return (
     <Modal show={show} onHide={onClose} centered style={{fontFamily:"inherit"}}>
       <Modal.Body className=" Model position-relative"style={{padding:"30px"}}>

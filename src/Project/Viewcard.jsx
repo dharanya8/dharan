@@ -30,7 +30,12 @@ import { PiCalendarCheckLight } from "react-icons/pi";
 import { BsShieldCheck } from "react-icons/bs";
 import { IoIosArrowUp,IoIosArrowDown  } from "react-icons/io";
 import Roomcard from './Roomcard';
+import { useNavigate } from "react-router-dom";
+import Booknow from "./Booknow";
 function Viewcard() {
+    const navigate = useNavigate();
+      const [show, setShow] = useState(false);
+    
      const view={
         distance: "8.8 mi from City Center",
         travel: {
@@ -232,8 +237,19 @@ const toggleDropdown = (index) => {
               />
             </div>
             </div> 
-            {/* <Button className="mt-3 py-2" style={{ backgroundColor: "#ed3a56", border: "none" }} > View Rooms </Button>  */}
-            <Button  className="mt-2 py-2 enquiry"style={{border:"2px solid #ed3a56",color:"#ed3a56"}} > Enquire Now </Button>
+           {/* <Button className="mt-3 py-2" style={{ backgroundColor: "#ed3a56", border: "none" }} > View Rooms </Button>  */}
+           <Button
+  onClick={() => {
+    localStorage.setItem("selectedProperty", JSON.stringify(item));
+    navigate("/Booknow");
+  }}
+  className="mt-2 py-2 enquiry"
+  style={{ border: "2px solid #ed3a56", color: "#ed3a56" }}
+>
+  Enquire Now
+</Button>
+            <Booknow show={show} onClose={() => setShow(false)} />
+
             <div className="bg-light rounded-pill mt-3">
               <Carousel indicators={false}className="">
             <Carousel.Item className="mt-2 ms-3 carousel-text">

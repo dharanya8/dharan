@@ -28,35 +28,59 @@ import Search from "../Search";
 // import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function  Navbar2(){
+function Navbar2() {
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    localStorage.getItem("isLoggedIn") === "true"
+  );
+  useEffect(() => {
+    const handleLoginChange = () => {
+      setIsLoggedIn(localStorage.getItem("isLoggedIn") === "true");
+    };
+
+    window.addEventListener("loginStatusChanged", handleLoginChange);
+
+    return () => {
+      window.removeEventListener("loginStatusChanged", handleLoginChange);
+    };
+  }, []);
+  const handleLogout = () => {
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("shortlist");
+
+    setShortlistCount(0);
+    setIsLoggedIn(false);
+    window.dispatchEvent(new Event("loginStatusChanged"));
+    navigate("/");
+  };
   const [show, setShow] = useState(false);
-    const navigate = useNavigate();
-        const [shortlistCount, setShortlistCount] = useState(0);
-    useEffect(() => {
-      const updateCount = () => {
-        const list = JSON.parse(localStorage.getItem("shortlist")) || [];
-        setShortlistCount(list.length);
-      };
-    
-      updateCount();
-  window.addEventListener("shortlistUpdated", updateCount);
-      return () => {
-    window.removeEventListener("shortlistUpdated", updateCount);
-      };
-    }, []);
-  return(
-    <div className="" style={{height:"65px",
-       position: "sticky",
-         top: 0,
-         zIndex:1050,
-         backgroundColor: "white",
-         borderBottom:"1px Solid #e5e7eb"
+  const navigate = useNavigate();
+  const [shortlistCount, setShortlistCount] = useState(0);
+  useEffect(() => {
+    const updateCount = () => {
+      const list = JSON.parse(localStorage.getItem("shortlist")) || [];
+      setShortlistCount(list.length);
+    };
+
+    updateCount();
+    window.addEventListener("shortlistUpdated", updateCount);
+    return () => {
+      window.removeEventListener("shortlistUpdated", updateCount);
+    };
+  }, []);
+  return (
+    <div className="" style={{
+      height: "65px",
+      position: "sticky",
+      top: 0,
+      zIndex: 1050,
+      backgroundColor: "white",
+      borderBottom: "1px Solid #e5e7eb"
     }}>
-      
-      <Navbar expand="lg" className="navbar text-dark "sticky="top"style={{
-        
+
+      <Navbar expand="lg" className="navbar text-dark " sticky="top" style={{
+
       }}>
-        <Navbar.Brand  className="ms-3 ms-md-3 mb-5 align">
+        <Navbar.Brand className="ms-3 ms-md-3 mb-5 align">
           <Image src={amber} onClick={() => navigate("/")} alt="Amber Logo" className="ms-1 ms-md-4 mt-2 no-highlight" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbar-nav" />
@@ -77,12 +101,12 @@ function  Navbar2(){
                 }}
               >
                 <div className="d-flex">
-                <FaHeadset fill="black" className=" fs-5" /> <span className="ms-2 text-dark">Support</span> <IoIosArrowDown fill="black" className="ms-2 mt-1"/></div>
+                  <FaHeadset fill="black" className=" fs-5" /> <span className="ms-2 text-dark">Support</span> <IoIosArrowDown fill="black" className="ms-2 mt-1" /></div>
               </Dropdown.Toggle>
               <Dropdown.Menu align="end" className="custom-dropdown-menu mt-3">
                 <div className="dropdown-flex">
                   <div className="support-items">
-                    <Dropdown.Header style={{ fontSize: "12px"}} className="text-dark">
+                    <Dropdown.Header style={{ fontSize: "12px" }} className="text-dark">
                       Support Now
                     </Dropdown.Header>
                     <Dropdown.Item href="#quick-chat" className="item ms-2 pt-2">
@@ -124,40 +148,58 @@ function  Navbar2(){
                 </div>
               </Dropdown.Menu>
             </Dropdown>
-           <div className="shortlist2  me-auto my-3 my-lg-0 mx-lg-2">
-           <Button
-  onClick={() => navigate("/shortlist")}
-  className="text-dark fw-bold position-relative shortlist"
-  variant="none"
->
-  <IoMdHeartEmpty className="me-2 fs-5" />
-  <span className="">
-  Shortlist
-</span>
-  {shortlistCount > 0 && (
-    <span
-      className="position-absolute mt-1   translate-middle badge rounded-pill bg-danger"
-      style={{ fontSize: "11px",marginLeft:"5px" }}
-    >
-      {shortlistCount}
-    </span>
-  )}
-</Button>
-</div>
-            <Button
-            onClick={()=> setShow(true)}
-              className="text-dark me-auto fw-bold mb-5 mb-lg-0 mx-lg-2 shortlist"
-              variant="none"
-              style={{
-                fontFamily: "'Nunito', sans-serif",
-                fontSize: "16px",
-                height: "40px",
-                border: "1px solid gray",
-              }}
-            >
-              <LuLogIn className="fs-5 me-2 mb-1" /> Login
-            </Button>
-          <LoginModal show={show} onClose={() => setShow(false)}/>
+            <div className="shortlist2  me-auto my-3 my-lg-0 mx-lg-2">
+              <Button
+                onClick={() => navigate("/shortlist")}
+                className="text-dark fw-bold position-relative shortlist"
+                variant="none"
+              >
+                <IoMdHeartEmpty className="me-2 fs-5" />
+                <span className="">
+                  Shortlist
+                </span>
+                {shortlistCount > 0 && (
+                  <span
+                    className="position-absolute mt-1   translate-middle badge rounded-pill bg-danger"
+                    style={{ fontSize: "11px", marginLeft: "5px" }}
+                  >
+                    {shortlistCount}
+                  </span>
+                )}
+              </Button>
+            </div>
+            <div className="me-auto my-3 my-lg-0 mx-lg-2">
+              {!isLoggedIn ? (
+                <Button
+                  onClick={() => setShow(true)}
+                  className="text-light fw-bold shortlist"
+                  variant="none"
+                  style={{
+                    fontFamily: "'Nunito', sans-serif",
+                    fontSize: "16px",
+                    height: "40px",
+                    border: "1px solid white",
+                  }}
+                >
+                  <LuLogIn className="fs-5 me-2 mb-1" /> Login
+                </Button>
+              ) : (
+                <Button
+                  onClick={handleLogout}
+                  className="text-dark fw-bold shortlist"
+                  variant="none"
+                  style={{
+                    fontFamily: "'Nunito', sans-serif",
+                    fontSize: "16px",
+                    height: "40px",
+                    border: "1px solid white",
+                  }}
+                >
+                  Logout
+                </Button>
+              )}
+            </div>
+            <LoginModal show={show} onClose={() => setShow(false)} />
             <Dropdown className="mb-5 mb-lg-0 mx-lg-2  contact-btn">
               <Dropdown.Toggle
                 id="contact-dropdown"
@@ -171,10 +213,10 @@ function  Navbar2(){
                   display: "flex",
                   alignItems: "center",
                   gap: "5px",
-                  backgroundColor:"white",
+                  backgroundColor: "white",
                 }}
               >
-                <IoMdContact fill="gray" style={{ fontSize: "30px" }} className=""/>
+                <IoMdContact fill="gray" style={{ fontSize: "30px" }} className="" />
                 <BiMenu className="fs-3" />
               </Dropdown.Toggle>
               <Dropdown.Menu align="end" className="dropdown-custom mt-2" style={{ width: "280px" }}>
@@ -211,7 +253,7 @@ function  Navbar2(){
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-      </div>
+    </div>
   );
 }
 export default Navbar2;

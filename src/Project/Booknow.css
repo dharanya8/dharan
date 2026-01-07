@@ -3,3 +3,24 @@
     /* background-color: white; */
     font-family: inherit;
 }
+.floating-label.error input {
+  border: 1.5px solid #e53935 !important;
+}
+
+.floating-label.error label {
+  color: #e53935 !important;
+}
+
+.floating-label.error label.float {
+  color: #e53935 !important;
+}
+
+.floating-label.error input::placeholder {
+  color: #e53935;
+}
+
+@media(max-width:768px){
+    .now{
+      
+    }
+}
