@@ -10,17 +10,15 @@ import Insight2 from "./../assets/insight2.svg";
 import insight3 from "./../assets/insight3.svg";
 import Review from "../assets/review.svg";
 import { useNavigate } from "react-router-dom";
-const Booknow = ({ show,onclose,handleClose, item, room }) => {
+const Booknow = ({ show, handleClose, item, room }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [mobile, setMobile] = useState("");
-
   const [open, setOpen] = useState(false);
   const [isNameFocused, setIsNameFocused] = useState(false);
   const [isEmailFocused, setIsEmailFocused] = useState(false);
   const [isCodeFocused, setIsCodeFocused] = useState(false);
   const [isMobileFocused, setIsMobileFocused] = useState(false);
-
   const [selectedCode, setSelectedCode] = useState({
     code: "+91",
     country: "India",
@@ -67,7 +65,8 @@ const Booknow = ({ show,onclose,handleClose, item, room }) => {
       valid = false;
     }
     if (!valid) return;
-    navigate("/success");
+     handleClose();
+    navigate("/Success");
   };
   const countries = [
     { code: "+44", country: "United Kingdom" },
@@ -133,9 +132,9 @@ const Booknow = ({ show,onclose,handleClose, item, room }) => {
           {/* RIGHT */}
           <Col lg={7} md={12} className="shadow-sm" style={{ borderRadius: "10px", border: "1px solid #ccc" }}>
             <h4 className="fw-bold mb-3 mt-2 text-center">Book Now</h4>
-            <Form>
+            <Form onSubmit={handleSubmit}>
               {/* NAME */}
-<div className={`floating-label mb-3 ${nameError ? "error" : ""}`}>
+              <div className={`floating-label mb-3 ${nameError ? "error" : ""}`}>
                 <input
                   value={name}
                   onChange={handleNameChange}
@@ -148,7 +147,7 @@ const Booknow = ({ show,onclose,handleClose, item, room }) => {
                 </label>
               </div>
               {/* EMAIL */}
-<div className={`floating-label mb-3 ${emailError ? "error" : ""}`}>
+              <div className={`floating-label mb-3 ${emailError ? "error" : ""}`}>
                 <input
                   value={email}
                   onChange={(e) => {
@@ -224,7 +223,7 @@ const Booknow = ({ show,onclose,handleClose, item, room }) => {
                 </Col>
 
                 <Col xs={8}>
-<div className={`floating-label ${mobileError ? "error" : ""}`}>
+                  <div className={`floating-label ${mobileError ? "error" : ""}`}>
                     <input
                       value={mobile}
                       onChange={(e) => setMobile(e.target.value)}
@@ -240,7 +239,7 @@ const Booknow = ({ show,onclose,handleClose, item, room }) => {
               </Row>
 
               <Form.Check
-                className="mb-3 now" style={{ marginTop: "65%" }}
+                className="mb-3 now" style={{ marginTop: "60%" }}
                 label={
                   <small>
                     I agree to the <b>terms</b> & <b>privacy policy</b>
@@ -249,7 +248,7 @@ const Booknow = ({ show,onclose,handleClose, item, room }) => {
               />
 
               <Button
-              onClick={handleSubmit}
+              type="submit"
                 className="w-100 py-2 fw-semibold"
                 style={{
                   background: "linear-gradient(90deg,#ed3a56,#ff5c75)",

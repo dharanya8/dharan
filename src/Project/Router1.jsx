@@ -11,6 +11,7 @@ import London from "./Cities/London";
 import Shortlist from "./Shortlist";
 import Viewcard from "./Viewcard";
 import Booknow from "./Booknow";
+import Success from "./Success";
 function App() {
   return (
     <>
@@ -23,6 +24,7 @@ function App() {
         <Route path="/shortlist" element={<Shortlist />} />
         <Route path="/viewcard" element={<Viewcard />} />
         <Route path="/Booknow"element={<Booknow/>}/>
+        <Route path="/Success" element={<Success/>}/>
       </Routes>
     </>
   );
