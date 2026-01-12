@@ -1,0 +1,10 @@
+.floating-label input {
+  border: 1px solid #ccc;
+  padding: 12px;
+  width: 100%;
+  border-radius: 6px;
+}
+
+.floating-label.error input {
+  border: 2px solid red;
+}

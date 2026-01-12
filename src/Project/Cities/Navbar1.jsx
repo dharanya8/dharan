@@ -172,7 +172,7 @@ function Navbar2() {
               {!isLoggedIn ? (
                 <Button
                   onClick={() => setShow(true)}
-                  className="text-light fw-bold shortlist"
+                  className="text-dark fw-bold shortlist"
                   variant="none"
                   style={{
                     fontFamily: "'Nunito', sans-serif",
