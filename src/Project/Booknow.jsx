@@ -36,7 +36,7 @@ const Booknow = ({ show, handleClose, item, room }) => {
       setName(value);
       setNameError("");
     } else {
-      setNameError("Name should contain only letters");
+      setNameError("");
     }
   };
   const validateEmail = (value) => {
@@ -66,7 +66,22 @@ const Booknow = ({ show, handleClose, item, room }) => {
     }
     if (!valid) return;
      handleClose();
-    navigate("/Success");
+    navigate("/Success", {
+    state: {
+      userName: name,
+      image: item.images?.[0] || item.image,
+
+    // TEXT DETAILS
+    propertyName: item.name,
+    location: item.location,
+    roomType: room.type,
+    duration: room.duration,
+    moveIn: room.moveIn,
+    moveOut: room.moveOut,
+    price: room.price
+  
+    }
+  });
   };
   const countries = [
     { code: "+44", country: "United Kingdom" },
@@ -101,7 +116,7 @@ const Booknow = ({ show, handleClose, item, room }) => {
   return (
     <Modal show={show} onHide={handleClose} centered size="lg">
       <Modal.Header closeButton />
-      <Modal.Body>
+      <Modal.Body className="modelbody">
         <Row className="g-3">
           {/* LEFT */}
           <Col lg={5} md={12}>
@@ -143,7 +158,7 @@ const Booknow = ({ show, handleClose, item, room }) => {
                   required
                 />
                 <label className={isNameFocused || name ? "float" : ""}>
-                  Full Name *
+                  Full Name <span className="text-danger">*</span>
                 </label>
               </div>
               {/* EMAIL */}
@@ -158,7 +173,7 @@ const Booknow = ({ show, handleClose, item, room }) => {
                   required
                 />
                 <label className={isEmailFocused || email ? "float" : ""}>
-                  Email *
+                  Email <span className="text-danger">*</span>
                 </label>
               </div>
               {/* MOBILE */}
@@ -232,14 +247,14 @@ const Booknow = ({ show, handleClose, item, room }) => {
                       required
                     />
                     <label className={isMobileFocused || mobile ? "float" : ""}>
-                      Mobile Number *
+                      Mobile Number <span className="text-danger">*</span>
                     </label>
                   </div>
                 </Col>
               </Row>
 
               <Form.Check
-                className="mb-3 now" style={{ marginTop: "60%" }}
+                className="mb-3 now" style={{ marginTop: "55%" }}
                 label={
                   <small>
                     I agree to the <b>terms</b> & <b>privacy policy</b>

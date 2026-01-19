@@ -12,7 +12,6 @@ import Shortlist from "./Shortlist";
 import Viewcard from "./Viewcard";
 import Booknow from "./Booknow";
 import Success from "./Success";
-import Paymentpage from "./Paymentpage";
 function App() {
   return (
     <>
@@ -26,7 +25,6 @@ function App() {
         <Route path="/viewcard" element={<Viewcard />} />
         <Route path="/Booknow"element={<Booknow/>}/>
         <Route path="/Success" element={<Success/>}/>
-        <Router path="/Paymentpage"element={<Paymentpage/>}/>
       </Routes>
     </>
   );

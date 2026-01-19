@@ -22,20 +22,6 @@ function RoomCard() {
       moveOut: "15 Sep, 2026",
       price: "£355/week",
     },
-    // {
-    //   id:3,
-    //   duration:"35 weeks",
-    //   moveIn:"14 Nov, 2025",
-    //   moveOut:"13 Oct, 2026",
-    //   price: "£360/week",
-    // },
-    // {
-    //   id:4,
-    //   duration:"30 weeks",
-    //   moveIn:"16 Nov, 2025",
-    //   moveOut:"13 Sep, 2026",
-    //   price: "£350/week",
-    // }
   ];
 
   const [item, setItem] = useState(null);
