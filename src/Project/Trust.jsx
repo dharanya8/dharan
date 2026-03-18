@@ -18,7 +18,7 @@ function Trust() {
       flag: In,
     },
     {
-      text: "Excellent phone, Whatsapp support from the agent from Amberstudent during the booking process and filling in the details.",
+      text: "Excellent phone, Whatsapp support the agent from Amberstudent booking process and filling the details.",
       name: "Ananya",
       college: "University Of Manchester",
       flag: In,
