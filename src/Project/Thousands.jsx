@@ -22,10 +22,26 @@ import { FiHeart } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import { TiStarFullOutline } from "react-icons/ti";
 import { RxCross2 } from "react-icons/rx";
+import LoginModal from "./LoginModal";
 
 function Thousands() {
+  const navigate = useNavigate();
   const [showToast, setShowToast] = useState(false);
-const [toastMsg, setToastMsg] = useState("");
+  const [openLogin, setOpenLogin] = useState(false);
+  const [toastMsg, setToastMsg] = useState("");
+
+  const handlePropertyCardClick = (item) => {
+    localStorage.setItem("selectedProperty", JSON.stringify(item));
+
+    if (localStorage.getItem("isLoggedIn") === "true") {
+      navigate("/viewcard");
+      return;
+    }
+
+    localStorage.setItem("redirectAfterLogin", "/viewcard");
+    setOpenLogin(true);
+  };
+
   const handleAddToWishlist = (item) => {
   const existing = JSON.parse(localStorage.getItem("shortlist")) || [];
   const alreadyAdded = existing.some(
@@ -171,7 +187,10 @@ const [wishlist, setWishlist] = useState(
           <div key={index} className="property-card position-relative">
            <div
   className="wishlist-heart position-absolute mt-3  d-flex justify-content-center align-items-center"
-  onClick={() => handleAddToWishlist(item)}
+  onClick={(e) => {
+    e.stopPropagation();
+    handleAddToWishlist(item);
+  }}
   style={{
     backgroundColor: wishlist.some(p => p.name === item.name)
         ? "red"
@@ -187,7 +206,7 @@ const [wishlist, setWishlist] = useState(
     }}
   />
 </div>
-            <div className="w-100">
+            <div className="w-100" onClick={() => handlePropertyCardClick(item)} style={{ cursor: "pointer" }}>
                   <Carousel className="carousalcard d-flex ms-md-3"interval={null}>
                     {item.images
     ? item.images.map((img, i) => (
@@ -218,6 +237,7 @@ const [wishlist, setWishlist] = useState(
           </div>
         ))}
         </div>
+        <LoginModal show={openLogin} onClose={() => setOpenLogin(false)} />
     </div>
   );
 }
