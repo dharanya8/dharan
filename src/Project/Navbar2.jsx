@@ -26,14 +26,14 @@ import { Container } from "react-bootstrap";
 import LoginModal from "./LoginModal";
 // import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { endSession, isLoggedIn as hasValidSession } from "./utils/auth";
+import { readList, removeItem } from "./utils/storage";
 
 function Navbar2() {
-  const [isLoggedIn, setIsLoggedIn] = useState(
-    localStorage.getItem("isLoggedIn") === "true"
-  );
+  const [isLoggedIn, setIsLoggedIn] = useState(hasValidSession);
   useEffect(() => {
     const handleLoginChange = () => {
-      setIsLoggedIn(localStorage.getItem("isLoggedIn") === "true");
+      setIsLoggedIn(hasValidSession());
     };
 
     window.addEventListener("loginStatusChanged", handleLoginChange);
@@ -43,11 +43,10 @@ function Navbar2() {
     };
   }, []);
   const handleLogout = () => {
-    localStorage.removeItem("isLoggedIn");
-    localStorage.removeItem("shortlist");
+    endSession();
+    removeItem("shortlist");
     setShortlistCount(0);
     setIsLoggedIn(false);
-    window.dispatchEvent(new Event("loginStatusChanged"));
     navigate("/");
   };
 
@@ -56,7 +55,7 @@ function Navbar2() {
   const [shortlistCount, setShortlistCount] = useState(0);
   useEffect(() => {
     const updateCount = () => {
-      const list = JSON.parse(localStorage.getItem("shortlist")) || [];
+      const list = readList("shortlist");
       setShortlistCount(list.length);
     };
 

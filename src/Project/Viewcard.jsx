@@ -18,6 +18,7 @@ import { CgSmartHomeWashMachine } from "react-icons/cg";
 import { GiBlackBook } from "react-icons/gi";
 import { IoMdHeart } from "react-icons/io";
 import { FaPhoneAlt } from "react-icons/fa";
+import { readJson, readList, writeJson } from "./utils/storage";
 import Review from '../assets/review.svg';
 import Image from 'react-bootstrap/Image';
 import './Viewcard.css';
@@ -91,7 +92,7 @@ const toggleDropdown = (index) => {
 
   const [item, setItem] = useState(null);
       const handleAddToWishlist = (item) => {
-      const existing = JSON.parse(localStorage.getItem("shortlist")) || [];
+      const existing = readList("shortlist");
     
       const alreadyAdded = existing.some(
         (p) => p.name === item.name
@@ -107,19 +108,17 @@ const toggleDropdown = (index) => {
         updatedList = [...existing, item];
       }
     
-      localStorage.setItem("shortlist", JSON.stringify(updatedList));
+      writeJson("shortlist", updatedList);
       setWishlist(updatedList);
        window.dispatchEvent(new Event("shortlistUpdated"));
     };
     
-    const [wishlist, setWishlist] = useState(
-      JSON.parse(localStorage.getItem("shortlist")) || []
-    );
+    const [wishlist, setWishlist] = useState(() => readList("shortlist"));
     
   useEffect(() => {
-    const savedItem = localStorage.getItem("selectedProperty");
+    const savedItem = readJson("selectedProperty");
     if (savedItem) {
-      setItem(JSON.parse(savedItem));
+      setItem(savedItem);
     }
   }, []);
 
@@ -240,7 +239,7 @@ const toggleDropdown = (index) => {
            {/* <Button className="mt-3 py-2" style={{ backgroundColor: "#ed3a56", border: "none" }} > View Rooms </Button>  */}
            <Button
   onClick={() => {
-    localStorage.setItem("selectedProperty", JSON.stringify(item));
+    writeJson("selectedProperty", item);
     navigate("/Booknow");
   }}
   className="mt-2 py-2 enquiry"

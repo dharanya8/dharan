@@ -23,6 +23,8 @@ import { useNavigate } from "react-router-dom";
 import { TiStarFullOutline } from "react-icons/ti";
 import { RxCross2 } from "react-icons/rx";
 import LoginModal from "./LoginModal";
+import { isLoggedIn } from "./utils/auth";
+import { readList, writeJson } from "./utils/storage";
 
 function Thousands() {
   const navigate = useNavigate();
@@ -31,19 +33,19 @@ function Thousands() {
   const [toastMsg, setToastMsg] = useState("");
 
   const handlePropertyCardClick = (item) => {
-    localStorage.setItem("selectedProperty", JSON.stringify(item));
+    writeJson("selectedProperty", item);
 
-    if (localStorage.getItem("isLoggedIn") === "true") {
+    if (isLoggedIn()) {
       navigate("/viewcard");
       return;
     }
 
-    localStorage.setItem("redirectAfterLogin", "/viewcard");
+    writeJson("redirectAfterLogin", "/viewcard");
     setOpenLogin(true);
   };
 
   const handleAddToWishlist = (item) => {
-  const existing = JSON.parse(localStorage.getItem("shortlist")) || [];
+  const existing = readList("shortlist");
   const alreadyAdded = existing.some(
     (p) => p.name === item.name
   );
@@ -55,7 +57,7 @@ function Thousands() {
     updatedList = [...existing, item];
     showPopup("Added to Shortlist!");
   }
-  localStorage.setItem("shortlist", JSON.stringify(updatedList));
+  writeJson("shortlist", updatedList);
   setWishlist(updatedList);
   window.dispatchEvent(new Event("shortlistUpdated"));
 };
@@ -67,9 +69,7 @@ const showPopup = (msg) => {
     setShowToast(false);
   }, 3000);
 }; 
-const [wishlist, setWishlist] = useState(
-  JSON.parse(localStorage.getItem("shortlist")) || []
-);
+const [wishlist, setWishlist] = useState(() => readList("shortlist"));
   const data = {
     "United Kingdom": ["London", "Birmingham", "Leicester", "Liverpool", "Sheffield"],
     "United States": ["New York", "Boston", "San Francisco", "Chicago"],

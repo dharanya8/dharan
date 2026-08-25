@@ -13,6 +13,7 @@ import { IoIosArrowForward } from "react-icons/io";
 import LoginModal from './LoginModal';
 import { RiDeleteBinLine } from "react-icons/ri";
 import { RxCross2 } from "react-icons/rx";
+import { readList, writeJson } from "./utils/storage";
 
 function Shortlist() {
   const [items, setItems] = useState([]);
@@ -23,7 +24,7 @@ function Shortlist() {
 
   // Load shortlist from localStorage
   useEffect(() => {
-    const data = JSON.parse(localStorage.getItem("shortlist")) || [];
+    const data = readList("shortlist");
     setItems(data);
   }, []);
 
@@ -32,7 +33,7 @@ function Shortlist() {
   // remove item
   const updated = items.filter(item => item.name !== name);
   setItems(updated);
-  localStorage.setItem("shortlist", JSON.stringify(updated));
+  writeJson("shortlist", updated);
 
   // 👇 popup show
   setShowToast(true);
@@ -119,14 +120,8 @@ function Shortlist() {
                           <button
                           className="view-btn"
                           onClick={() => {
-                          localStorage.setItem(
-                         "selectedProperty",
-                          JSON.stringify(item)
-                          );
-                          localStorage.setItem(
-                         "redirectAfterLogin",
-                         "/viewcard"
-                          );
+                          writeJson("selectedProperty", item);
+                          writeJson("redirectAfterLogin", "/viewcard");
                          setOpenLogin(true);
                          }}
                         >

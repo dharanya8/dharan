@@ -10,6 +10,7 @@ import Insight2 from "./../assets/insight2.svg";
 import insight3 from "./../assets/insight3.svg";
 import Review from "../assets/review.svg";
 import { useNavigate } from "react-router-dom";
+import { isValidMobile, normalizeMobile } from "./utils/auth";
 const Booknow = ({ show, handleClose, item, room }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -32,11 +33,11 @@ const Booknow = ({ show, handleClose, item, room }) => {
   const handleNameChange = (e) => {
     const value = e.target.value;
 
-    if (/^[a-zA-Z\s]*$/.test(value)) {
+    if (/^[a-zA-Z\s]{0,100}$/.test(value)) {
       setName(value);
       setNameError("");
     } else {
-      setNameError("");
+      setNameError("Name should contain only letters");
     }
   };
   const validateEmail = (value) => {
@@ -60,7 +61,7 @@ const Booknow = ({ show, handleClose, item, room }) => {
       setEmailError("Valid email is required");
       valid = false;
     }
-    if (!mobile || mobile.length < 10) {
+    if (!isValidMobile(mobile)) {
       setMobileError("Valid mobile number is required");
       valid = false;
     }
@@ -241,7 +242,16 @@ const Booknow = ({ show, handleClose, item, room }) => {
                   <div className={`floating-label ${mobileError ? "error" : ""}`}>
                     <input
                       value={mobile}
-                      onChange={(e) => setMobile(e.target.value)}
+                      maxLength={15}
+                      onChange={(e) => {
+                        const value = normalizeMobile(e.target.value);
+                        setMobile(value);
+                        setMobileError(
+                          isValidMobile(value)
+                            ? ""
+                            : "Please enter a valid mobile number"
+                        );
+                      }}
                       onFocus={() => setIsMobileFocused(true)}
                       onBlur={() => setIsMobileFocused(false)}
                       required
