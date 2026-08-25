@@ -13,26 +13,34 @@ import { IoIosArrowForward } from "react-icons/io";
 import LoginModal from './LoginModal';
 import { RiDeleteBinLine } from "react-icons/ri";
 import { RxCross2 } from "react-icons/rx";
+import { readArray, writeItem, writeJSON } from "./utils/storage";
 
 function Shortlist() {
   const [items, setItems] = useState([]);
   const [openLogin, setOpenLogin] = useState(false);
   const [showToast, setShowToast] = useState(false);
+  const [storageError, setStorageError] = useState("");
 
   const navigate = useNavigate();
 
   // Load shortlist from localStorage
   useEffect(() => {
-    const data = JSON.parse(localStorage.getItem("shortlist")) || [];
-    setItems(data);
+    setItems(readArray("shortlist"));
   }, []);
 
   // Remove an item from shortlist
   const removeItem = (name) => {
   // remove item
   const updated = items.filter(item => item.name !== name);
+
+  if (!writeJSON("shortlist", updated)) {
+    setStorageError("Could not update your shortlist. Please try again.");
+    return;
+  }
+
+  setStorageError("");
   setItems(updated);
-  localStorage.setItem("shortlist", JSON.stringify(updated));
+  window.dispatchEvent(new Event("shortlistUpdated"));
 
   // 👇 popup show
   setShowToast(true);
@@ -67,7 +75,10 @@ function Shortlist() {
         <div className="container containe">
           <div className="pt-2 fw-bold fs-4 list" style={{ marginLeft: "115px" }}>Shortlist</div>
           <div className="mx-auto mt-3 banner" style={{ backgroundColor: "#fff", width: "80%", border: "1px solid #e5e7eb", padding: "40px" }}>
-            
+            {storageError && (
+              <p role="alert" className="text-danger">{storageError}</p>
+            )}
+
             {items.length === 0 ? (
               /* EMPTY STATE */
               <div className="d-flex flex-column align-items-center justify-content-center py-5">
@@ -119,15 +130,15 @@ function Shortlist() {
                           <button
                           className="view-btn"
                           onClick={() => {
-                          localStorage.setItem(
-                         "selectedProperty",
-                          JSON.stringify(item)
-                          );
-                          localStorage.setItem(
-                         "redirectAfterLogin",
-                         "/viewcard"
-                          );
-                         setOpenLogin(true);
+                          if (!writeJSON("selectedProperty", item)) {
+                            setStorageError(
+                              "Could not open this property. Please try again."
+                            );
+                            return;
+                          }
+                          writeItem("redirectAfterLogin", "/viewcard");
+                          setStorageError("");
+                          setOpenLogin(true);
                          }}
                         >
                         View <IoIosArrowForward />

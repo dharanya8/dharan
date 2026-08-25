@@ -23,6 +23,7 @@ import { useNavigate } from "react-router-dom";
 import { TiStarFullOutline } from "react-icons/ti";
 import { RxCross2 } from "react-icons/rx";
 import LoginModal from "./LoginModal";
+import { readArray, readItem, writeItem, writeJSON } from "./utils/storage";
 
 function Thousands() {
   const navigate = useNavigate();
@@ -31,31 +32,35 @@ function Thousands() {
   const [toastMsg, setToastMsg] = useState("");
 
   const handlePropertyCardClick = (item) => {
-    localStorage.setItem("selectedProperty", JSON.stringify(item));
+    if (!writeJSON("selectedProperty", item)) {
+      showPopup("Could not open this property. Please try again.");
+      return;
+    }
 
-    if (localStorage.getItem("isLoggedIn") === "true") {
+    if (readItem("isLoggedIn") === "true") {
       navigate("/viewcard");
       return;
     }
 
-    localStorage.setItem("redirectAfterLogin", "/viewcard");
+    writeItem("redirectAfterLogin", "/viewcard");
     setOpenLogin(true);
   };
 
   const handleAddToWishlist = (item) => {
-  const existing = JSON.parse(localStorage.getItem("shortlist")) || [];
+  const existing = readArray("shortlist");
   const alreadyAdded = existing.some(
     (p) => p.name === item.name
   );
-  let updatedList;
-  if (alreadyAdded) {
-    updatedList = existing.filter(p => p.name !== item.name);
-    showPopup("Removed from Shortlist!");
-  } else {
-    updatedList = [...existing, item];
-    showPopup("Added to Shortlist!");
+  const updatedList = alreadyAdded
+    ? existing.filter(p => p.name !== item.name)
+    : [...existing, item];
+
+  if (!writeJSON("shortlist", updatedList)) {
+    showPopup("Could not update your shortlist. Please try again.");
+    return;
   }
-  localStorage.setItem("shortlist", JSON.stringify(updatedList));
+
+  showPopup(alreadyAdded ? "Removed from Shortlist!" : "Added to Shortlist!");
   setWishlist(updatedList);
   window.dispatchEvent(new Event("shortlistUpdated"));
 };
@@ -67,9 +72,7 @@ const showPopup = (msg) => {
     setShowToast(false);
   }, 3000);
 }; 
-const [wishlist, setWishlist] = useState(
-  JSON.parse(localStorage.getItem("shortlist")) || []
-);
+const [wishlist, setWishlist] = useState(() => readArray("shortlist"));
   const data = {
     "United Kingdom": ["London", "Birmingham", "Leicester", "Liverpool", "Sheffield"],
     "United States": ["New York", "Boston", "San Francisco", "Chicago"],

@@ -32,6 +32,7 @@ import { IoIosArrowUp,IoIosArrowDown  } from "react-icons/io";
 import Roomcard from './Roomcard';
 import { useNavigate } from "react-router-dom";
 import Booknow from "./Booknow";
+import { readArray, readJSON, writeJSON } from "./utils/storage";
 function Viewcard() {
     const navigate = useNavigate();
       const [show, setShow] = useState(false);
@@ -91,7 +92,7 @@ const toggleDropdown = (index) => {
 
   const [item, setItem] = useState(null);
       const handleAddToWishlist = (item) => {
-      const existing = JSON.parse(localStorage.getItem("shortlist")) || [];
+      const existing = readArray("shortlist");
     
       const alreadyAdded = existing.some(
         (p) => p.name === item.name
@@ -107,20 +108,20 @@ const toggleDropdown = (index) => {
         updatedList = [...existing, item];
       }
     
-      localStorage.setItem("shortlist", JSON.stringify(updatedList));
+      if (!writeJSON("shortlist", updatedList)) {
+        setStorageError("Could not update your shortlist. Please try again.");
+        return;
+      }
+      setStorageError("");
       setWishlist(updatedList);
        window.dispatchEvent(new Event("shortlistUpdated"));
     };
     
-    const [wishlist, setWishlist] = useState(
-      JSON.parse(localStorage.getItem("shortlist")) || []
-    );
-    
+    const [wishlist, setWishlist] = useState(() => readArray("shortlist"));
+    const [storageError, setStorageError] = useState("");
+
   useEffect(() => {
-    const savedItem = localStorage.getItem("selectedProperty");
-    if (savedItem) {
-      setItem(JSON.parse(savedItem));
-    }
+    setItem(readJSON("selectedProperty"));
   }, []);
 
   if (!item) {
@@ -240,7 +241,11 @@ const toggleDropdown = (index) => {
            {/* <Button className="mt-3 py-2" style={{ backgroundColor: "#ed3a56", border: "none" }} > View Rooms </Button>  */}
            <Button
   onClick={() => {
-    localStorage.setItem("selectedProperty", JSON.stringify(item));
+    if (!writeJSON("selectedProperty", item)) {
+      setStorageError("Could not start your enquiry. Please try again.");
+      return;
+    }
+    setStorageError("");
     navigate("/Booknow");
   }}
   className="mt-2 py-2 enquiry"
@@ -248,6 +253,9 @@ const toggleDropdown = (index) => {
 >
   Enquire Now
 </Button>
+{storageError && (
+  <p role="alert" className="text-danger mt-2">{storageError}</p>
+)}
             <Booknow show={show} onClose={() => setShow(false)} />
 
             <div className="bg-light rounded-pill mt-3">

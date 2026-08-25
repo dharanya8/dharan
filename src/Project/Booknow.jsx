@@ -36,7 +36,7 @@ const Booknow = ({ show, handleClose, item, room }) => {
       setName(value);
       setNameError("");
     } else {
-      setNameError("");
+      setNameError("Name should contain only letters");
     }
   };
   const validateEmail = (value) => {

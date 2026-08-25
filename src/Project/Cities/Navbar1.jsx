@@ -27,14 +27,15 @@ import LoginModal from "../LoginModal";
 import Search from "../Search";
 // import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { readArray, readItem, removeItem } from "../utils/storage";
 
 function Navbar2() {
   const [isLoggedIn, setIsLoggedIn] = useState(
-    localStorage.getItem("isLoggedIn") === "true"
+    readItem("isLoggedIn") === "true"
   );
   useEffect(() => {
     const handleLoginChange = () => {
-      setIsLoggedIn(localStorage.getItem("isLoggedIn") === "true");
+      setIsLoggedIn(readItem("isLoggedIn") === "true");
     };
 
     window.addEventListener("loginStatusChanged", handleLoginChange);
@@ -44,8 +45,8 @@ function Navbar2() {
     };
   }, []);
   const handleLogout = () => {
-    localStorage.removeItem("isLoggedIn");
-    localStorage.removeItem("shortlist");
+    removeItem("isLoggedIn");
+    removeItem("shortlist");
 
     setShortlistCount(0);
     setIsLoggedIn(false);
@@ -57,8 +58,7 @@ function Navbar2() {
   const [shortlistCount, setShortlistCount] = useState(0);
   useEffect(() => {
     const updateCount = () => {
-      const list = JSON.parse(localStorage.getItem("shortlist")) || [];
-      setShortlistCount(list.length);
+      setShortlistCount(readArray("shortlist").length);
     };
 
     updateCount();
