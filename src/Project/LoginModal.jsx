@@ -7,11 +7,23 @@ import "./LoginModal.css";
 import Image from "react-bootstrap/Image";
 import { useNavigate } from "react-router-dom";
 import facebook from "../assets/facebooklog.svg";
+import {
+  OTP_MAX_ATTEMPTS,
+  OTP_TTL_MS,
+  generateOtp,
+  isValidMobile,
+  normalizeMobile,
+  safeRedirectPath,
+  startSession,
+} from "./utils/auth";
+import { readJson, removeItem } from "./utils/storage";
 
 function LoginModal({ show, onClose }) {
   const [step, setStep] = useState("login");
   const [otp, setOtp] = useState("");
   const [temporaryOtp, setTemporaryOtp] = useState("");
+  const [otpExpiresAt, setOtpExpiresAt] = useState(0);
+  const [attemptsLeft, setAttemptsLeft] = useState(OTP_MAX_ATTEMPTS);
   const [error, setError] = useState("");
   const [mobile, setMobile] = useState("");
   const [open, setOpen] = useState(false);
@@ -45,31 +57,58 @@ function LoginModal({ show, onClose }) {
   ];
 
   const handleContinue = () => {
-    if (!mobile || !selectedCode.code) return;
+    if (!selectedCode.code || !isValidMobile(mobile)) {
+      setError("Please enter a valid mobile number");
+      return;
+    }
 
-    const newOtp = Math.floor(100000 + Math.random() * 900000).toString();
-
-    setTemporaryOtp(newOtp);
+    setTemporaryOtp(generateOtp());
+    setOtpExpiresAt(Date.now() + OTP_TTL_MS);
+    setAttemptsLeft(OTP_MAX_ATTEMPTS);
     setOtp("");
     setError("");
     setStep("otp");
   };
 
+  const resetOtpState = () => {
+    setOtp("");
+    setTemporaryOtp("");
+    setOtpExpiresAt(0);
+    setAttemptsLeft(OTP_MAX_ATTEMPTS);
+  };
+
   const handleVerifyOtp = () => {
-    if (otp === temporaryOtp) {
-      localStorage.setItem("isLoggedIn", "true");
-      window.dispatchEvent(new Event("loginStatusChanged"));
-
-      setError("");
-      setOtp("");
-      setTemporaryOtp("");
-      onClose();
-
-      const redirect = localStorage.getItem("redirectAfterLogin");
-      navigate(redirect || "/");
-    } else {
-      setError("Invalid OTP. Please enter correct temporary OTP");
+    if (!temporaryOtp || Date.now() > otpExpiresAt) {
+      resetOtpState();
+      setStep("login");
+      setError("This OTP has expired. Please request a new one");
+      return;
     }
+
+    if (otp !== temporaryOtp) {
+      const remaining = attemptsLeft - 1;
+      setAttemptsLeft(remaining);
+      setOtp("");
+
+      if (remaining <= 0) {
+        resetOtpState();
+        setStep("login");
+        setError("Too many incorrect attempts. Please request a new OTP");
+        return;
+      }
+
+      setError(`Invalid OTP. ${remaining} attempt(s) left`);
+      return;
+    }
+
+    startSession();
+    resetOtpState();
+    setError("");
+    onClose();
+
+    const redirect = safeRedirectPath(readJson("redirectAfterLogin"));
+    removeItem("redirectAfterLogin");
+    navigate(redirect);
   };
 
   return (
@@ -156,7 +195,8 @@ function LoginModal({ show, onClose }) {
                   type="tel"
                   id="mobile"
                   value={mobile}
-                  onChange={(e) => setMobile(e.target.value)}
+                  maxLength={15}
+                  onChange={(e) => setMobile(normalizeMobile(e.target.value))}
                   onFocus={() => setIsMobileFocused(true)}
                   onBlur={() => setIsMobileFocused(false)}
                   required
@@ -173,11 +213,13 @@ function LoginModal({ show, onClose }) {
 
             <Button
               className="w-100 py-2 mt-3 custom-btn1"
-              disabled={!mobile || !selectedCode.code}
+              disabled={!isValidMobile(mobile) || !selectedCode.code}
               onClick={handleContinue}
             >
               Continue
             </Button>
+
+            {error && <p className="text-danger text-center mt-2">{error}</p>}
 
             <div className="text-center my-3 text-secondary">or log in using</div>
 
@@ -235,16 +277,23 @@ function LoginModal({ show, onClose }) {
 
             <input
               type="text"
+              inputMode="numeric"
               maxLength="6"
               value={otp}
-              onChange={(e) => setOtp(e.target.value)}
+              onChange={(e) => setOtp(e.target.value.replace(/\D/g, "").slice(0, 6))}
               className="form-control text-center"
               placeholder="Enter 6 digit OTP"
             />
 
-            <p className="text-center mt-2">
-              Temporary OTP: <strong>{temporaryOtp}</strong>
-            </p>
+            {import.meta.env.DEV ? (
+              <p className="text-center mt-2">
+                Development OTP: <strong>{temporaryOtp}</strong>
+              </p>
+            ) : (
+              <p className="text-center mt-2 text-muted small">
+                Enter the 6 digit code sent to {selectedCode.code} {mobile}
+              </p>
+            )}
 
             {error && <p className="text-danger text-center mt-2">{error}</p>}
 
@@ -260,7 +309,7 @@ function LoginModal({ show, onClose }) {
               style={{ cursor: "pointer", color: "#0d6efd" }}
               onClick={() => {
                 setStep("login");
-                setOtp("");
+                resetOtpState();
                 setError("");
               }}
             >

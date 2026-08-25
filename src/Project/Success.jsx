@@ -14,6 +14,7 @@ import { IoIosArrowUp,IoIosArrowDown  } from "react-icons/io";
 import Review from '../assets/review.svg';
 import Image from 'react-bootstrap/Image';
 import { Modal } from "react-bootstrap";
+import { isValidMobile, normalizeMobile } from "./utils/auth";
 function Success() {
   const navigate = useNavigate();
 const location = useLocation();
@@ -62,6 +63,11 @@ const {
     code: "+91",
     country: "India",
   });
+  const [selectedNationality, setSelectedNationality] = useState({
+    shortname: "",
+    id: "",
+    country: "",
+  });
   const [emailError, setEmailError] = useState("");
   const [nameError, setNameError] = useState("");
   const [mobileError, setMobileError] = useState("");
@@ -89,6 +95,43 @@ const {
       setEmailError("");
     }
   };
+  const validateMobile = (value) => {
+    setMobileError(isValidMobile(value) ? "" : "Please enter a valid mobile number");
+  };
+  const validateDate = (value) => {
+    const parsed = new Date(value);
+    const isValid =
+      /^\d{4}-\d{2}-\d{2}$/.test(value) &&
+      !Number.isNaN(parsed.getTime()) &&
+      parsed < new Date();
+    setDateError(isValid ? "" : "Please enter a valid date of birth");
+  };
+  const validateAddress = (value) => {
+    setAddressError(
+      value.trim().length >= 5 && value.length <= 200
+        ? ""
+        : "Please enter a valid address"
+    );
+  };
+  const validateZip = (value) => {
+    setZipError(
+      /^[A-Za-z0-9][A-Za-z0-9\s-]{2,9}$/.test(value)
+        ? ""
+        : "Please enter a valid zipcode/pincode"
+    );
+  };
+  const validateCity = (value) => {
+    setCityError(
+      /^[A-Za-z][A-Za-z\s'-]{1,49}$/.test(value) ? "" : "Please enter a valid city"
+    );
+  };
+  const validateCourse = (value) => {
+    setCourseError(
+      /^[A-Za-z0-9][A-Za-z0-9\s.&'-]{1,99}$/.test(value)
+        ? ""
+        : "Please enter a valid course name"
+    );
+  };
   const handleApplicationSubmit = (e) => {
     e.preventDefault();
 
@@ -104,8 +147,8 @@ const {
       valid = false;
     } else setEmailError("");
 
-    if (!mobile.trim()) {
-      setMobileError("Mobile number is required");
+    if (!isValidMobile(mobile)) {
+      setMobileError("Please enter a valid mobile number");
       valid = false;
     } else setMobileError("");
 
@@ -319,7 +362,12 @@ const [showBookedPopup, setShowBookedPopup] = useState(false);
                   <div className={`floating-label ${mobileError ? "error" : ""}`}>
                     <input
                       value={mobile}
-                      onChange={(e) => setMobile(e.target.value)}
+                      maxLength={15}
+                      onChange={(e) => {
+                        const value = normalizeMobile(e.target.value);
+                        setMobile(value);
+                        validateMobile(value);
+                      }}
                       onFocus={() => setIsMobileFocused(true)}
                       onBlur={() => setIsMobileFocused(false)}
                       required
@@ -360,6 +408,7 @@ const [showBookedPopup, setShowBookedPopup] = useState(false);
                 <Col md={6}>
                   <div className={`floating-label mb-3 ${dateError ? "error" : ""}`}>
                     <input
+                      type="date"
                       value={date}
                       onChange={(e) => {
                         setDate(e.target.value);
@@ -384,24 +433,26 @@ const [showBookedPopup, setShowBookedPopup] = useState(false);
                     >
                       <input
                         type="text"
-                        id="shortname"
-                        value={selectedCountry.shortname}
+                        id="nationality"
+                        value={selectedNationality.shortname}
                         readOnly
                         required
                       />
                       <label
-                        htmlFor="shortname"
+                        htmlFor="nationality"
                         className={
-                          isCountryFocused || selectedCountry.shortname ? "float" : ""
+                          isNationalityFocused || selectedNationality.shortname
+                            ? "float"
+                            : ""
                         }
                       >
                         Nationality
                       </label>
-                      {!selectedCountry.shortname && (
+                      {!selectedNationality.shortname && (
                         <FaChevronDown className={`arrow2 ${open ? "open" : ""}`} />
                       )}
 
-                      {selectedCountry.shortname && (
+                      {selectedNationality.shortname && (
                         <MdClose
                           size={18}
                           className="remove-icon"
@@ -468,9 +519,10 @@ const [showBookedPopup, setShowBookedPopup] = useState(false);
                 <div className={`floating-label mb-3 ${addressError ? "error" : ""}`}>
                   <input
                     value={address}
+                    maxLength={200}
                     onChange={(e) => {
                       setAddress(e.target.value);
-                      setAddressError(e.target.value);
+                      validateAddress(e.target.value);
                     }} onFocus={() => setIsAddressFocused(true)}
                     onBlur={() => setIsAddressFocused(false)}
                     required

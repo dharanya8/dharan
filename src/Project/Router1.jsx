@@ -12,6 +12,7 @@ import Shortlist from "./Shortlist";
 import Viewcard from "./Viewcard";
 import Booknow from "./Booknow";
 import Success from "./Success";
+import ProtectedRoute from "./ProtectedRoute";
 function App() {
   return (
     <>
@@ -21,10 +22,38 @@ function App() {
         <Route path="/cities/London" element={<London />} />
         <Route path="/city/:London" element={<Citypage/>} />
         <Route path="/university/:universityName" element={<Universitypage />} />
-        <Route path="/shortlist" element={<Shortlist />} />
-        <Route path="/viewcard" element={<Viewcard />} />
-        <Route path="/Booknow"element={<Booknow/>}/>
-        <Route path="/Success" element={<Success/>}/>
+        <Route
+          path="/shortlist"
+          element={
+            <ProtectedRoute>
+              <Shortlist />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/viewcard"
+          element={
+            <ProtectedRoute>
+              <Viewcard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/Booknow"
+          element={
+            <ProtectedRoute>
+              <Booknow />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/Success"
+          element={
+            <ProtectedRoute>
+              <Success />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </>
   );

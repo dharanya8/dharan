@@ -4,7 +4,7 @@ import { IoBedOutline } from "react-icons/io5";
 import { MdOutlineBathtub, MdKitchen } from "react-icons/md";
 import "./Roomcard.css";
 import Booknow from "./Booknow";
-import { move } from "formik";
+import { readJson } from "./utils/storage";
 
 function RoomCard() {
   const rooms = [
@@ -39,9 +39,9 @@ function RoomCard() {
   };
 
   useEffect(() => {
-    const data = localStorage.getItem("selectedProperty");
+    const data = readJson("selectedProperty");
     if (data) {
-      setItem(JSON.parse(data));
+      setItem(data);
     }
   }, []);
 
