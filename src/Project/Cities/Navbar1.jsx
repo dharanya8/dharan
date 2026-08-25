@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -25,48 +25,14 @@ import amber from '../../assets/bg1/amber-logo-dark.svg';
 import { Container } from "react-bootstrap";
 import LoginModal from "../LoginModal";
 import Search from "../Search";
-// import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSession } from "../shared/useSession";
 
 function Navbar2() {
-  const [isLoggedIn, setIsLoggedIn] = useState(
-    localStorage.getItem("isLoggedIn") === "true"
-  );
-  useEffect(() => {
-    const handleLoginChange = () => {
-      setIsLoggedIn(localStorage.getItem("isLoggedIn") === "true");
-    };
-
-    window.addEventListener("loginStatusChanged", handleLoginChange);
-
-    return () => {
-      window.removeEventListener("loginStatusChanged", handleLoginChange);
-    };
-  }, []);
-  const handleLogout = () => {
-    localStorage.removeItem("isLoggedIn");
-    localStorage.removeItem("shortlist");
-
-    setShortlistCount(0);
-    setIsLoggedIn(false);
-    window.dispatchEvent(new Event("loginStatusChanged"));
-    navigate("/");
-  };
+  const { isLoggedIn, shortlistCount, logout: handleLogout } = useSession();
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
-  const [shortlistCount, setShortlistCount] = useState(0);
-  useEffect(() => {
-    const updateCount = () => {
-      const list = JSON.parse(localStorage.getItem("shortlist")) || [];
-      setShortlistCount(list.length);
-    };
 
-    updateCount();
-    window.addEventListener("shortlistUpdated", updateCount);
-    return () => {
-      window.removeEventListener("shortlistUpdated", updateCount);
-    };
-  }, []);
   return (
     <div className="" style={{
       height: "65px",

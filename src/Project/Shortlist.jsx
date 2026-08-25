@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import { FiHeart } from "react-icons/fi";
 import { BsLightningCharge } from "react-icons/bs";
@@ -12,57 +12,40 @@ import Footer from '../Project/Footer';
 import { IoIosArrowForward } from "react-icons/io";
 import LoginModal from './LoginModal';
 import { RiDeleteBinLine } from "react-icons/ri";
-import { RxCross2 } from "react-icons/rx";
+import ShortlistToast from './shared/ShortlistToast';
+import { useToast } from './shared/useToast';
+import { getShortlist, removeShortlistItem } from './shared/storage';
+import { useOpenProperty } from './shared/useOpenProperty';
 
 function Shortlist() {
   const [items, setItems] = useState([]);
   const [openLogin, setOpenLogin] = useState(false);
-  const [showToast, setShowToast] = useState(false);
+  const { toast, show: showToast, hide: hideToast } = useToast();
 
   const navigate = useNavigate();
+  const openProperty = useOpenProperty(() => setOpenLogin(true));
 
-  // Load shortlist from localStorage
   useEffect(() => {
-    const data = JSON.parse(localStorage.getItem("shortlist")) || [];
-    setItems(data);
+    setItems(getShortlist());
   }, []);
 
-  // Remove an item from shortlist
   const removeItem = (name) => {
-  // remove item
-  const updated = items.filter(item => item.name !== name);
-  setItems(updated);
-  localStorage.setItem("shortlist", JSON.stringify(updated));
-
-  // 👇 popup show
-  setShowToast(true);
-
-  // 👇 3 sec apram hide
-  setTimeout(() => {
-    setShowToast(false);
-  }, 3000);
-};
+    setItems(removeShortlistItem(items, name));
+    showToast(
+      "Removed from Shortlist!",
+      "This inventory has been removed from your shortlist"
+    );
+  };
 
   return (
     <div style={{ fontFamily: "inherit" }}>
       <Navbar1 />
-      {showToast && (
-  <div className="shortlist-toast">
-    <div className="toast-bar"></div>
-
-    <div className="toast-content">
-      <strong>Removed from Shortlist!</strong>
-      <p>This inventory has been removed from your shortlist</p>
-    </div>
-
-    <span
-      className="toast-close"
-      onClick={() => setShowToast(false)}
-    >
-      <RxCross2/>
-    </span>
-  </div>
-)}
+      <ShortlistToast
+        show={Boolean(toast)}
+        title={toast?.title}
+        description={toast?.description}
+        onClose={hideToast}
+      />
       <div className="short" style={{ backgroundColor: "#f3f4f6", padding: "40px" }}>
         <div className="container containe">
           <div className="pt-2 fw-bold fs-4 list" style={{ marginLeft: "115px" }}>Shortlist</div>
@@ -118,17 +101,7 @@ function Shortlist() {
                           </p>
                           <button
                           className="view-btn"
-                          onClick={() => {
-                          localStorage.setItem(
-                         "selectedProperty",
-                          JSON.stringify(item)
-                          );
-                          localStorage.setItem(
-                         "redirectAfterLogin",
-                         "/viewcard"
-                          );
-                         setOpenLogin(true);
-                         }}
+                          onClick={() => openProperty(item)}
                         >
                         View <IoIosArrowForward />
                         </button>

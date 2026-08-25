@@ -19,57 +19,29 @@ import { GoCheck } from "react-icons/go";
 import Properties from './../Project/Properties.json'
 import Carousel from 'react-bootstrap/Carousel';
 import { FiHeart } from "react-icons/fi";
-import { useNavigate } from "react-router-dom";
 import { TiStarFullOutline } from "react-icons/ti";
-import { RxCross2 } from "react-icons/rx";
 import LoginModal from "./LoginModal";
+import ShortlistToast from "./shared/ShortlistToast";
+import { useToast } from "./shared/useToast";
+import { useShortlist } from "./shared/useShortlist";
+import { useOpenProperty } from "./shared/useOpenProperty";
 
 function Thousands() {
-  const navigate = useNavigate();
-  const [showToast, setShowToast] = useState(false);
   const [openLogin, setOpenLogin] = useState(false);
-  const [toastMsg, setToastMsg] = useState("");
+  const { toast, show: showPopup, hide: hideToast } = useToast();
 
-  const handlePropertyCardClick = (item) => {
-    localStorage.setItem("selectedProperty", JSON.stringify(item));
+  const handlePropertyCardClick = useOpenProperty(() => setOpenLogin(true));
 
-    if (localStorage.getItem("isLoggedIn") === "true") {
-      navigate("/viewcard");
-      return;
-    }
-
-    localStorage.setItem("redirectAfterLogin", "/viewcard");
-    setOpenLogin(true);
-  };
-
-  const handleAddToWishlist = (item) => {
-  const existing = JSON.parse(localStorage.getItem("shortlist")) || [];
-  const alreadyAdded = existing.some(
-    (p) => p.name === item.name
+  const { toggle: handleAddToWishlist, contains: isWishlisted } = useShortlist(
+    (added) =>
+      showPopup(
+        added ? "Added to Shortlist!" : "Removed from Shortlist!",
+        added
+          ? "This inventory has been added to your shortlist"
+          : "This inventory has been removed from your shortlist"
+      )
   );
-  let updatedList;
-  if (alreadyAdded) {
-    updatedList = existing.filter(p => p.name !== item.name);
-    showPopup("Removed from Shortlist!");
-  } else {
-    updatedList = [...existing, item];
-    showPopup("Added to Shortlist!");
-  }
-  localStorage.setItem("shortlist", JSON.stringify(updatedList));
-  setWishlist(updatedList);
-  window.dispatchEvent(new Event("shortlistUpdated"));
-};
-const showPopup = (msg) => {
-  setToastMsg(msg);
-  setShowToast(true);
 
-  setTimeout(() => {
-    setShowToast(false);
-  }, 3000);
-}; 
-const [wishlist, setWishlist] = useState(
-  JSON.parse(localStorage.getItem("shortlist")) || []
-);
   const data = {
     "United Kingdom": ["London", "Birmingham", "Leicester", "Liverpool", "Sheffield"],
     "United States": ["New York", "Boston", "San Francisco", "Chicago"],
@@ -108,22 +80,12 @@ const [wishlist, setWishlist] = useState(
   
   return (
     <div className="thousand">
-      {showToast && (
-      <div className="shortlist-toast">
-      <div className="toast-bar"></div>
-      <div className="toast-content">
-      <strong>{toastMsg}</strong>
-      <p>This inventory has been added to your shortlist</p>
-      </div>
-
-      <span
-      className="toast-close"
-      onClick={() => setShowToast(false)}
-      >
-      <RxCross2/>
-      </span>
-      </div>
-      )}
+      <ShortlistToast
+        show={Boolean(toast)}
+        title={toast?.title}
+        description={toast?.description}
+        onClose={hideToast}
+      />
 
       <h2 className="properties mb-2">Thousands of properties globally</h2>
       <p className="studio mb-4">
@@ -192,17 +154,13 @@ const [wishlist, setWishlist] = useState(
     handleAddToWishlist(item);
   }}
   style={{
-    backgroundColor: wishlist.some(p => p.name === item.name)
-        ? "red"
-        : "white"
+    backgroundColor: isWishlisted(item) ? "red" : "white"
   }}
 >
   <FiHeart
     className="mt-"
     style={{
-      color: wishlist.some(p => p.name === item.name)
-        ? "white"
-        : "#555",
+      color: isWishlisted(item) ? "white" : "#555",
     }}
   />
 </div>
