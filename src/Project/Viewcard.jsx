@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Container, Row, Col, Card, Badge,Button } from "react-bootstrap";
 import Carousel from "react-bootstrap/Carousel";
 import { FaStar, FaHeart } from "react-icons/fa";
@@ -12,10 +12,6 @@ import { LiaWalkingSolid } from "react-icons/lia";
 import { TbBed } from "react-icons/tb";
 import { MdOutlineLocalOffer } from "react-icons/md";
 import { BsLightningCharge } from "react-icons/bs";
-import { FaRegCircleCheck } from "react-icons/fa6";
-import { CgGym } from "react-icons/cg";
-import { CgSmartHomeWashMachine } from "react-icons/cg";
-import { GiBlackBook } from "react-icons/gi";
 import { IoMdHeart } from "react-icons/io";
 import { FaPhoneAlt } from "react-icons/fa";
 import Review from '../assets/review.svg';
@@ -32,6 +28,10 @@ import { IoIosArrowUp,IoIosArrowDown  } from "react-icons/io";
 import Roomcard from './Roomcard';
 import { useNavigate } from "react-router-dom";
 import Booknow from "./Booknow";
+import { PROPERTY_FEATURES } from "./shared/propertyFeatures";
+import { setSelectedProperty } from "./shared/storage";
+import { useSelectedProperty } from "./shared/useSelectedProperty";
+import { useShortlist } from "./shared/useShortlist";
 function Viewcard() {
     const navigate = useNavigate();
       const [show, setShow] = useState(false);
@@ -46,14 +46,7 @@ function Viewcard() {
       roomOptions: 21,
         offers: 8,
         instantBooking: true,
-        features: {
-         "Pay In Instalment":<FaRegCircleCheck/>,
-          "No Visa No Pay":<FaRegCircleCheck/>,
-          "Gym":<CgGym/>,
-          "Laundry Facility":<CgSmartHomeWashMachine/>,
-          "Study Area":< GiBlackBook/>,
-          "Study Spaces":<GiBlackBook/>,
-        },
+        features: PROPERTY_FEATURES,
     }
     const infoList = [
   {
@@ -89,39 +82,8 @@ const toggleDropdown = (index) => {
   setOpenIndex(openIndex === index ? null : index);
 };
 
-  const [item, setItem] = useState(null);
-      const handleAddToWishlist = (item) => {
-      const existing = JSON.parse(localStorage.getItem("shortlist")) || [];
-    
-      const alreadyAdded = existing.some(
-        (p) => p.name === item.name
-      );
-    
-      let updatedList;
-    
-      if (alreadyAdded) {
-        // remove (optional toggle)
-        updatedList = existing.filter(p => p.name !== item.name);
-      } else {
-        // add
-        updatedList = [...existing, item];
-      }
-    
-      localStorage.setItem("shortlist", JSON.stringify(updatedList));
-      setWishlist(updatedList);
-       window.dispatchEvent(new Event("shortlistUpdated"));
-    };
-    
-    const [wishlist, setWishlist] = useState(
-      JSON.parse(localStorage.getItem("shortlist")) || []
-    );
-    
-  useEffect(() => {
-    const savedItem = localStorage.getItem("selectedProperty");
-    if (savedItem) {
-      setItem(JSON.parse(savedItem));
-    }
-  }, []);
+  const { toggle: handleAddToWishlist, contains: isWishlisted } = useShortlist();
+  const item = useSelectedProperty();
 
   if (!item) {
     return (
@@ -222,17 +184,13 @@ const toggleDropdown = (index) => {
               className="wishlist-heart view-delete  position-absolute  d-flex justify-content-center align-items-center"
               onClick={() => handleAddToWishlist(item)}
               style={{
-                backgroundColor: wishlist.some(p => p.name === item.name)
-                    ? "red"
-                    : "white"
+                backgroundColor: isWishlisted(item) ? "red" : "white"
               }}
             >
               <RiDeleteBinLine
                 className="fs-5"
                 style={{
-                  color: wishlist.some(p => p.name === item.name)
-                    ? "white"
-                    : "#555",
+                  color: isWishlisted(item) ? "white" : "#555",
                 }}
               />
             </div>
@@ -240,7 +198,7 @@ const toggleDropdown = (index) => {
            {/* <Button className="mt-3 py-2" style={{ backgroundColor: "#ed3a56", border: "none" }} > View Rooms </Button>  */}
            <Button
   onClick={() => {
-    localStorage.setItem("selectedProperty", JSON.stringify(item));
+    setSelectedProperty(item);
     navigate("/Booknow");
   }}
   className="mt-2 py-2 enquiry"

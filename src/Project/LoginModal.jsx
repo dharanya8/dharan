@@ -7,6 +7,7 @@ import "./LoginModal.css";
 import Image from "react-bootstrap/Image";
 import { useNavigate } from "react-router-dom";
 import facebook from "../assets/facebooklog.svg";
+import { getRedirectAfterLogin, login } from "./shared/storage";
 
 function LoginModal({ show, onClose }) {
   const [step, setStep] = useState("login");
@@ -57,16 +58,14 @@ function LoginModal({ show, onClose }) {
 
   const handleVerifyOtp = () => {
     if (otp === temporaryOtp) {
-      localStorage.setItem("isLoggedIn", "true");
-      window.dispatchEvent(new Event("loginStatusChanged"));
+      login();
 
       setError("");
       setOtp("");
       setTemporaryOtp("");
       onClose();
 
-      const redirect = localStorage.getItem("redirectAfterLogin");
-      navigate(redirect || "/");
+      navigate(getRedirectAfterLogin() || "/");
     } else {
       setError("Invalid OTP. Please enter correct temporary OTP");
     }

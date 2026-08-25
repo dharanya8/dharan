@@ -11,10 +11,7 @@ import { LiaWalkingSolid } from "react-icons/lia";
 import { TbBed } from "react-icons/tb";
 import { MdOutlineLocalOffer } from "react-icons/md";
 import { BsLightningCharge } from "react-icons/bs";
-import { FaRegCircleCheck } from "react-icons/fa6";
-import { CgGym } from "react-icons/cg";
-import { CgSmartHomeWashMachine } from "react-icons/cg";
-import { GiBlackBook } from "react-icons/gi";
+import { PROPERTY_FEATURES } from "../shared/propertyFeatures";
 
 import './Filterparent.css'
 const properties = [
@@ -32,14 +29,7 @@ const properties = [
   roomOptions: 21,
     offers: 8,
     instantBooking: true,
-    features: {
-     "Pay In Instalment":<FaRegCircleCheck/>,
-      "No Visa No Pay":<FaRegCircleCheck/>,
-      "Gym":<CgGym/>,
-      "Laundry Facility":<CgSmartHomeWashMachine/>,
-      "Study Area":< GiBlackBook/>,
-      "Study Spaces":<GiBlackBook/>,
-    },
+    features: PROPERTY_FEATURES,
     images: ["/images/London3.avif", "/images/London2.avif"],
   },
   { 
@@ -55,14 +45,7 @@ const properties = [
   roomOptions: 15,
     offers: 6,
     instantBooking: true,
-    features: {
-     "Pay In Instalment":<FaRegCircleCheck/>,
-      "No Visa No Pay":<FaRegCircleCheck/>,
-      "Gym":<CgGym/>,
-      "Laundry Facility":<CgSmartHomeWashMachine/>,
-      "Study Area":< GiBlackBook/>,
-      "Study Spaces":<GiBlackBook/>,
-    },
+    features: PROPERTY_FEATURES,
     images: ["/images/London1.avif", "/images/London21.avif"],
   },
   { 
@@ -78,14 +61,7 @@ const properties = [
   roomOptions: 6,
     offers: 8,
     instantBooking: true,
-    features: {
-     "Pay In Instalment":<FaRegCircleCheck/>,
-      "No Visa No Pay":<FaRegCircleCheck/>,
-      "Gym":<CgGym/>,
-      "Laundry Facility":<CgSmartHomeWashMachine/>,
-      "Study Area":< GiBlackBook/>,
-      "Study Spaces":<GiBlackBook/>,
-    },
+    features: PROPERTY_FEATURES,
     images: ["/images/London4.avif", "/images/London31.avif"],
   },
   { 
@@ -101,14 +77,7 @@ const properties = [
   roomOptions: 21,
     offers: 8,
     instantBooking: true,
-    features: {
-     "Pay In Instalment":<FaRegCircleCheck/>,
-      "No Visa No Pay":<FaRegCircleCheck/>,
-      "Gym":<CgGym/>,
-      "Laundry Facility":<CgSmartHomeWashMachine/>,
-      "Study Area":< GiBlackBook/>,
-      "Study Spaces":<GiBlackBook/>,
-    },
+    features: PROPERTY_FEATURES,
     images: ["/images/London5.avif", "/images/London51.avif"],
   },
 ];

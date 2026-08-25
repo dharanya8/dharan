@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Card, Row, Col, Button, Badge } from "react-bootstrap";
 import { IoBedOutline } from "react-icons/io5";
 import { MdOutlineBathtub, MdKitchen } from "react-icons/md";
 import "./Roomcard.css";
 import Booknow from "./Booknow";
-import { move } from "formik";
+import { useSelectedProperty } from "./shared/useSelectedProperty";
 
 function RoomCard() {
   const rooms = [
@@ -24,7 +24,7 @@ function RoomCard() {
     },
   ];
 
-  const [item, setItem] = useState(null);
+  const item = useSelectedProperty();
   const [selectedRoom, setSelectedRoom] = useState(null);
   const [showBookNow, setShowBookNow] = useState(false);
 
@@ -37,13 +37,6 @@ function RoomCard() {
     setShowBookNow(false);
     setSelectedRoom(null);
   };
-
-  useEffect(() => {
-    const data = localStorage.getItem("selectedProperty");
-    if (data) {
-      setItem(JSON.parse(data));
-    }
-  }, []);
 
   if (!item) return null;
 

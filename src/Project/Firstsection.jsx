@@ -8,6 +8,7 @@ import Search from './Search';
 import { GoChevronRight } from "react-icons/go";
 import Navbar2 from "./Navbar2";
 import { Container } from "react-bootstrap";
+import { getRecentSearches, saveRecentSearches } from "./shared/storage";
 function Firstsection1() {
      const [recent, setRecent] = useState([]);
 const defaultSearches=[
@@ -19,20 +20,19 @@ const defaultSearches=[
   "University",
 ]
   useEffect(() => {
-    const saved = JSON.parse(localStorage.getItem("recentSearches"));
-    if (saved && saved.length > 0) {
+    const saved = getRecentSearches();
+    if (saved.length > 0) {
       setRecent(saved);
     } else {
-     
       setRecent(defaultSearches);
-      localStorage.setItem("recentSearches", JSON.stringify(defaultSearches));
+      saveRecentSearches(defaultSearches);
     }
   }, []);
 
   const handleSearch = (term) => {
     const updated = [term, ...recent.filter((item) => item !== term)];
     setRecent(updated);
-    localStorage.setItem("recentSearches", JSON.stringify(updated));
+    saveRecentSearches(updated);
   };
 
   return (
