@@ -79,62 +79,79 @@ const {
       setNameError("Name should contain only letters");
     }
   };
+  const validateName = (value) => {
+    if (!value.trim()) return "Name is required";
+    if (!/^[a-zA-Z\s]+$/.test(value)) return "Name should contain only letters";
+    return "";
+  };
+
+  const getEmailError = (value) => {
+    if (!value.trim()) return "Email is required";
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
+      ? ""
+      : "Please enter a valid email address";
+  };
+
   const validateEmail = (value) => {
     setEmail(value);
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(value)) {
-      setEmailError("Please enter a valid email address");
-    } else {
-      setEmailError("");
-    }
+    setEmailError(getEmailError(value));
   };
+
+  const getDateError = (value) => {
+    if (!value.trim()) return "Date of birth is required";
+    const parsed = new Date(value);
+    if (Number.isNaN(parsed.getTime()) || parsed > new Date()) {
+      return "Please enter a valid date of birth";
+    }
+    return "";
+  };
+
+  const getZipError = (value) => {
+    if (!value.trim()) return "Zipcode is required";
+    return /^[a-zA-Z0-9\s-]{3,10}$/.test(value.trim())
+      ? ""
+      : "Please enter a valid zipcode";
+  };
+
+  const getCityError = (value) => {
+    if (!value.trim()) return "City is required";
+    return /^[a-zA-Z\s'-]+$/.test(value.trim())
+      ? ""
+      : "City should contain only letters";
+  };
+
+  const getCourseError = (value) =>
+    value.trim() ? "" : "Course name is required";
+
+  const validateDate = (value) => setDateError(getDateError(value));
+  const validateZip = (value) => setZipError(getZipError(value));
+  const validateCity = (value) => setCityError(getCityError(value));
+  const validateCourse = (value) => setCourseError(getCourseError(value));
+
   const handleApplicationSubmit = (e) => {
     e.preventDefault();
 
-    let valid = true;
+    const errors = {
+      name: validateName(name),
+      email: getEmailError(email),
+      mobile: mobile.trim() ? "" : "Mobile number is required",
+      date: getDateError(date),
+      address: address.trim() ? "" : "Address is required",
+      city: getCityError(city),
+      zip: getZipError(zip),
+      course: getCourseError(course),
+    };
 
-    if (!name.trim()) {
-      setNameError("Name is required");
-      valid = false;
-    } else setNameError("");
+    setNameError(errors.name);
+    setEmailError(errors.email);
+    setMobileError(errors.mobile);
+    setDateError(errors.date);
+    setAddressError(errors.address);
+    setCityError(errors.city);
+    setZipError(errors.zip);
+    setCourseError(errors.course);
 
-    if (!email.trim()) {
-      setEmailError("Email is required");
-      valid = false;
-    } else setEmailError("");
-
-    if (!mobile.trim()) {
-      setMobileError("Mobile number is required");
-      valid = false;
-    } else setMobileError("");
-
-    if (!date) {
-      setDateError("Date of birth is required");
-      valid = false;
-    } else setDateError("");
-
-    if (!address.trim()) {
-      setAddressError("Address is required");
-      valid = false;
-    } else setAddressError("");
-
-    if (!city.trim()) {
-      setCityError("City is required");
-      valid = false;
-    } else setCityError("");
-
-    if (!zip.trim()) {
-      setZipError("Zipcode is required");
-      valid = false;
-    } else setZipError("");
-
-    if (!course.trim()) {
-      setCourseError("Course name is required");
-      valid = false;
-    } else setCourseError("");
-
-    if (!valid) return;
+    if (Object.values(errors).some(Boolean)) return;
     setShowBookedPopup(true);
     setTimeout(() => {
       setShowBookedPopup(false);
@@ -407,7 +424,7 @@ const [showBookedPopup, setShowBookedPopup] = useState(false);
                           className="remove-icon"
                           onClick={(e) => {
                             e.stopPropagation();
-                            setSelectedNationality({ shortname: "", id: "", country: "" });
+                            setSelectedCountry({ shortname: "", id: "", country: "" });
                           }}
                         />
                       )}
@@ -420,8 +437,8 @@ const [showBookedPopup, setShowBookedPopup] = useState(false);
                             key={index}
                             className="drop-item2"
                             onClick={() => {
-                              setSelectedNationality(item);
-                              setNationalityOpen(true);
+                              setSelectedCountry(item);
+                              setNationalityOpen(false);
                               setIsNationalityFocused(true);
                             }}
                           >

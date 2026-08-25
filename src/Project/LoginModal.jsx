@@ -7,6 +7,7 @@ import "./LoginModal.css";
 import Image from "react-bootstrap/Image";
 import { useNavigate } from "react-router-dom";
 import facebook from "../assets/facebooklog.svg";
+import { readItem, writeItem } from "./utils/storage";
 
 function LoginModal({ show, onClose }) {
   const [step, setStep] = useState("login");
@@ -57,7 +58,12 @@ function LoginModal({ show, onClose }) {
 
   const handleVerifyOtp = () => {
     if (otp === temporaryOtp) {
-      localStorage.setItem("isLoggedIn", "true");
+      if (!writeItem("isLoggedIn", "true")) {
+        setError(
+          "Could not save your session. Please enable browser storage and try again."
+        );
+        return;
+      }
       window.dispatchEvent(new Event("loginStatusChanged"));
 
       setError("");
@@ -65,7 +71,7 @@ function LoginModal({ show, onClose }) {
       setTemporaryOtp("");
       onClose();
 
-      const redirect = localStorage.getItem("redirectAfterLogin");
+      const redirect = readItem("redirectAfterLogin");
       navigate(redirect || "/");
     } else {
       setError("Invalid OTP. Please enter correct temporary OTP");
